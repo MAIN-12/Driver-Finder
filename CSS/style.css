@@ -1,0 +1,68 @@
+/** @format */
+
+PrimeColor {
+	color: blue;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 20;
+	height: fit-content;
+	background-color: white;
+    font-family: 'Poppins',sans-serif;
+}
+h1 {
+	color: blue;
+}
+
+h2 {
+	color: black;
+}
+
+.test{
+	width:10px;
+}
+
+.column {
+	background-color: aliceblue;
+	border-radius: 10px;
+	box-sizing: border-box;
+	margin: 16px 16px;
+	padding: 100px;
+}
+
+
+
+/* .btn {
+	background: white;
+	color: blue;
+	border-radius: 1px;
+	border-color: transparent;
+}
+
+.btn:hover {
+	background: blue;
+	color: white;
+	transition: all 0.5s;
+}
+
+.btn:active {
+	background: gray;
+	color: white;
+	transition: all 0.5s;
+}
+
+button {
+	padding: 8px 25px;
+	background: blue;
+	color: white;
+	border-radius: 8px;
+	border-color: transparent;
+}
+
+button:hover {
+	background: white;
+	color: blue;
+	transition: all 01s;
+} */
