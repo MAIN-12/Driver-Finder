@@ -7,10 +7,10 @@ PrimeColor {
 html,
 body {
 	margin: 0;
-	padding: 20;
 	height: fit-content;
 	background-color: white;
     font-family: 'Poppins',sans-serif;
+	font-size: small;
 }
 h1 {
 	color: blue;
@@ -25,11 +25,14 @@ h2 {
 }
 
 .column {
-	background-color: aliceblue;
-	border-radius: 10px;
+	border-radius: 20px;
 	box-sizing: border-box;
-	margin: 16px 16px;
-	padding: 100px;
+	padding: 0px;
+}
+
+.scrollable {
+    height: 200px; /* or any value */
+    overflow-y: auto;
 }
 
 

@@ -1,0 +1,346 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base target="_top" />
+
+		<meta charset="utf-8" />
+		<meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
+		<title>Driver Finder Form</title>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<section class=" section row ">
+        <div class="col s3">
+
+          <div class="center-align">
+            <h2>Driver Finder</h2>
+          </div>
+          <form name="myForm" class="form white">
+            <div class="row">
+              <div class="input-field col s12 m7">
+                <input
+                  name="fname"
+                  id="fname"
+                  type="text"
+                  class="validate"
+                  required
+                />
+                <label for="fname">Route Name</label>
+              </div>
+              <div class="input-field col s12 m5">
+                <select name="state" id="state " required>
+                  <option value="" disabled selected>State</option>
+                  <option value="FL">Florida</option>
+                  <option value="IN">Indiana</option>
+                  <option value="PN">Pensilvania</option>
+                  <option value="TN">Tennessee</option>
+                </select>
+                <label for="state">State</label>
+              </div>
+            </div>
+  
+            <!-- ADDRESS SET UP -->
+            <div>
+              <div id="student1" class="row" style="display: block">
+                <div class="input-field col s10">
+                  <input
+                    name="addrs1"
+                    id="addrs1"
+                    type="text"
+                    class="validate"
+                    required
+                  />
+                  <label for="addrs1">Student 1 Address</label>
+                </div>
+                <div class="col s2">
+                  <a
+                    id="addStudent"
+                    type="button"
+                    class="btn-floating btn-small waves-effect waves-light blue"
+                    ><i class="material-icons">add</i></a
+                  >
+                </div>
+              </div>
+  
+              <div id="student2" class="row" style="display: none">
+                <div class="input-field col s10">
+                  <input name="addrs2" id="addrs2" type="text" class="validate" />
+                  <label for="addrs1">Student 2 Address</label>
+                </div>
+                <div class="col s2">
+                  <a
+                    id="removeStudent2"
+                    type="button"
+                    class="btn-floating btn-small waves-effect waves-light grey"
+                    ><i class="material-icons">delete</i></a
+                  >
+                </div>
+              </div>
+  
+              <div id="student3" class="row" style="display: none">
+                <div class="input-field col s10">
+                  <input name="addrs3" id="addrs3" type="text" class="validate" />
+                  <label for="addrs3">Student 3 Address</label>
+                </div>
+                <div class="col s2">
+                  <a
+                    id="removeStudent3"
+                    type="button"
+                    class="btn-floating btn-small waves-effect waves-light grey"
+                    ><i class="material-icons">delete</i></a
+                  >
+                </div>
+              </div>
+  
+              <div id="school" class="row" style="display: block">
+                <div class="input-field col s10">
+                  <input
+                    name="schoolAddress"
+                    id="schoolAddress"
+                    type="text"
+                    class="validate"
+                    required
+                  />
+                  <label for="schoolAddress">School Address</label>
+                </div>
+              </div>
+            </div>
+  
+            <!-- TIMES SET UP -->
+            <div class="row">
+              <!-- <div class="col s12 m1"></div> -->
+              <div class="col s10 m12">
+                <table>
+                  <thead>
+                    <th></th>
+                    <th class="center-align">Pick Up</th>
+                    <th class="center-align">Drop Off</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Trip AM</td>
+                      <td>
+                        <input
+                          type="text"
+                          class="timepicker center-align test"
+                          placeholder="--:-- AM"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="timepicker center-align test"
+                          placeholder="--:-- AM"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Trip PM</td>
+                      <td>
+                        <input
+                          type="text"
+                          class="timepicker center-align"
+                          placeholder="--:-- PM"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="timepicker center-align"
+                          placeholder="--:-- PM"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div></div>
+            </div>
+  
+            <br />
+            <div class="center-align">
+              <button
+                type="reset"
+                class="waves-effect waves-light btn blue"
+                value="Reset"
+              >
+                <i class="material-icons">replay</i>
+              </button>
+              <button
+                class="btn waves-effect waves-light blue"
+                type="submit"
+                name="action"
+              >
+                Serch
+                <i class="material-icons right">search</i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col s9">
+          <div>
+            <!-- MAP -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112332.5865602625!2d-81.71081568359375!3d28.377185700000016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dd7ee634caa5f7%3A0xa71e391fd01cf1a0!2sWalt%20Disney%20World%C2%AE%20Resort!5e0!3m2!1sen!2sus!4v1669681406536!5m2!1sen!2sus"
+              width="100%"
+              height="500"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="responsive-table">
+            <table class="highlight">
+              <thead>
+                <th>Index</th>
+                <th>Name</th>
+                <th>MDD</th>
+                <th>Active Routes</th>
+                <th>Total Miles</th>
+                <th>Total Time in route</th>
+                <th>Moree</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <p>
+                      <label>
+                        <input type="checkbox" />
+                        <span>1</span>
+                      </label>
+                    </p>
+                  </td>
+                  <td>CHARLIE</td>
+                  <td>1212</td>
+                  <td></td>
+                  <td>20</td>
+                  <td>30</td>
+                  <td><button>MORE</button></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>CHARLIE</td>
+                  <td>1212</td>
+                  <td></td>
+                  <td>20</td>
+                  <td>30</td>
+                  <td><button>MORE</button></td>
+                </tr>
+                <tr>
+                  <td>></td>
+                  <td>CHARLIE</td>
+                  <td>1212</td>
+                  <td></td>
+                  <td>20</td>
+                  <td>30</td>
+                  <td><button>MORE</button></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>CHARLIE</td>
+                  <td>1212</td>
+                  <td></td>
+                  <td>20</td>
+                  <td>30</td>
+                  <td><button>MORE</button></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>CHARLIE</td>
+                  <td>1212</td>
+                  <td></td>
+                  <td>20</td>
+                  <td>30</td>
+                  <td><button>MORE</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+		</section>
+		<!-- MATERIALIZE SCRIPTS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				var elems = document.querySelectorAll('select');
+				var instances = M.FormSelect.init(elems);
+			});
+
+			document.addEventListener('DOMContentLoaded', function () {
+				var elems = document.querySelectorAll('.timepicker');
+				var instances = M.Timepicker.init(elems);
+			});
+			document.addEventListener('DOMContentLoaded', function () {
+				var elems = document.querySelectorAll('.datepicker');
+				var instances = M.Datepicker.init(elems);
+			});
+		</script>
+		<!-- MY SCRIPTS -->
+		<script>
+			document.getElementById('addStudent').addEventListener('click', () => {
+				var x = document.getElementById('student2');
+				var y = document.getElementById('student3');
+				if (x.style.display === 'none') {
+					x.style.display = 'block';
+				} else if (y.style.display === 'none') {
+					y.style.display = 'block';
+				}
+			});
+
+			document
+				.getElementById('removeStudent2')
+				.addEventListener('click', () => {
+					document.getElementById('student2').style.display = 'none';
+				});
+
+			document
+				.getElementById('removeStudent3')
+				.addEventListener('click', () => {
+					document.getElementById('student3').style.display = 'none';
+				});
+
+			function validateForm() {
+				let RouteName = document.forms['driverFinderForm']['fname'].value;
+				let state = document.forms['driverFinderForm']['state'].value;
+				let addres1 = document.forms['driverFinderForm']['addres1'].value;
+				let addres2 = document.forms['driverFinderForm']['addres2'].value;
+				let addres3 = document.forms['driverFinderForm']['addres3'].value;
+				let ScAddres = document.forms['driverFinderForm']['ScAddres'].value;
+
+				if (true) {
+					alert(RouteName + '\n' + addres1);
+					return false;
+				}
+			}
+
+			myForm.addEventListener('submit', (e) => {
+				e.preventDefault();
+				console.log('==========FORM HAS NEAN SUBMITED==========');
+				let RouteName = document.getElementById('fname').value;
+				console.log(RouteName);
+
+				const request = new XMLHttpRequest();
+				request.open('POST', 'action_page.php');
+				request.onload = function () {
+					console.log(request.responseText);
+				};
+				request.send(new FormData(myForm));
+			});
+		</script>
+	</body>
+</html>
