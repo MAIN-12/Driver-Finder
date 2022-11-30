@@ -1,41 +1,106 @@
 /** @format */
 
-PrimeColor {
-	color: blue;
-}
-
 html,
 body {
 	margin: 0;
 	height: fit-content;
 	background-color: white;
-    font-family: 'Poppins',sans-serif;
+	font-family: 'Poppins', sans-serif;
 	font-size: small;
 }
-h1 {
-	color: blue;
-}
 
-h2 {
-	color: black;
-}
-
-.test{
-	width:10px;
-}
-
-.column {
+h1{
+	background-color: white;
 	border-radius: 20px;
-	box-sizing: border-box;
-	padding: 0px;
+}
+h2 {
+	color: white;
 }
 
-.scrollable {
-    height: 200px; /* or any value */
-    overflow-y: auto;
+.wrapper .sidebar {
+	background: rgb(5, 68, 104);
+	position: fixed;
+	z-index: 900;
+	top: 0;
+	left: 0;
+	width: 350px;
+	height: 100%;
+	padding: 20px 20px;
+	transition: all 0.5s ease;
+}
+.content {
+	background: white;
+	position: relative;
+	top: 0;
+	left: 350px;
+	right: 100px;
+	height: 100%;
+	padding: 0;
+	transition: all 0.5s ease;
 }
 
+.formbox {
+	background: white;
+	border-radius: 20px;
+	padding: 20px 20px;
+}
 
+.results_table {
+	background: white;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	height: 300px;
+	width: calc(80vw - 300px);
+	margin-right: 350px;
+	min-width: 300px;
+	margin: 20px;
+	padding: 20px 20px;
+	border-radius: 20px;
+	overflow: auto;
+}
+
+.map {
+	height: 110%;
+	width: 100%;
+}
+
+.maptestoffset {
+	z-index: 0;
+	position: fixed;
+	left: 0;
+}
+
+.btn-login {
+	color: rgb(5, 68, 104);
+	position: fixed;
+	z-index: 900;
+	top: 20px;
+	right: 20px;
+}
+
+.LogInBack {
+	background:  rgba(0, 0, 0, 0.8);
+	position: fixed;
+	z-index: 950;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 20px 20px;
+	transition: all 0.5s ease;
+}
+.LogIn {
+	background: white;
+	padding: 50px 50px;
+	position: fixed;
+	margin: auto;
+	top: 15%;
+	left: 50%;
+	border-radius: 20px;
+	width: 600px;
+	height: 400px;
+}
 
 /* .btn {
 	background: white;
