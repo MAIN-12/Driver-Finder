@@ -137,13 +137,13 @@
 						/>
           <label for="fname">Route Name</label>
         </div>
-        <div class="input-field col s12 m5">
-          <select name="state" id="state " required>
-							<option value="" disabled selected>State</option>
-							<option value="FL">Florida</option>
-							<option value="IN">Indiana</option>
-							<option value="PN">Pensilvania</option>
-							<option value="TN">Tennessee</option>
+        <div class="input-field col s12">
+          <select name="state" id="state" required>
+							<option for="state" value="" disabled selected>State</option>
+							<option for="state" value="FL">Florida</option>
+							<option for="state" value="IN">Indiana</option>
+							<option for="state" value="PN">Pensilvania</option>
+							<option for="state" value="TN">Tennessee</option>
 						</select>
           <label for="state"></label>
         </div>
@@ -153,14 +153,8 @@
         <div>
           <div id="student1" class="row" style="display: block">
             <div class="input-field col s10">
-              <input
-									name="addrs1"
-									id="addrs1"
-									type="text"
-									class="validate"
-									required
-								/>
-              <label for="addrs1">Student 1 Address</label>
+              <input name="address1"id="address1"type="text"class="validate"required/>
+              <label for="address1">Student 1 Address</label>
             </div>
             <div class="col s2">
               <a id="addStudent" type="button"
@@ -170,8 +164,8 @@
 
           <div id="student2" class="row" style="display: none">
             <div class="input-field col s10">
-              <input name="addrs2" id="addrs2" type="text" class="validate" />
-              <label for="addrs1">Student 2 Address</label>
+              <input name="address2" id="address2" type="text" class="validate" />
+              <label for="address2">Student 2 Address</label>
             </div>
             <div class="col s2">
               <a id="removeStudent2" type="button"
@@ -181,8 +175,8 @@
 
           <div id="student3" class="row" style="display: none">
             <div class="input-field col s10">
-              <input name="addrs3" id="addrs3" type="text" class="validate" />
-              <label for="addrs3">Student 3 Address</label>
+              <input name="address3" id="address3" type="text" class="validate" />
+              <label for="address3">Student 3 Address</label>
             </div>
             <div class="col s2">
               <a id="removeStudent3" type="button"
@@ -284,103 +278,7 @@
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
-      <div class="results_table">
-        <div>
-          <table class="highlight centered">
-            <thead>
-              <th>Index</th>
-              <th>Name</th>
-              <th>MDD</th>
-              <th>Active Routes</th>
-              <th>Total Miles</th>
-              <th>Total Time in route</th>
-              <th>Moree</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <label>
-											<input type="checkbox" />
-											<span>1</span>
-										</label>
-                </td>
-                <td>Nixon Benitez</td>
-                <td>23098</td>
-                <td>1 AM, 1 PM, 1 F</td>
-                <td>54.5 miles</td>
-                <td>76.92 min</td>
-                <td>
-                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-											<input type="checkbox" />
-											<span>2</span>
-										</label>
-                </td>
-                <td>María Sánchez</td>
-                <td>25506</td>
-                <td>0 AM, 0 PM, 1 W</td>
-                <td>63.42 miles</td>
-                <td>103.75 min</td>
-                <td>
-                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-											<input type="checkbox" />
-											<span>3</span>
-										</label>
-                </td>
-                <td>Jesus Enrique Chacin</td>
-                <td>26128</td>
-                <td>1 AM, 1 PM</td>
-                <td>70.73 miles</td>
-                <td>99.82 min</td>
-                <td>
-                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-											<input type="checkbox" />
-											<span>4</span>
-										</label>
-                </td>
-                <td>Cristina Mas y Rubi</td>
-                <td>23576</td>
-                <td>0 AM, 0 PM</td>
-                <td>72.16 miles</td>
-                <td>107.25 min</td>
-                <td>
-                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-											<input type="checkbox" />
-											<span>5</span>
-										</label>
-                </td>
-                <td>Greidy Gutierrez</td>
-                <td>1212</td>
-                <td>0 AM, 0 PM</td>
-                <td>80.86 miles</td>
-                <td>111.03 min</td>
-                <td>
-                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <div id="result" ></div>
     </div>
     <div class="btn-login">
       <a id="btn-login" name="btn-login "
@@ -487,6 +385,63 @@
 				}
 			}
 
+
+
+
+function printResults_test(){
+  let html ='<div id="rt" class="results_table">';
+  html += '<table class="highlight centered"><thead><th>Index</th><th>Name</th><th>MDD</th><th>Active Routes</th><th>Total Miles</th><th>Total Time in route</th><th>Moree</th></thead>';
+  html += '<tbody>';
+  html += '<tr><td><label><input type="checkbox" /><span>1</span></label></td><td>Nixon Benitez</td><td>23098</td><td>1 AM, 1 PM, 1 F</td><td>54.5 miles</td><td>76.92 min</td><td><a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a></td></tr>'
+  html += '<tr><td><label><input type="checkbox" /><span>2</span></label></td><td>María Sánchez</td><td>25506</td><td>0 AM, 0 PM, 1 W</td><td>63.42 miles</td><td>103.75 min</td><td><a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a></td></tr>'
+  html += '<tr><td><label><input type="checkbox" /><span>3</span></label></td><td>Jesus Enrique Chacin</td><td>26128</td><td>1 AM, 1 PM</td><td>70.73 miles</td><td>99.82 min</td><td><a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a></td></tr>'
+  html += '<tr><td><label><input type="checkbox" /><span>4</span></label></td><td>Cristina Mas y Rubi</td><td>23576</td><td>0 AM, 0 PM</td><td>72.16 miles</td><td>107.25 min</td><td><a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a></td></tr>'
+  html += '<tr><td><label><input type="checkbox" /><span>5</span></label></td><td>Greidy Gutierrez</td><td>1212</td><td>0 AM, 0 PM</td><td>80.86 miles</td><td>111.03 min</td><td><a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a></td></tr>'
+  html += '</tbody></table></div>';
+document.getElementById('result').innerHTML= html;
+}
+
+
+
+function printResults(data){
+  console.log("+++++++++++++")
+  console.log(data);
+  let html ='<div id="rt" class="results_table">';
+  html += `<table class="highlight centered">
+    <thead>
+      <th>Index</th>
+      <th>Name</th>
+      <th>MDD</th>
+      <th>Active Routes</th>
+      <th>Total Miles</th>
+      <th>Total Time in route</th
+      ><th>Moree</th>
+    </thead>`;
+  html += '<tbody>';
+
+for (let i = 0; i < data.length; i++) {
+  // const element = array[index];
+  // let row=data[i];
+  html += '<tr>';
+    html += `<td><label><input type="checkbox" /><span>${i+1}</span></label></td>`;
+    html += `<td>${data[i].Name}</td>`;
+    html += `<td>${data[i].MDD}</td>`;
+    html += `<td>${data[i].activeRoutes}</td>`;
+    html += `<td>${(Math.random()*50).toFixed(2)} miles</td>`;
+    html += `<td>${(Math.random()*50).toFixed(2)} min</td>`;
+
+    html +=  `<td>
+              <a class="btn-floating btn-small waves-effect waves-light blue">
+              <i class="material-icons">add</i></a>
+              </td>`;
+    html += '</tr>';
+}
+
+  html += `</tbody></table></div>`;
+  document.getElementById('result').innerHTML= html;
+}
+
+
 			myForm.addEventListener('submit', (e) => {
 				e.preventDefault();
 				console.log('==========FORM HAS BEAN SUBMITED==========');
@@ -496,25 +451,45 @@
         let password = document.getElementById('pass').value;
         if(!userID || !password){
           document.getElementById('Pop-LogIn').style.display = 'block';
+        }else{
+          // printResults_test();
+
+
+          let Drivers=[
+          {Name: "Olayinka Olasele", MDD: 23545, activeRoutes: "1 AM, 1 PM, 1 F"},
+          {Name: "María Sánchez", MDD: 1234, activeRoutes: "2 AM, 2 PM"},
+          {Name: "Jesus Enrique Chacin", MDD: 1234, activeRoutes: "2 AM, 2 PM, 1 W"},
+          {Name: "Cristina Mas y Rubi", MDD: 1234, activeRoutes: "No Active routes"},
+          {Name: "Victor Manuel Barette Rivas", MDD: 1234, activeRoutes: "No Active routes"},
+          {Name: "Cristina Mas y Rubi", MDD: 1234, activeRoutes: "No Active routes"},
+          {Name: "Patricia Ramirez", MDD: 1234, activeRoutes: "No Active routes"},
+          {Name: "Cristina Mas y Rubi", MDD: 1234, activeRoutes: "No Active routes"},
+          {Name: "Greidy Gutierrez", MDD: 1234, activeRoutes: "No Active routes"}];
+
+          console.log(Drivers);
+
+          printResults(Drivers);
+          let routeName = document.getElementById('fname').value;
+          let state=      document.getElementById('state').value;
+          let addres1 =   document.getElementById('address1').value;
+          let addres2 =   document.getElementById('address2').value;
+          let addres3 =   document.getElementById('address3').value;
+          let scAddres =  document.getElementById('schoolAddress').value;
+
+          const request = new XMLHttpRequest();
+          request.open('POST', 'action_page.php');
+          request.onload = function () {
+          console.log(request.responseText);
+          };
+          request.send(new FormData(myForm));
         }
-
-
-				let routeName = document.getElementById('fname').value;
-        let state=document.getElementById('state').value;
-        let addres1 = document.getElementById('addres1').value;
-				let addres2 = document.getElementById('addres2').value;
-				let addres3 = document.getElementById('addres3').value;
-				let scAddres = document.getElementById('ScAddres').value;
-
-				console.log(RouteName);
-
-				const request = new XMLHttpRequest();
-				request.open('POST', 'action_page.php');
-				request.onload = function () {
-					console.log(request.responseText);
-				};
-				request.send(new FormData(myForm));
 			});
+
+
+      myForm.addEventListener('reset', (e) => {
+        var element = document.getElementById("rt");
+        element.parentNode.removeChild(element);
+      });
 
 
       loginForm.addEventListener('submit', (e) => {
@@ -524,10 +499,11 @@
         let password = document.getElementById('pass').value;
 				console.log(userID);
         console.log(password);
-        let ValidID = "admin@main12.com";
+        let ValidID = "admin";
         let ValidPassword = "clave1234";
 
         if(userID===ValidID && password===ValidPassword){
+  
         document.getElementById('Pop-LogIn').style.display = 'none';
         }else{
         alert("WRONG USER ID OR PASSWORD");
