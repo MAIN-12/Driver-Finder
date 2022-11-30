@@ -2,183 +2,269 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<base target="_top" />
 
-		<meta charset="utf-8" />
-		<meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
-		<title>Driver Finder Form</title>
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-		/>
+<head>
+  <base target="_top" />
 
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		/>
-		<style></style>
-		<link rel="stylesheet" href="css/style.css" />
-	</head>
+  <meta charset="utf-8" />
+  <meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Finder Form</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-	<body>
-		<section class="wrapper">
-			<div id="sbar" name="sbar" class="sidebar" style="display: flexbox">
-				<div class="center-align">
-					<h2>Driver Finder</h2>
-					<br />
-				</div>
-				<form name="myForm" class="form formbox">
-					<div class="input-field col s12">
-						<input
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: fit-content;
+      background-color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: small;
+    }
+
+    h1 {
+      background-color: white;
+      border-radius: 20px;
+    }
+
+    h2 {
+      color: white;
+    }
+
+    .wrapper .sidebar {
+      background: rgb(5, 68, 104);
+      position: fixed;
+      z-index: 900;
+      top: 0;
+      left: 0;
+      width: 350px;
+      height: 100%;
+      padding: 20px 20px;
+      transition: all 0.5s ease;
+    }
+
+    .content {
+      background: white;
+      position: relative;
+      top: 0;
+      left: 350px;
+      right: 100px;
+      height: 100%;
+      padding: 0;
+      transition: all 0.5s ease;
+    }
+
+    .formbox {
+      background: white;
+      border-radius: 20px;
+      padding: 20px 20px;
+    }
+
+    .results_table {
+      background: white;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      height: 300px;
+      width: calc(80vw - 300px);
+      margin-right: 350px;
+      min-width: 300px;
+      margin: 20px;
+      padding: 20px 20px;
+      border-radius: 20px;
+      overflow: auto;
+    }
+
+    .map {
+      height: 110%;
+      width: 100%;
+    }
+
+    .maptestoffset {
+      z-index: 0;
+      position: fixed;
+      left: 0;
+    }
+
+    .btn-login {
+      color: rgb(5, 68, 104);
+      position: fixed;
+      z-index: 900;
+      top: 20px;
+      right: 20px;
+    }
+
+    .LogInBack {
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      z-index: 950;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px 20px;
+      transition: all 0.5s ease;
+    }
+
+    .LogIn {
+      background: white;
+      padding: 50px 50px;
+      position: fixed;
+      margin: auto;
+      top: 15%;
+      left: 50%;
+      border-radius: 20px;
+      width: 600px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="wrapper">
+    <div id="sbar" name="sbar" class="sidebar" style="display: flexbox">
+      <div class="center-align">
+        <h2>Driver Finder</h2>
+        <br />
+      </div>
+      <form name="myForm" class="form formbox">
+        <div class="input-field col s12">
+          <input
 							name="fname"
 							id="fname"
 							type="text"
 							class="validate"
-							required
 						/>
-						<label for="fname">Route Name</label>
-					</div>
-					<div class="input-field col s12 m5">
-						<select name="state" id="state " required>
+          <label for="fname">Route Name</label>
+        </div>
+        <div class="input-field col s12 m5">
+          <select name="state" id="state " required>
 							<option value="" disabled selected>State</option>
 							<option value="FL">Florida</option>
 							<option value="IN">Indiana</option>
 							<option value="PN">Pensilvania</option>
 							<option value="TN">Tennessee</option>
 						</select>
-						<label for="state"></label>
-					</div>
-					<br />
+          <label for="state"></label>
+        </div>
+        <br />
 
-					<!-- ADDRESS SET UP -->
-					<div>
-						<div id="student1" class="row" style="display: block">
-							<div class="input-field col s10">
-								<input
+        <!-- ADDRESS SET UP -->
+        <div>
+          <div id="student1" class="row" style="display: block">
+            <div class="input-field col s10">
+              <input
 									name="addrs1"
 									id="addrs1"
 									type="text"
 									class="validate"
 									required
 								/>
-								<label for="addrs1">Student 1 Address</label>
-							</div>
-							<div class="col s2">
-								<a
-									id="addStudent"
-									type="button"
-									class="btn-floating btn-small waves-effect waves-light blue"
-									><i class="material-icons">add</i></a
-								>
-							</div>
-						</div>
+              <label for="addrs1">Student 1 Address</label>
+            </div>
+            <div class="col s2">
+              <a id="addStudent" type="button"
+                class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
+            </div>
+          </div>
 
-						<div id="student2" class="row" style="display: none">
-							<div class="input-field col s10">
-								<input name="addrs2" id="addrs2" type="text" class="validate" />
-								<label for="addrs1">Student 2 Address</label>
-							</div>
-							<div class="col s2">
-								<a
-									id="removeStudent2"
-									type="button"
-									class="btn-floating btn-small waves-effect waves-light grey"
-									><i class="material-icons">delete</i></a
-								>
-							</div>
-						</div>
+          <div id="student2" class="row" style="display: none">
+            <div class="input-field col s10">
+              <input name="addrs2" id="addrs2" type="text" class="validate" />
+              <label for="addrs1">Student 2 Address</label>
+            </div>
+            <div class="col s2">
+              <a id="removeStudent2" type="button"
+                class="btn-floating btn-small waves-effect waves-light grey"><i class="material-icons">delete</i></a>
+            </div>
+          </div>
 
-						<div id="student3" class="row" style="display: none">
-							<div class="input-field col s10">
-								<input name="addrs3" id="addrs3" type="text" class="validate" />
-								<label for="addrs3">Student 3 Address</label>
-							</div>
-							<div class="col s2">
-								<a
-									id="removeStudent3"
-									type="button"
-									class="btn-floating btn-small waves-effect waves-light grey"
-									><i class="material-icons">delete</i></a
-								>
-							</div>
-						</div>
+          <div id="student3" class="row" style="display: none">
+            <div class="input-field col s10">
+              <input name="addrs3" id="addrs3" type="text" class="validate" />
+              <label for="addrs3">Student 3 Address</label>
+            </div>
+            <div class="col s2">
+              <a id="removeStudent3" type="button"
+                class="btn-floating btn-small waves-effect waves-light grey"><i class="material-icons">delete</i></a>
+            </div>
+          </div>
 
-						<div id="school" class="row" style="display: block">
-							<div class="input-field col s10">
-								<input
+          <div id="school" class="row" style="display: block">
+            <div class="input-field col s10">
+              <input
 									name="schoolAddress"
 									id="schoolAddress"
 									type="text"
 									class="validate"
 									required
 								/>
-								<label for="schoolAddress">School Address</label>
-							</div>
-						</div>
-					</div>
+              <label for="schoolAddress">School Address</label>
+            </div>
+          </div>
+        </div>
 
-					<!-- TIMES SET UP -->
-					<div class="row">
-						<!-- <div class="col s12 m1"></div> -->
-						<div class="col s12">
-							<table>
-								<thead>
-									<th></th>
-									<th class="center-align">Pick Up</th>
-									<th class="center-align">Drop Off</th>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Trip AM</td>
-										<td>
-											<input
+        <!-- TIMES SET UP -->
+        <div class="row">
+          <!-- <div class="col s12 m1"></div> -->
+          <div class="col s12">
+            <table>
+              <thead>
+                <th></th>
+                <th class="center-align">Pick Up</th>
+                <th class="center-align">Drop Off</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Trip AM</td>
+                  <td>
+                    <input
 												type="text"
 												class="timepicker center-align test"
 												placeholder="--:-- AM"
 											/>
-										</td>
-										<td>
-											<input
+                  </td>
+                  <td>
+                    <input
 												type="text"
 												class="timepicker center-align test"
 												placeholder="--:-- AM"
 											/>
-										</td>
-									</tr>
-									<tr>
-										<td>Trip PM</td>
-										<td>
-											<input
+                  </td>
+                </tr>
+                <tr>
+                  <td>Trip PM</td>
+                  <td>
+                    <input
 												type="text"
 												class="timepicker center-align"
 												placeholder="--:-- PM"
 											/>
-										</td>
-										<td>
-											<input
+                  </td>
+                  <td>
+                    <input
 												type="text"
 												class="timepicker center-align"
 												placeholder="--:-- PM"
 											/>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div></div>
-					</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div></div>
+        </div>
 
-					<br />
-					<div class="center-align">
-						<button
+        <br />
+        <div class="center-align">
+          <button
 							type="reset"
 							class="waves-effect waves-light btn blue"
 							value="Reset"
 						>
 							<i class="material-icons">replay</i>
 						</button>
-						<button
+          <button
 							class="btn waves-effect waves-light blue"
 							type="submit"
 							name="action"
@@ -186,181 +272,160 @@
 							Serch
 							<i class="material-icons right">search</i>
 						</button>
-					</div>
-				</form>
-			</div>
-			<div class="content">
-				<div class="map maptestoffset">
-					<!-- MAP -->
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d28064.765169502993!2d-81.30222248540964!3d28.44653301354689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x88e76327c6b492f3%3A0xad4ab9369411e16d!2sOrlando%20International%20Airport%20(MCO)%2C%20Jeff%20Fuqua%20Boulevard%2C%20Orlando%2C%20FL!3m2!1d28.4179167!2d-81.3041451!4m5!1s0x88e763fadb3344cd%3A0x41614dcb87f70896!2s8909%20Lee%20Vista%20Blvd%2C%20Orlando%2C%20FL%2032829!3m2!1d28.474444199999997!2d-81.2608743!5e0!3m2!1sen!2sus!4v1669770437839!5m2!1sen!2sus"
-						width="100%"
-						height="100%"
-						style="border: 0"
-						allowfullscreen=""
-						loading="lazy"
-						referrerpolicy="no-referrer-when-downgrade"
-					></iframe>
-				</div>
+        </div>
+      </form>
+    </div>
+    <div class="content">
+      <div class="map maptestoffset">
+        <!-- MAP -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d28064.765169502993!2d-81.30222248540964!3d28.44653301354689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x88e76327c6b492f3%3A0xad4ab9369411e16d!2sOrlando%20International%20Airport%20(MCO)%2C%20Jeff%20Fuqua%20Boulevard%2C%20Orlando%2C%20FL!3m2!1d28.4179167!2d-81.3041451!4m5!1s0x88e763fadb3344cd%3A0x41614dcb87f70896!2s8909%20Lee%20Vista%20Blvd%2C%20Orlando%2C%20FL%2032829!3m2!1d28.474444199999997!2d-81.2608743!5e0!3m2!1sen!2sus!4v1669770437839!5m2!1sen!2sus"
+          width="100%" height="100%" style="border: 0" allowfullscreen=""
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
 
-				<div class="results_table">
-					<div>
-						<table class="highlight centered">
-							<thead>
-								<th>Index</th>
-								<th>Name</th>
-								<th>MDD</th>
-								<th>Active Routes</th>
-								<th>Total Miles</th>
-								<th>Total Time in route</th>
-								<th>Moree</th>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<label>
+      <div class="results_table">
+        <div>
+          <table class="highlight centered">
+            <thead>
+              <th>Index</th>
+              <th>Name</th>
+              <th>MDD</th>
+              <th>Active Routes</th>
+              <th>Total Miles</th>
+              <th>Total Time in route</th>
+              <th>Moree</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <label>
 											<input type="checkbox" />
 											<span>1</span>
 										</label>
-									</td>
-									<td>Nixon Benitez</td>
-									<td>23098</td>
-									<td>1 AM, 1 PM, 1 F</td>
-									<td>54.5 miles</td>
-									<td>76.92 min</td>
-									<td>
-										<a
-											class="btn-floating btn-small waves-effect waves-light blue"
-											><i class="material-icons">add</i></a
-										>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label>
+                </td>
+                <td>Nixon Benitez</td>
+                <td>23098</td>
+                <td>1 AM, 1 PM, 1 F</td>
+                <td>54.5 miles</td>
+                <td>76.92 min</td>
+                <td>
+                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>
 											<input type="checkbox" />
 											<span>2</span>
 										</label>
-									</td>
-									<td>María Sánchez</td>
-									<td>25506</td>
-									<td>0 AM, 0 PM, 1 W</td>
-									<td>63.42 miles</td>
-									<td>103.75 min</td>
-									<td>
-										<a
-											class="btn-floating btn-small waves-effect waves-light blue"
-											><i class="material-icons">add</i></a
-										>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label>
+                </td>
+                <td>María Sánchez</td>
+                <td>25506</td>
+                <td>0 AM, 0 PM, 1 W</td>
+                <td>63.42 miles</td>
+                <td>103.75 min</td>
+                <td>
+                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>
 											<input type="checkbox" />
 											<span>3</span>
 										</label>
-									</td>
-									<td>Jesus Enrique Chacin</td>
-									<td>26128</td>
-									<td>1 AM, 1 PM</td>
-									<td>70.73 miles</td>
-									<td>99.82 min</td>
-									<td>
-										<a
-											class="btn-floating btn-small waves-effect waves-light blue"
-											><i class="material-icons">add</i></a
-										>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label>
+                </td>
+                <td>Jesus Enrique Chacin</td>
+                <td>26128</td>
+                <td>1 AM, 1 PM</td>
+                <td>70.73 miles</td>
+                <td>99.82 min</td>
+                <td>
+                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>
 											<input type="checkbox" />
 											<span>4</span>
 										</label>
-									</td>
-									<td>Cristina Mas y Rubi</td>
-									<td>23576</td>
-									<td>0 AM, 0 PM</td>
-									<td>72.16 miles</td>
-									<td>107.25 min</td>
-									<td>
-										<a
-											class="btn-floating btn-small waves-effect waves-light blue"
-											><i class="material-icons">add</i></a
-										>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label>
+                </td>
+                <td>Cristina Mas y Rubi</td>
+                <td>23576</td>
+                <td>0 AM, 0 PM</td>
+                <td>72.16 miles</td>
+                <td>107.25 min</td>
+                <td>
+                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>
 											<input type="checkbox" />
 											<span>5</span>
 										</label>
-									</td>
-									<td>Greidy Gutierrez</td>
-									<td>1212</td>
-									<td>0 AM, 0 PM</td>
-									<td>80.86 miles</td>
-									<td>111.03 min</td>
-									<td>
-										<a
-											class="btn-floating btn-small waves-effect waves-light blue"
-											><i class="material-icons">add</i></a
-										>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="btn-login">
-				<a id="btn-login" name="btn-login "class="btn-floating btn-large waves-effect waves-light"
-					><i class="material-icons">person</i></a
-				>
-			</div>
-		</section>
-    <section id="Pop-LogIn" class="wrapper" style="display: none">
-      <div  class="LogInBack" >
-				<div class="container LogIn">
-					<div class="  center-align">
-						<h1>LOG IN</h1>
-						<br />
-					</div class="formbox">
-          <form name="loginForm" id="loginForm" class="form">
-            <div class="input-field">
-							<input name="userID" id="userID" type="text" required />
-							<label for="userID">User ID</label>
-						</div>
-						<div class="input-field">
-							<input name="pass" id="pass" type="password" required />
-							<label for="pass">Password</label>
-						</div>
+                </td>
+                <td>Greidy Gutierrez</td>
+                <td>1212</td>
+                <td>0 AM, 0 PM</td>
+                <td>80.86 miles</td>
+                <td>111.03 min</td>
+                <td>
+                  <a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="btn-login">
+      <a id="btn-login" name="btn-login "
+        class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">person</i></a>
+    </div>
+  </section>
+  <section id="Pop-LogIn" class="wrapper" style="display: none">
+    <div class="LogInBack">
+      <div class="container LogIn">
+        <div class="  center-align">
+          <h1>LOG IN</h1>
+          <br />
+        </div class="formbox">
+        <form name="loginForm" id="loginForm" class="form">
+          <div class="input-field">
+            <input name="userID" id="userID" type="text" required />
+            <label for="userID">User ID</label>
+          </div>
+          <div class="input-field">
+            <input name="pass" id="pass" type="password" required />
+            <label for="pass">Password</label>
+          </div>
 
-						<div class="center-align">
-							<button
+          <div class="center-align">
+            <button
                 name="login-submit"
-                id="login-submit" 
+                id="login-submit"
 								class="btn waves-effect waves-light blue"
 								type="submit"
 							>
 								LOG IN
 								<i class="material-icons right">send</i>
 							</button>
-						</div>
-          </form>
-						
-				</div>
-			</div>
-    </section>
+          </div>
+        </form>
 
-		<!-- MATERIALIZE SCRIPTS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      </div>
+    </div>
+  </section>
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
+  <!-- MATERIALIZE SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
 				var elems = document.querySelectorAll('select');
 				var instances = M.FormSelect.init(elems);
 			});
@@ -373,10 +438,10 @@
 				var elems = document.querySelectorAll('.datepicker');
 				var instances = M.Datepicker.init(elems);
 			});
-		</script>
-		<!-- MY SCRIPTS -->
-		<script>
-			document.getElementById('btn-login').addEventListener('click', () => {
+  </script>
+  <!-- MY SCRIPTS -->
+  <script>
+    document.getElementById('btn-login').addEventListener('click', () => {
         var x = document.getElementById('Pop-LogIn');
         if (x.style.display === 'none') {
 					x.style.display = 'block';
@@ -384,6 +449,7 @@
 					x.style.display = 'none';
 				}
       });
+
 
 			document.getElementById('addStudent').addEventListener('click', () => {
 				var x = document.getElementById('student2');
@@ -408,12 +474,12 @@
 				});
 
 			function validateForm() {
-				let RouteName = document.forms['driverFinderForm']['fname'].value;
+				let routeName = document.forms['driverFinderForm']['fname'].value;
 				let state = document.forms['driverFinderForm']['state'].value;
 				let addres1 = document.forms['driverFinderForm']['addres1'].value;
 				let addres2 = document.forms['driverFinderForm']['addres2'].value;
 				let addres3 = document.forms['driverFinderForm']['addres3'].value;
-				let ScAddres = document.forms['driverFinderForm']['ScAddres'].value;
+				let scAddres = document.forms['driverFinderForm']['ScAddres'].value;
 
 				if (true) {
 					alert(RouteName + '\n' + addres1);
@@ -424,7 +490,22 @@
 			myForm.addEventListener('submit', (e) => {
 				e.preventDefault();
 				console.log('==========FORM HAS BEAN SUBMITED==========');
-				let RouteName = document.getElementById('fname').value;
+
+
+				let userID = document.getElementById('userID').value;
+        let password = document.getElementById('pass').value;
+        if(!userID || !password){
+          document.getElementById('Pop-LogIn').style.display = 'block';
+        }
+
+
+				let routeName = document.getElementById('fname').value;
+        let state=document.getElementById('state').value;
+        let addres1 = document.getElementById('addres1').value;
+				let addres2 = document.getElementById('addres2').value;
+				let addres3 = document.getElementById('addres3').value;
+				let scAddres = document.getElementById('ScAddres').value;
+
 				console.log(RouteName);
 
 				const request = new XMLHttpRequest();
@@ -442,14 +523,19 @@
 				let userID = document.getElementById('userID').value;
         let password = document.getElementById('pass').value;
 				console.log(userID);
+        console.log(password);
+        let ValidID = "admin@main12.com";
+        let ValidPassword = "clave1234";
+
+        if(userID===ValidID && password===ValidPassword){
         document.getElementById('Pop-LogIn').style.display = 'none';
+        }else{
+        alert("WRONG USER ID OR PASSWORD");
+        }
+
 			});
 
+  </script>
+</body>
 
-
-
-
-
-		</script>
-	</body>
 </html>
