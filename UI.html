@@ -435,11 +435,29 @@
         address[3] =  document.getElementById('schoolAddress').value;
         console.log(address);
 
-        responseObj = readJsonFromUrl('https://script.google.com/macros/s/AKfycbyX2zF0ZBVtzFs5DBNCxqd37CqLaF6yUyhdRVVDe77cnC0zWLbtWZb1HFGaTNBpGb0i/exec');
+
+        var drivers_url="https://script.google.com/macros/s/AKfycbyWaznidEBtZ5YBQ2OtnhHoU9Itvk6XfyYTQhJexLkrrhY43DBVITdJtj8Op5SCwWDI/exec";
+        // Make AJAX call to google Script
+        // function insert_Value(){
+        //   $("#re").css("visibility", "hidden");
+        //   document.getElementById("loader").style.visibility="visible";
+        //   $('#mySpinner').addClass('Spinner');
+        //   var id1= $("#id").val();
+        //   var name =$("Name").val();
+          var request = jQuery.ajax({
+            crossDomain:true, 
+            url: drivers_url+"?active=true&state=Indiana", 
+            method: "GET",
+            dataType: "JSON"
+          });
+        // }
+
+
+        // responseObj = readJsonFromUrl('https://script.google.com/macros/s/AKfycbyX2zF0ZBVtzFs5DBNCxqd37CqLaF6yUyhdRVVDe77cnC0zWLbtWZb1HFGaTNBpGb0i/exec');
         // let response = await fetch('https://script.google.com/macros/s/AKfycbyX2zF0ZBVtzFs5DBNCxqd37CqLaF6yUyhdRVVDe77cnC0zWLbtWZb1HFGaTNBpGb0i/exec');
         // var data = await response.json();
-        console.log(responseObj);
-        printResults(responseObj);
+        console.log(request);
+        printResults(request);
         // printResults(Drivers=testData());
       }
     });
