@@ -2,239 +2,506 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<base target="_top">
 
-		<meta charset="utf-8" />
-		<meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
-		<title>Driver Finder Form</title>
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-		/>
+<head>
+  <base target="_top" />
 
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		/>
+  <meta charset="utf-8" />
+  <meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Finder Form</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-		<!-- <link rel="stylesheet" href="css/style.css" /> -->
-	</head>
-	<body>
-		<section class="container">
-			<div class="center-align"><h2>Driver Finder</h2> </div>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <style>
+    #map {
+      height: 100%;
+    }
 
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      height: fit-content;
+      background-color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: small;
+    }
 
-			<!-- action="/action_page.php" onsubmit="return validateForm()" method="GET" -->
-			<form name="myForm" class="form">
-				<div class="row">
-					<div class="input-field col s12 m9">
-						<input
+    h1 {
+      background-color: white;
+      border-radius: 20px;
+    }
+
+    h2 {
+      background-color: white;
+      font-size: 45px;
+      color: rgb(5, 68, 104);
+      ;
+      border-radius: 20px;
+      padding: 8px 0;
+    }
+
+    .wrapper .sidebar {
+      background: rgb(5, 68, 104);
+      position: fixed;
+      z-index: 900;
+      top: 0;
+      left: 0;
+      width: 350px;
+      height: 100%;
+      padding: 10px 20px;
+      transition: all 0.5s ease;
+      overflow: auto;
+    }
+
+    .content {
+      background: white;
+      position: relative;
+      top: 0;
+      left: 350px;
+      right: 100px;
+      height: 100%;
+      padding: 0;
+      transition: all 0.5s ease;
+    }
+
+    .formbox {
+      background: white;
+      border-radius: 20px;
+      padding: 20px 20px;
+      overflow-y: auto;
+    }
+
+    .results_table {
+      background: white;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      height: 300px;
+      width: calc(80vw - 300px);
+      margin-right: 350px;
+      min-width: 300px;
+      margin: 20px;
+      padding: 20px 20px;
+      border-radius: 20px;
+      overflow: auto;
+    }
+
+    .map {
+      height: 110%;
+      width: 100%;
+    }
+
+    .maptestoffset {
+      z-index: 0;
+      position: fixed;
+      left: 0;
+    }
+
+    .btn-login {
+      color: rgb(5, 68, 104);
+      position: fixed;
+      z-index: 900;
+      top: 20px;
+      right: 20px;
+    }
+
+    .LogInBack {
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      z-index: 950;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px 20px;
+      transition: all 0.5s ease;
+    }
+
+    .LogIn {
+      background: white;
+      padding: 50px 50px;
+      position: fixed;
+      margin: auto;
+      top: 15%;
+      left: 50%;
+      border-radius: 20px;
+      width: 600px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="wrapper">
+    <div id="sbar" name="sbar" class="sidebar" style="display: flexbox">
+      <div class="center-align">
+        <h2>Driver Finder</h2>
+      </div>
+      <form name="myForm" class="form formbox">
+        <div class="input-field col s12">
+          <input
 							name="fname"
 							id="fname"
 							type="text"
 							class="validate"
-							required
 						/>
-						<label for="fname">Route Name</label>
-					</div>
-					<div class="input-field col s12 m3">
-						<select name="state" id="state " required>
-							<option value="" disabled selected>State</option>
-							<option value="FL">Florida</option>
-							<option value="IN">Indiana</option>
-							<option value="PN">Pensilvania</option>
-							<option value="TN">Tennessee</option>
+          <label for="fname">Route Name</label>
+        </div>
+        <div class="input-field col s12">
+          <select name="state" id="state" required>
+							<option for="state" value="" disabled selected>State</option>
+							<option for="state" value="FL">Florida</option>
+							<option for="state" value="IN">Indiana</option>
+							<option for="state" value="PN">Pensilvania</option>
+							<option for="state" value="TN">Tennessee</option>
 						</select>
-						<label for="state">State</label>
-					</div>
-				</div>
+          <label for="state"></label>
+        </div>
+        <br />
 
-				<!-- ADDRESS SET UP -->
-				<div id="student1" class="row" style="display: block">
-					<div class="input-field col s11">
-						<input
-							name="addrs1"
-							id="addrs1"
-							type="text"
-							class="validate"
-							required
-						/>
-						<label for="addrs1">Student 1 Address</label>
-					</div>
-					<div class="col s1">
-						<a id="addStudent" type="button" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">add</i></a>
-					</div>
-				</div>
+        <!-- ADDRESS SET UP -->
+        <div>
+          <div id="student1" class="row" style="display: block">
+            <div class="input-field col s10">
+              <input name="address1"id="address1"type="text"class="validate"required/>
+              <label for="address1">Student 1 Address</label>
+            </div>
+            <div class="col s2">
+              <a id="addStudent" type="button"
+                class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">add</i></a>
+            </div>
+          </div>
 
-				<div id="student2" class="row" style="display: none">
-						<div class="input-field col s11">
-							<input
-								name="addrs2"
-								id="addrs2"
-								type="text"
-								class="validate"
-							/>
-							<label for="addrs1">Student 2 Address</label>
-					</div>
-					<div class="col s1">
-						<a id="removeStudent2" type="button" class="btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">delete</i></a>
-					</div>
-				</div>
+          <div id="student2" class="row" style="display: none">
+            <div class="input-field col s10">
+              <input name="address2" id="address2" type="text" class="validate" />
+              <label for="address2">Student 2 Address</label>
+            </div>
+            <div class="col s2">
+              <a id="removeStudent2" type="button"
+                class="btn-floating btn-small waves-effect waves-light grey"><i class="material-icons">delete</i></a>
+            </div>
+          </div>
 
-				<div id="student3" class="row" style="display: none">
-						<div class="input-field col s11">
-							<input
-								name="addrs3"
-								id="addrs3"
-								type="text"
-								class="validate"
-							/>
-							<label for="addrs3">Student 3 Address</label>
-					</div>
-					<div class="col s1">
-						<a id="removeStudent3" type="button" class="btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">delete</i></a>
-					</div>
-				</div>
+          <div id="student3" class="row" style="display: none">
+            <div class="input-field col s10">
+              <input name="address3" id="address3" type="text" class="validate" />
+              <label for="address3">Student 3 Address</label>
+            </div>
+            <div class="col s2">
+              <a id="removeStudent3" type="button"
+                class="btn-floating btn-small waves-effect waves-light grey"><i class="material-icons">delete</i></a>
+            </div>
+          </div>
 
-				<div id="school" class="row" style="display: block">
-						<div class="input-field col s11">
-							<input
-								name="schoolAddress"
-								id="schoolAddress"
-								type="text"
-								class="validate"
-								required
-							/>
-							<label for="schoolAddress">School Address</label>
-						</div>
-					</div>
-				</div>
-				
-				<!-- TIMES SET UP -->
-				<div class="row">
-					<div class="col s1 m3"></div>
-					<div class="col s10 m6">
-						<table>
-							<thead>
-								<th></th>
-								<th class="center-align">Pick Up</th>
-								<th class="center-align">Drop Off</th>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Trip AM</td>
-									<td>							
-										<input type="text" class="timepicker center-align test"  Placeholder= "--:-- AM" />
-									</td>
-									<td>							
-										<input type="text" class="timepicker center-align test" Placeholder= "--:-- AM" />
-									</td>
-								</tr>
-								<tr>
-									<td>Trip PM</td>
-									<td>							
-										<input type="text" class="timepicker center-align " Placeholder= "--:-- PM" />
-									</td>
-									<td>							
-										<input type="text" class="timepicker center-align " Placeholder= "--:-- PM" />
-									</td>
-								</tr>
-							</tbody>
-							</table>
-					</div>
-					<div></div>
-				</div>
-					
+          <div id="school" class="row" style="display: block">
+            <div class="input-field col s10">
+              <input
+									name="schoolAddress"
+									id="schoolAddress"
+									type="text"
+									class="validate"
+									required
+								/>
+              <label for="schoolAddress">School Address</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIMES SET UP -->
+        <div class="row">
+          <!-- <div class="col s12 m1"></div> -->
+          <div class="col s12">
+            <table>
+              <thead>
+                <th></th>
+                <th class="center-align">Pick Up</th>
+                <th class="center-align">Drop Off</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Trip AM</td>
+                  <td>
+                    <input
+												type="text"
+												class="timepicker center-align test"
+												placeholder="--:-- AM"
+											/>
+                  </td>
+                  <td>
+                    <input
+												type="text"
+												class="timepicker center-align test"
+												placeholder="--:-- AM"
+											/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Trip PM</td>
+                  <td>
+                    <input
+												type="text"
+												class="timepicker center-align"
+												placeholder="--:-- PM"
+											/>
+                  </td>
+                  <td>
+                    <input
+												type="text"
+												class="timepicker center-align"
+												placeholder="--:-- PM"
+											/>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div></div>
+        </div>
+
+        <br />
+        <div class="center-align">
+          <button
+							type="reset"
+							class="waves-effect waves-light btn blue"
+							value="Reset"
+						>
+							<i class="material-icons">replay</i>
+						</button>
+          <button
+							class="btn waves-effect waves-light blue"
+							type="submit"
+							name="action"
+						>
+							Serch
+							<i class="material-icons right">search</i>
+						</button>
+        </div>
+      </form>
+    </div>
+    <div class="content">
+
+      <div class="map maptestoffset">
+        <!-- MAP -->
+        <div id="map"></div>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+          defer></script>
+        <!-- </div> -->
+
+        <div id="result"></div>
+      </div>
+      <div class="btn-login">
+        <a id="btn-login" name="btn-login "
+          class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">person</i></a>
+      </div>
+  </section>
+  <section id="Pop-LogIn" class="wrapper" style="display: none">
+    <div class="LogInBack">
+      <div class="container LogIn">
+        <div class="  center-align">
+          <h1>LOG IN</h1>
+          <br />
+        </div class="formbox">
+        <form name="loginForm" id="loginForm" class="form">
+          <div class="input-field">
+            <input name="userID" id="userID" type="text" required />
+            <label for="userID">User ID</label>
+          </div>
+          <div class="input-field">
+            <input name="pass" id="pass" type="password" required />
+            <label for="pass">Password</label>
+          </div>
+
+          <div class="center-align">
+            <button
+                name="login-submit"
+                id="login-submit"
+								class="btn waves-effect waves-light blue"
+								type="submit"
+							>
+								LOG IN
+								<i class="material-icons right">send</i>
+							</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALIZE SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {var elems = document.querySelectorAll('select');var instances = M.FormSelect.init(elems);});
+    document.addEventListener('DOMContentLoaded', function () {var elems = document.querySelectorAll('.timepicker');var instances = M.Timepicker.init(elems);});
+		document.addEventListener('DOMContentLoaded', function () {var elems = document.querySelectorAll('.datepicker');var instances = M.Datepicker.init(elems);});
+  </script>
+
+  <!-- GOOGLE API SCRIPTS -->
+  <script>
+    let map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+      });
+    }   
+    window.initMap = initMap;
+  </script>
+
+  <!-- MY SCRIPTS -->
+  <script>
+    function resultsTable(data) {
+        let html = '<div id="rt" class="results_table">';
+        html += `<table class="highlight centered">
+                    <thead>
+                      <th>Index</th>
+                      <th>Name</th>
+                      <th>MDD</th>
+                      <th>Active Routes</th>
+                      <th>Total Miles</th>
+                      <th>Total Time</th>
+                      <th>More</th>
+                    </thead>`;
+        html += '<tbody>';
+        for (let i = 0; i < data.length; i++) {
+          // const element = array[index];
+          // let row=data[i];
+          html += '<tr>';
+          html += `<td><label><input type="checkbox" /><span>${i + 1}</span></label></td>`;
+          html += `<td>${data[i].Name}</td>`;
+          html += `<td>${data[i].MDD}</td>`;
+          html += `<td>${data[i].activeRoutes}</td>`;
+          html += `<td>${(Math.random() * 50).toFixed(2)} miles</td>`;
+          html += `<td>${(Math.random() * 50).toFixed(2)} min</td>`;
+          html += `<td>
+                    <a class="btn-floating btn-small waves-effect waves-light blue">
+                    <i class="material-icons">add</i></a>
+                    </td>`;
+          html += '</tr>';
+        }
+        html += `</tbody></table></div>`;
+        return html;
+      }
+
+    function printResults(data) {
+      console.log("Printing result of:")
+      console.log(data);
+      document.getElementById('result').innerHTML = resultsTable(data);
+    }
 
 
-				<br />
-				<div class="center-align">
-					<button type="reset" class="waves-effect waves-light btn blue" value="Reset">Reset</button>
-					<button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
-						<i class="material-icons right">send</i>
-					  </button>	
-				
-				</div>
-		
-				</form>
+
+    function testData(){
+      return Drivers=[
+        {Name: "Olayinka Olasele"             , MDD: 23545, activeRoutes: "1 AM, 1 PM, 1 F"},
+        {Name: "María Sánchez"                , MDD: 12345, activeRoutes: "2 AM, 2 PM"},
+        {Name: "Jesus Enrique Chacin"         , MDD: 12345, activeRoutes: "2 AM, 2 PM, 1 W"},
+        {Name: "Cristina Mas y Rubi"          , MDD: 12345, activeRoutes: "No Active routes"},
+        {Name: "Victor Manuel Barette Rivas"  , MDD: 12345, activeRoutes: "No Active routes"},
+        {Name: "Cristina Mas y Rubi"          , MDD: 12345, activeRoutes: "No Active routes"},
+        {Name: "Patricia Ramirez"             , MDD: 12345, activeRoutes: "No Active routes"},
+        {Name: "Cristina Mas y Rubi"          , MDD: 12345, activeRoutes: "No Active routes"},
+        {Name: "Greidy Gutierrez"             , MDD: 12345, activeRoutes: "No Active routes"}];
+    }
+  </script>
 
 
-		</section>
-		<!-- MATERIALIZE SCRIPTS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Event listener's -->
+  <script>
+    document.getElementById('btn-login').addEventListener('click', () => {
+      var x = document.getElementById('Pop-LogIn').style;
+      x.display = x.display==='none'?'block': 'none';
+    });
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				var elems = document.querySelectorAll('select');
-				var instances = M.FormSelect.init(elems);
-			});
+    addStudent.addEventListener('click', () => {
+      var x = document.getElementById('student2').style;
+      var y = document.getElementById('student3').style;
+      if (x.display === 'none') {x.display = 'block';} 
+      else if (y.display === 'none') {y.display = 'block';}});
+    removeStudent2.addEventListener('click', () => {document.getElementById('student2').style.display = 'none';});
+    removeStudent3.addEventListener('click', () => {document.getElementById('student3').style.display = 'none';});
 
-			document.addEventListener('DOMContentLoaded', function() {
-				var elems = document.querySelectorAll('.timepicker');
-				var instances = M.Timepicker.init(elems);
-			});
-			document.addEventListener('DOMContentLoaded', function() {
-				var elems = document.querySelectorAll('.datepicker');
-				var instances = M.Datepicker.init(elems);
-			});
-  
-		</script>
-		<!-- MY SCRIPTS -->
-		<script>
-			document.getElementById('addStudent').addEventListener('click', () => {
-				var x = document.getElementById('student2');
-				var y = document.getElementById('student3');
-				if (x.style.display === 'none') {
-					x.style.display = 'block';
-				} else if (y.style.display === 'none') {
-					y.style.display = 'block';
-				}
-			});
-
-			document
-				.getElementById('removeStudent2')
-				.addEventListener('click', () => {
-					document.getElementById('student2').style.display = 'none';
-				});
-
-			document
-				.getElementById('removeStudent3')
-				.addEventListener('click', () => {
-					document.getElementById('student3').style.display = 'none';
-				});
+    myForm.addEventListener('reset', (e) => {
+      var element = document.getElementById("rt");
+      element.parentNode.removeChild(element);
+    });
 
 
 
-			function validateForm() {
-				let RouteName = document.forms["driverFinderForm"]["fname"].value;
-				let state = document.forms["driverFinderForm"]["state"].value;
-				let addres1 = document.forms["driverFinderForm"]["addres1"].value;
-				let addres2 = document.forms["driverFinderForm"]["addres2"].value;
-				let addres3 = document.forms["driverFinderForm"]["addres3"].value;
-				let ScAddres = document.forms["driverFinderForm"]["ScAddres"].value;
+    function isloggedin(){
+      let userID = document.getElementById('userID').value;
+      let password = document.getElementById('pass').value;
+      if(!userID || !password){
+        document.getElementById('Pop-LogIn').style.display = 'block';
+      }else{return true}
+    }
+    
 
-				
-				if (true) {
-					alert(RouteName + "\n" + addres1);
-					return false;
-				}
-			}
-
-
-			myForm.addEventListener("submit", (e)=>{
-				e.preventDefault();
-				console.log("form has bean submited");
-				const request =new XMLHttpRequest;
-				request.open("POST", "action_page.php");
-				request.onload = function(){
-					console.log(request.responseText);
-				}
-				request.send(new FormData(myForm));
-
-			})
+    myForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log('==========FORM HAS BEAN SUBMITED==========');
+      if(isloggedin()){
+        let routeName = document.getElementById('fname').value;
+        let state=      document.getElementById('state').value;
+        let address=[];
+        address[0] =   document.getElementById('address1').value;
+        address[1] =   document.getElementById('address2').value;
+        address[2] =   document.getElementById('address3').value;
+        address[3] =  document.getElementById('schoolAddress').value;
+        console.log(address);
 
 
-		</script>
-	</body>
+        const url ='https://script.google.com/macros/s/AKfycbwE8GMN6ihQe4-msb17l8uWxssQJifTzuFjw45OxAB05qVIZV3GfGiiD-TIlEmdEVMR/exec';
+        let requestURL=url+"?state=Indiana";
+        const response =UrlFetchApp.fetch(requestURL);
+        const R=JSON.parse(response);
+
+
+        // responseObj = readJsonFromUrl('https://script.google.com/macros/s/AKfycbyX2zF0ZBVtzFs5DBNCxqd37CqLaF6yUyhdRVVDe77cnC0zWLbtWZb1HFGaTNBpGb0i/exec');
+        // let response = await fetch('https://script.google.com/macros/s/AKfycbyX2zF0ZBVtzFs5DBNCxqd37CqLaF6yUyhdRVVDe77cnC0zWLbtWZb1HFGaTNBpGb0i/exec');
+        // var data = await response.json();
+        console.log(R);
+        printResults(R);
+        // printResults(Drivers=testData());
+
+      }
+    });
+
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log('==========LOG IN HAS BEAN SUBMITED==========');
+      let userID = document.getElementById('userID').value;
+      let password = document.getElementById('pass').value;
+      console.log(userID);
+      console.log(password);
+      
+      let ValidID = "admin";
+      let ValidPassword = "clave1234";
+
+      if(userID===ValidID && password===ValidPassword){
+        document.getElementById('Pop-LogIn').style.display = 'none';
+      }else{
+        alert("WRONG USER ID OR PASSWORD");
+      }
+
+
+
+          const request = new XMLHttpRequest();
+          request.open('POST', 'https://script.google.com/macros/s/AKfycbyrQkaQGHwiDOoqPHR6r-pZbnK50vstFWilFLsQHK5w8_PpnNh1youkPGpINWw4rKFySQ/exec');
+          // request.onload = function () {
+          // console.log(request.responseText);
+          // };
+          // request.send(new FormData(myForm));
+
+    });
+  </script>
+
+</body>
+
 </html>
