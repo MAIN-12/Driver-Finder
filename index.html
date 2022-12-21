@@ -15,6 +15,14 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
 		/>
 		<link rel="stylesheet" href="css/style.css" />
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+			defer
+		></script>
+		<script src="js/Index_EventListeners.js" defer></script>
+		<script src="js/ResultsTable.js" defer></script>
+		<script src="js/LogIn.js" defer></script>
 	</head>
 
 	<body>
@@ -205,6 +213,7 @@
 			>
 		</div>
 
+		<!-- LOG IN -->
 		<div id="login" class="modal">
 			<h5 class="modal-close">&#10005;</h5>
 			<div class="modal-content center">
@@ -223,12 +232,6 @@
 					</div>
 					<br />
 
-					<!-- <div class="left" style="margin-left: 20px">
-						<input type="checkbox" id="check" />
-						<label for="check">Remember Me</label>
-					</div>
-					<br /> -->
-
 					<div class="center-align">
 						<button
 							name="login-submit"
@@ -240,125 +243,8 @@
 							<i class="material-icons right">send</i>
 						</button>
 					</div>
-
-					<!-- <input type="submit" value="Sign in" class="btn btn-large" /> -->
 				</form>
 			</div>
 		</div>
-
-		<!-- MATERIALIZE SCRIPTS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				var elems = document.querySelectorAll('select');
-				var instances = M.FormSelect.init(elems);
-			});
-			document.addEventListener('DOMContentLoaded', function () {
-				var elems = document.querySelectorAll('.timepicker');
-				var instances = M.Timepicker.init(elems);
-			});
-			document.addEventListener('DOMContentLoaded', function () {
-				var elems = document.querySelectorAll('.datepicker');
-				var instances = M.Datepicker.init(elems);
-			});
-			document.addEventListener('DOMContentLoaded', function () {
-				var elems = document.querySelectorAll('.modal');
-				var instances = M.Modal.init(elems);
-			});
-		</script>
-
-		<!-- MY SCRIPTS -->
-		<script ></script>
-		<script src="/js/ResultsTable.js">
-			function printResults(data) {
-				console.log('Printing result of:');
-				console.log(data);
-				document.getElementById('result').innerHTML = resultsTable(data);
-			}
-
-			async function makeAPICall(url) {
-				const result = await fetch(url);
-				result.json().then((data) => {
-					printResults(data.drivers);
-				});
-			}
-		</script>
-		<!-- Event listener's -->
-		<script>
-			// document.getElementById('btn-login').addEventListener('click', () => {
-			//     var x = document.getElementById('login').style;
-			//     x.display = x.display === 'none' ? 'block' : 'none';
-			// });
-			addStudent.addEventListener('click', () => {
-				var x = document.getElementById('student2').style;
-				var y = document.getElementById('student3').style;
-				if (x.display === 'none') {
-					x.display = 'block';
-				} else if (y.display === 'none') {
-					y.display = 'block';
-				}
-			});
-			removeStudent2.addEventListener('click', () => {
-				document.getElementById('student2').style.display = 'none';
-			});
-			removeStudent3.addEventListener('click', () => {
-				document.getElementById('student3').style.display = 'none';
-			});
-			myForm.addEventListener('reset', (e) => {
-				var element = document.getElementById('rt');
-				element.parentNode.removeChild(element);
-			});
-
-			function isloggedin() {
-				let userID = document.getElementById('userID').value;
-				let password = document.getElementById('pass').value;
-				let elem = document.getElementById('login');
-				var logIn = M.Modal.getInstance(elem);
-				if (!userID || !password) {
-					logIn.open();
-				} else {
-					logIn.close();
-					return true;
-				}
-			}
-
-			myForm.addEventListener('submit', (e) => {
-				e.preventDefault();
-				console.log('==========FORM HAS BEAN SUBMITED==========');
-				if (isloggedin()) {
-					let routeName = document.getElementById('fname').value;
-					let state = document.getElementById('state').value;
-					let address = [];
-					address[0] = document.getElementById('address1').value;
-					address[1] = document.getElementById('address2').value;
-					address[2] = document.getElementById('address3').value;
-					address[3] = document.getElementById('schoolAddress').value;
-					console.log(address);
-
-					let url =
-						'https://script.google.com/macros/s/AKfycbwE8GMN6ihQe4-msb17l8uWxssQJifTzuFjw45OxAB05qVIZV3GfGiiD-TIlEmdEVMR/exec';
-					url += `?state=${state}`;
-					makeAPICall(url);
-					// printResults((Drivers = testData()));
-				}
-			});
-			loginForm.addEventListener('submit', (e) => {
-				e.preventDefault();
-				console.log('==========LOG IN HAS BEAN SUBMITED==========');
-				if (!isloggedin()) {
-					alert('WRONG USER ID OR PASSWORD');
-				}
-
-				// const request = new XMLHttpRequest();
-				// request.open(
-				// 	'POST',
-				// 	'https://script.google.com/macros/s/AKfycbyrQkaQGHwiDOoqPHR6r-pZbnK50vstFWilFLsQHK5w8_PpnNh1youkPGpINWw4rKFySQ/exec'
-				// );
-				// request.onload = function () {
-				// console.log(request.responseText);
-				// };
-				// request.send(new FormData(myForm));
-			});
-		</script>
 	</body>
 </html>

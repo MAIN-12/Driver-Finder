@@ -37,3 +37,16 @@ function resultsTable(data) {
     html += `</tbody></table></div>`;
     return html;
 }
+
+function printResults(data) {
+    console.log('Printing result of:');
+    console.log(data);
+    document.getElementById('result').innerHTML = resultsTable(data);
+}
+
+async function makeAPICall(url) {
+    const result = await fetch(url);
+    result.json().then((data) => {
+        printResults(data.drivers);
+    });
+}
