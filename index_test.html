@@ -130,13 +130,13 @@
 
 			a.btn {
 				margin-top: 30%;
-                z-index: 900;
+				z-index: 900;
 			}
 			.modal {
-                z-index: 900;
-                border-radius: 20px;
+				z-index: 900;
+				border-radius: 20px;
 				max-height: 100%;
-                max-width: 500px;
+				max-width: 500px;
 				overflow: hidden;
 			}
 
@@ -146,7 +146,7 @@
 			}
 			.modal-close {
 				position: absolute;
-                z-index: 900;
+				z-index: 900;
 				top: 10px;
 				right: 10px;
 				padding: 20;
@@ -158,7 +158,7 @@
 
 	<body>
 		<section name="main_page" class="wrapper">
-			<div id="sbar" name="sbar" class="sidebar" style="display: flexbox">
+			<div id="sbar" name="sbar" class="sidebar" style="display: block">
 				<div class="center-align">
 					<h2>Driver Finder</h2>
 				</div>
@@ -170,10 +170,10 @@
 					<div class="input-field col s12">
 						<select name="state" id="state" required>
 							<option for="state" value="" disabled selected>State</option>
-							<option for="state" value="FL">Florida</option>
-							<option for="state" value="IN">Indiana</option>
-							<option for="state" value="PN">Pensilvania</option>
-							<option for="state" value="TN">Tennessee</option>
+							<option for="state" value="Florida">Florida</option>
+							<option for="state" value="Indiana">Indiana</option>
+							<option for="state" value="Pensilvania">Pensilvania</option>
+							<option for="state" value="Tennessee">Tennessee</option>
 						</select>
 						<label for="state"></label>
 					</div>
@@ -181,7 +181,7 @@
 					<!-- ADDRESS SET UP -->
 					<div>
 						<div id="student1" class="row" style="display: block">
-							<div class="input-field col s10" style="margin:0 0 0 0;">
+							<div class="input-field col s10" style="margin: 0 0 0 0">
 								<input
 									name="address1"
 									id="address1"
@@ -202,7 +202,7 @@
 							</div>
 						</div>
 						<div id="student2" class="row" style="display: none">
-							<div class="input-field col s10" style="margin:0 0 0 0;">
+							<div class="input-field col s10" style="margin: 0 0 0 0">
 								<input
 									name="address2"
 									id="address2"
@@ -222,7 +222,7 @@
 							</div>
 						</div>
 						<div id="student3" class="row" style="display: none">
-							<div class="input-field col s10" style="margin:0 0 0 0;">
+							<div class="input-field col s10" style="margin: 0 0 0 0">
 								<input
 									name="address3"
 									id="address3"
@@ -242,7 +242,7 @@
 							</div>
 						</div>
 						<div id="school" class="row" style="display: block">
-							<div class="input-field col s10" style="margin:0 0 0 0;">
+							<div class="input-field col s10" style="margin: 0 0 0 0">
 								<input
 									name="schoolAddress"
 									id="schoolAddress"
@@ -328,26 +328,28 @@
 				<div class="map maptestoffset">
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d28064.765169502993!2d-81.30222248540964!3d28.44653301354689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x88e76327c6b492f3%3A0xad4ab9369411e16d!2sOrlando%20International%20Airport%20(MCO)%2C%20Jeff%20Fuqua%20Boulevard%2C%20Orlando%2C%20FL!3m2!1d28.4179167!2d-81.3041451!4m5!1s0x88e763fadb3344cd%3A0x41614dcb87f70896!2s8909%20Lee%20Vista%20Blvd%2C%20Orlando%2C%20FL%2032829!3m2!1d28.474444199999997!2d-81.2608743!5e0!3m2!1sen!2sus!4v1669770437839!5m2!1sen!2sus"
-						class="map">
-					</iframe> 
+						class="map"
+					>
+					</iframe>
 				</div>
-			</div> 
+			</div>
 			<div id="result"></div>
 		</section>
 
 		<div class="btn-login">
-			<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger"><i class="material-icons">person</i></a>
+			<a
+				href="#login"
+				class="btn-floating btn-large waves-effect waves-light modal-trigger"
+				><i class="material-icons">person</i></a
+			>
 		</div>
-
-
-
 
 		<div id="login" class="modal">
 			<h5 class="modal-close">&#10005;</h5>
 			<div class="modal-content center">
 				<h2>Please sign in</h2>
 
-                <form name="loginForm" id="loginForm" class="form">
+				<form name="loginForm" id="loginForm" class="form">
 					<div class="input-field">
 						<i class="material-icons prefix">person</i>
 						<input type="text" id="userID" />
@@ -366,19 +368,17 @@
 					</div>
 					<br /> -->
 
-
-                    <div class="center-align">
-                        <button
-                            name="login-submit"
-                            id="login-submit"
-                            class="btn blue"
-                            type="submit"
-                            >
-                            Sign In
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-
+					<div class="center-align">
+						<button
+							name="login-submit"
+							id="login-submit"
+							class="btn blue"
+							type="submit"
+						>
+							Sign In
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
 
 					<!-- <input type="submit" value="Sign in" class="btn btn-large" /> -->
 				</form>
@@ -404,14 +404,12 @@
 				var elems = document.querySelectorAll('.modal');
 				var instances = M.Modal.init(elems);
 			});
-
-
 		</script>
 		<!-- MY SCRIPTS -->
 		<script>
 			function resultsTable(data) {
-				let html = "";
-				html += '< div id = "rt" class = "results_table" >';
+				let html = '';
+				html += '<div id = "rt" class = "results_table" >';
 				html += `<table class="highlight centered">
 					    <thead>
 						<th>Index</th>
@@ -422,28 +420,28 @@
 						<th>Total Time</th>
 						<th>More</th>
 					    </thead>`;
-				html += ' < tbody > ';
+				html += ' <tbody > ';
 				for (let i = 0; i < data.length; i++) {
 					// const element = array[index];
 					// let row=data[i];
-					html += ' < tr > ';
+					html += ' <tr > ';
 					html += `<td>
 								<label>
 									<input type="checkbox" />
 									<span>${i + 1}</span>
 								</label>
 							</td>`;
-					html += `<td>${data[i].Name}</td>`;
-					html += `<td>${data[i].MDD}</td>`;
-					html += `<td>${data[i].activeRoutes}</td>`;
-					html += `<td>${(Math.random() * 50).toFixed(2)} miles</td>`;
-					html += `<td>${(Math.random() * 50).toFixed(2)} min</td>`;
+					html += `<td> ${data[i].name} </td>`;
+					html += `<td> ${data[i].mdd} </td>`;
+					html += `<td> ${data[i].bid} </td>`;
+					html += `<td> ${(Math.random() * 50).toFixed(2)} miles </td>`;
+					html += `<td> ${(Math.random() * 50).toFixed(2)} min </td>`;
 					html += `<td>
                                 <a class="btn-floating btn-small waves-effect waves-light blue">
                                     <i class="material-icons">add</i>
                                 </a>
                              </td>`;
-					html += '< /tr>';
+					html += '</tr>';
 				}
 				html += `</tbody></table></div>`;
 				return html;
@@ -453,6 +451,14 @@
 				console.log('Printing result of:');
 				console.log(data);
 				document.getElementById('result').innerHTML = resultsTable(data);
+			}
+
+			async function makeAPICall(url) {
+				const result = await fetch(url);
+				result.json().then((data) => {
+					console.log(data.drivers);
+					printResults(data.drivers);
+				});
 			}
 
 			function testData() {
@@ -534,19 +540,15 @@
 			function isloggedin() {
 				let userID = document.getElementById('userID').value;
 				let password = document.getElementById('pass').value;
-                let  elem = document.getElementById('login');
-                var logIn = M.Modal.getInstance(elem);
+				let elem = document.getElementById('login');
+				var logIn = M.Modal.getInstance(elem);
 				if (!userID || !password) {
-                    logIn.open();
-
+					logIn.open();
 				} else {
-                    logIn.close();
+					logIn.close();
 					return true;
 				}
 			}
-
-
-
 
 			myForm.addEventListener('submit', (e) => {
 				e.preventDefault();
@@ -561,13 +563,18 @@
 					address[3] = document.getElementById('schoolAddress').value;
 					console.log(address);
 
-					printResults((Drivers = testData()));
+					let url = 'https://script.google.com/macros/s/AKfycbwE8GMN6ihQe4-msb17l8uWxssQJifTzuFjw45OxAB05qVIZV3GfGiiD-TIlEmdEVMR/exec';
+					url+=`?state=${state}`;
+					makeAPICall(url);
+					// printResults((Drivers = testData()));
 				}
 			});
 			loginForm.addEventListener('submit', (e) => {
 				e.preventDefault();
 				console.log('==========LOG IN HAS BEAN SUBMITED==========');
-                if(!isloggedin()) {alert('WRONG USER ID OR PASSWORD');}
+				if (!isloggedin()) {
+					alert('WRONG USER ID OR PASSWORD');
+				}
 
 				// const request = new XMLHttpRequest();
 				// request.open(
