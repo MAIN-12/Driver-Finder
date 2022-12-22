@@ -17,24 +17,45 @@ document.addEventListener('DOMContentLoaded', function () {
 	var instances = M.Modal.init(elems);
 });
 
+var student2 = document.getElementById('student2');
+var student3 = document.getElementById('student3');
+var SpecialTrip = document.getElementById('SpecialTrip');
+var addSpecialTrip = document.getElementById('addSpecialTrip');
+
 addStudent.addEventListener('click', () => {
-	var x = document.getElementById('student2').style;
-	var y = document.getElementById('student3').style;
-	if (x.display === 'none') {
-		x.display = 'block';
-	} else if (y.display === 'none') {
-		y.display = 'block';
+	if (student2.style.display === 'none') {
+		student2.style.display = 'block';
+	} else if (student3.style.display === 'none') {
+		student3.style.display = 'block';
 	}
 });
 removeStudent2.addEventListener('click', () => {
-	document.getElementById('student2').style.display = 'none';
+	student2.style.display = 'none';
 });
 removeStudent3.addEventListener('click', () => {
-	document.getElementById('student3').style.display = 'none';
+	student3.style.display = 'none';
 });
+
+addSpecialTrip.addEventListener('click', () => {
+	SpecialTrip.style.display = 'block';
+	addSpecialTrip.style.display = 'none';
+});
+removeSpecialTrip.addEventListener('click', () => {
+	SpecialTrip.style.display = 'none';
+	addSpecialTrip.style.display = 'block';
+});
+
 myForm.addEventListener('reset', (e) => {
-	var element = document.getElementById('rt');
-	element.parentNode.removeChild(element);
+	student2.style.display = 'none';
+	student3.style.display = 'none';
+	SpecialTrip.style.display = 'none';
+	addSpecialTrip.style.display = 'block';
+	try {
+		var element = document.getElementById('rt');
+		element.parentNode.removeChild(element);
+	} catch (err) {
+		console.log('no table diaplayed');
+	}
 });
 
 myForm.addEventListener('submit', (e) => {
@@ -51,7 +72,6 @@ myForm.addEventListener('submit', (e) => {
 		console.log(address);
 
 		document.getElementById('loadder').style.display = 'block';
-		
 
 		let url =
 			'https://script.google.com/macros/s/AKfycbwE8GMN6ihQe4-msb17l8uWxssQJifTzuFjw45OxAB05qVIZV3GfGiiD-TIlEmdEVMR/exec';
@@ -60,5 +80,3 @@ myForm.addEventListener('submit', (e) => {
 		// printResults((Drivers = testData()));
 	}
 });
-
-
