@@ -48,5 +48,6 @@ async function makeAPICall(url) {
     const result = await fetch(url);
     result.json().then((data) => {
         printResults(data.drivers);
+        document.getElementById('loadder').style.display = 'none';
     });
 }

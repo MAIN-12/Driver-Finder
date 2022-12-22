@@ -50,6 +50,9 @@ myForm.addEventListener('submit', (e) => {
 		address[3] = document.getElementById('schoolAddress').value;
 		console.log(address);
 
+		document.getElementById('loadder').style.display = 'block';
+		
+
 		let url =
 			'https://script.google.com/macros/s/AKfycbwE8GMN6ihQe4-msb17l8uWxssQJifTzuFjw45OxAB05qVIZV3GfGiiD-TIlEmdEVMR/exec';
 		url += `?state=${state}`;
@@ -58,24 +61,4 @@ myForm.addEventListener('submit', (e) => {
 	}
 });
 
-loginForm.addEventListener('submit', (e) => {
-	e.preventDefault();
-	console.log('==========LOG IN HAS BEAN SUBMITED==========');
-	if (!isloggedin()) {
-		alert('WRONG USER ID OR PASSWORD');
-	}
-	// const request = new XMLHttpRequest();
-	// request.open(
-	// 	'POST',
-	// 	'https://script.google.com/macros/s/AKfycbyrQkaQGHwiDOoqPHR6r-pZbnK50vstFWilFLsQHK5w8_PpnNh1youkPGpINWw4rKFySQ/exec'
-	// );
-	// request.onload = function () {
-	// console.log(request.responseText);
-	// };
-	// request.send(new FormData(myForm));
-});
 
-// document.getElementById('btn-login').addEventListener('click', () => {
-//     var x = document.getElementById('login').style;
-//     x.display = x.display === 'none' ? 'block' : 'none';
-// });

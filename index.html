@@ -26,6 +26,14 @@
 	</head>
 
 	<body>
+		<div id="Pre-loader" style="display: block;"></div>
+		<script>
+			console.log("this is a test");
+			window.addEventListener('load', function () {
+				document.getElementById('Pre-loader').style.display = 'none';
+			});
+		</script>
+
 		<section name="main_page" class="wrapper">
 			<div id="sbar" name="sbar" class="sidebar" style="display: block">
 				<div class="center-align">
@@ -216,10 +224,15 @@
 		<!-- LOG IN -->
 		<div id="login" class="modal">
 			<h5 class="modal-close">&#10005;</h5>
-			<div class="modal-content center">
-				<h2>Please sign in</h2>
+			<div class="modal-content">
+				<h3 class="center">Please sign in</h3>
 
-				<form name="loginForm" id="loginForm" class="form">
+				<form
+					name="loginForm"
+					id="loginForm"
+					class="form"
+					style="padding-left: 20px; padding-right: 20px"
+				>
 					<div class="input-field">
 						<i class="material-icons prefix">person</i>
 						<input type="text" id="userID" />
@@ -230,7 +243,12 @@
 						<input type="password" id="pass" />
 						<label for="pass">Password</label>
 					</div>
-					<br />
+
+					<!-- <label style="margin-left: 5px;">
+                        <input type="checkbox" />
+                        <span>Remenber me</span>
+                    </label>
+					<br /><br> -->
 
 					<div class="center-align">
 						<button
@@ -238,13 +256,36 @@
 							id="login-submit"
 							class="btn blue"
 							type="submit"
+							style="border-radius: 10px; padding-left: 20%; padding-right: 20%"
 						>
-							Sign In
-							<i class="material-icons right">send</i>
+							Log in<i class="material-icons right"></i>
 						</button>
+						<br /><br />
+						<a href="https://www.google.com/">Forgot password?</a>
+						<br />
+						Don't have an account? <a href="https://www.google.com/">Sign up</a>
 					</div>
 				</form>
 			</div>
 		</div>
+
+		<!-- LOADING -->
+		<div id="loadder" class="LogInBack" style="display: none">
+			<div class="preloader-wrapper big active center-block loadder">
+				<div class="modal-content spinner-layer spinner-blue-only">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div>
+					<div class="gap-patch">
+						<div class="circle"></div>
+					</div>
+					<div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 	</body>
 </html>
