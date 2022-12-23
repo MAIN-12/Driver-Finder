@@ -259,13 +259,13 @@
 					<div class="center-align">
 						<button
 							type="reset"
-							class="waves-effect waves-light btn blue"
+							class="waves-effect waves-light btn blue R10"
 							value="Reset"
 						>
 							<i class="material-icons">replay</i>
 						</button>
 						<button
-							class="btn waves-effect waves-light blue"
+							class="btn waves-effect waves-light blue R10"
 							type="submit"
 							name="action"
 						>
@@ -275,7 +275,7 @@
 						<button
 							id="settings"
 							type="button"
-							class="waves-effect waves-light btn blue"
+							class="waves-effect waves-light btn blue R10"
 							value="Reset"
 						>
 							<i class="material-icons">settings</i>
@@ -314,32 +314,44 @@
 					name="loginForm"
 					id="loginForm"
 					class="form"
-					style="padding-left: 20px; padding-right: 20px"
+					style="padding-left: 30px; padding-right: 30px"
 				>
-					<div class="input-field">
-						<i class="material-icons prefix" >person</i>
-						<input type="text" id="userID" style="padding-left: 5px; border: 2px solid; border-radius: 10px;" />
-						<label for="userID" style="padding-left: 10px;">Username</label>
-					</div>
-					<div class="input-field">
-						<i class="material-icons prefix">lock</i>
-						<input type="password" id="pass" style="padding-left: 5px; border: 2px solid; border-radius: 10px;"/>
-						<label for="pass" style="padding-left: 10px;">Password</label>
-					</div>
+					<div class="center-align">
+						<div class="input-field box">
+							<i class="material-icons prefix">person</i>
+							<input
+								type="text"
+								id="userID"
+								style="border: 0; margin-bottom: 0"
+								placeholder="Username"
+							/>
+							<!-- <label for="userID">Username</label> -->
+						</div>
+						<div class="input-field box">
+							<i class="material-icons prefix">lock</i>
+							<input
+								type="password"
+								id="pass"
+								style="border: 0; margin-bottom: 0"
+								placeholder="Password"
+							/>
+							<!-- <label for="pass">Password</label> -->
+							<!-- <span class="helper-text" data-error="wrong user name or password" data-success="Loged in">Helper text</span> -->
+						</div>
+						<p id="wronfPass" style="color: red; display: none">wrong user name or password</p>
 
-					<!-- <label style="margin-left: 5px;">
+						<!-- <label style="margin-left: 5px;">
                         <input type="checkbox" />
                         <span>Remenber me</span>
                     </label>
 					<br /><br> -->
 
-					<div class="center-align">
 						<button
 							name="login-submit"
 							id="login-submit"
 							class="btn blue"
 							type="submit"
-							style="border-radius: 10px; width: 300px;"
+							style="border-radius: 20px; width: 100%"
 						>
 							Log in<i class="material-icons right"></i>
 						</button>

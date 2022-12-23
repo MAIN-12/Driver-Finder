@@ -16,7 +16,8 @@ loginForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	console.log('==========LOG IN HAS BEAN SUBMITED==========');
 	if (!isloggedin()) {
-		alert('WRONG USER ID OR PASSWORD');
+		// alert('WRONG USER ID OR PASSWORD');
+		document.getElementById('wronfPass').style.display="flex"
 	}
 	// const request = new XMLHttpRequest();
 	// request.open(
