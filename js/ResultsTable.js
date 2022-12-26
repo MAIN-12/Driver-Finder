@@ -24,7 +24,7 @@ function resultsTable(data) {
                 </td>`;
         html += `<td> ${data[i].name} </td>`;
         html += `<td> ${data[i].mdd} </td>`;
-        html += `<td> ${data[i].bid} </td>`;
+        html += `<td> ${data[i].routesLog} </td>`;
         html += `<td> ${(Math.random() * 50).toFixed(2)} miles </td>`;
         html += `<td> ${(Math.random() * 50).toFixed(2)} min </td>`;
         html += `<td>

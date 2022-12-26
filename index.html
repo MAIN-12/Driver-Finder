@@ -23,6 +23,7 @@
 		<script src="js/Index_EventListeners.js" defer></script>
 		<script src="js/ResultsTable.js" defer></script>
 		<script src="js/LogIn.js" defer></script>
+
 	</head>
 	<body>
 		<div id="Pre-loader" style="display: block"></div>
@@ -31,12 +32,12 @@
 				<div class="center-align">
 					<h2>Driver Finder</h2>
 				</div>
-				<form name="myForm" class="form formbox">
-					<div class="input-field col s12">
+				<form name="myForm" class="form formbox row">
+					<div class="input-field col s7">
 						<input name="fname" id="fname" type="text" class="validate" />
 						<label for="fname">Route Name</label>
 					</div>
-					<div class="input-field col s12">
+					<div class="input-field col s5">
 						<select name="state" id="state" required>
 							<option for="state" value="" disabled selected>State</option>
 							<option for="state" value="Florida">Florida</option>
@@ -48,96 +49,101 @@
 					</div>
 					<br />
 					<!-- ADDRESS SET UP -->
-					<div>
-						<div
-							id="student1"
-							class="row"
-							style="margin-bottom: 5px; display: block"
-						>
-							<div
-								class="input-field col s10"
-								style="margin: 0 0 0 0; padding: 0"
+					<div
+						id="student1"
+						class="row"
+						style="margin-bottom: 5px; display: block"
+					>
+						<div class="input-field col s10" style="margin: 0 0 0 0">
+							<input
+								name="address1"
+								id="address1"
+								type="text"
+								class="validate"
+								required
+							/>
+							<label for="address1">Student 1 Address</label>
+						</div>
+						<div class="col s2">
+							<a
+								id="addStudent"
+								type="button"
+								class="btn-floating btn-small waves-effect waves-light blue"
 							>
-								<input
-									name="address1"
-									id="address1"
-									type="text"
-									class="validate"
-									required
-								/>
-								<label for="address1">Student 1 Address</label>
-							</div>
-							<div class="col s2">
-								<a
-									id="addStudent"
-									type="button"
-									class="btn-floating btn-small waves-effect waves-light blue"
-								>
-									<i class="material-icons">add</i>
-								</a>
-							</div>
+								<i class="material-icons">add</i>
+							</a>
 						</div>
-						<div
-							id="student2"
-							class="row"
-							style="margin-bottom: 5px; display: none"
-						>
-							<div class="input-field col s10" style="margin: 0; padding: 0">
-								<input
-									name="address2"
-									id="address2"
-									type="text"
-									class="validate"
-								/>
-								<label for="address2">Student 2 Address</label>
-							</div>
-							<div class="col s2">
-								<a
-									id="removeStudent2"
-									type="button"
-									class="btn-floating btn-small waves-effect waves-light grey"
-								>
-									<i class="material-icons">delete</i>
-								</a>
-							</div>
+						<br />
+					</div>
+					<div
+						id="student2"
+						class="row"
+						style="margin-bottom: 5px; display: none"
+					>
+						<div class="input-field col s10" style="margin: 0">
+							<input
+								name="address2"
+								id="address2"
+								type="text"
+								class="validate"
+							/>
+							<label for="address2">Student 2 Address</label>
 						</div>
-						<div
-							id="student3"
-							class="row"
-							style="margin-bottom: 5px; display: none"
-						>
-							<div class="input-field col s10" style="margin: 0; padding: 0">
-								<input
-									name="address3"
-									id="address3"
-									type="text"
-									class="validate"
-								/>
-								<label for="address3">Student 3 Address</label>
-							</div>
-							<div class="col s2">
-								<a
-									id="removeStudent3"
-									type="button"
-									class="btn-floating btn-small waves-effect waves-light grey"
-								>
-									<i class="material-icons">delete</i>
-								</a>
-							</div>
+						<div class="col s2">
+							<a
+								id="removeStudent2"
+								type="button"
+								class="btn-floating btn-small waves-effect waves-light grey"
+							>
+								<i class="material-icons">delete</i>
+							</a>
 						</div>
-						<div id="school" class="row" style="display: block">
-							<div class="input-field col s10" style="margin: 0; padding: 0">
-								<input
-									name="schoolAddress"
-									id="schoolAddress"
-									type="text"
-									class="validate"
-									required
-								/>
-								<label for="schoolAddress">School Address</label>
-							</div>
+						<br />
+					</div>
+					<div
+						id="student3"
+						class="row"
+						style="margin-bottom: 5px; display: none"
+					>
+						<div class="input-field col s10" style="margin: 0">
+							<input
+								name="address3"
+								id="address3"
+								type="text"
+								class="validate"
+							/>
+							<label for="address3">Student 3 Address</label>
+						</div>
+						<div class="col s2">
+							<a
+								id="removeStudent3"
+								type="button"
+								class="btn-floating btn-small waves-effect waves-light grey"
+							>
+								<i class="material-icons">delete</i>
+							</a>
+						</div>
+						<br />
+					</div>
+					<div id="school" class="row" style="display: block">
+						<div class="input-field col s10" style="margin: 0">
+							<input
+								name="schoolAddress"
+								id="schoolAddress"
+								type="text"
+								class="validate"
+								required
+							/>
+							<label for="schoolAddress">School Address</label>
 						</div>
 					</div>
+					<p>
+						<label>
+							<input id="MonitorCheck" type="checkbox" />
+							<span>Monitor</span>
+						</label>
+					</p>
+
 					<!-- TIMES SET UP -->
 					<div class="row">
 						<!-- <div class="col s12 m1"></div> -->
@@ -259,13 +265,13 @@
 					<div class="center-align">
 						<button
 							type="reset"
-							class="waves-effect waves-light btn blue R10"
+							class="waves-effect waves-light btn blue R20"
 							value="Reset"
 						>
 							<i class="material-icons">replay</i>
 						</button>
 						<button
-							class="btn waves-effect waves-light blue R10"
+							class="btn waves-effect waves-light blue R20"
 							type="submit"
 							name="action"
 						>
@@ -275,7 +281,7 @@
 						<button
 							id="settings"
 							type="button"
-							class="waves-effect waves-light btn blue R10"
+							class="waves-effect waves-light btn blue R20"
 							value="Reset"
 						>
 							<i class="material-icons">settings</i>
@@ -283,16 +289,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="content">
-				<!-- <div id="map"></div> -->
-				<div class="map maptestoffset">
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d28064.765169502993!2d-81.30222248540964!3d28.44653301354689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x88e76327c6b492f3%3A0xad4ab9369411e16d!2sOrlando%20International%20Airport%20(MCO)%2C%20Jeff%20Fuqua%20Boulevard%2C%20Orlando%2C%20FL!3m2!1d28.4179167!2d-81.3041451!4m5!1s0x88e763fadb3344cd%3A0x41614dcb87f70896!2s8909%20Lee%20Vista%20Blvd%2C%20Orlando%2C%20FL%2032829!3m2!1d28.474444199999997!2d-81.2608743!5e0!3m2!1sen!2sus!4v1669770437839!5m2!1sen!2sus"
-						class="map"
-					>
-					</iframe>
-				</div>
-			</div>
+			<div id="map" class="content"></div>
 			<div id="result"></div>
 		</section>
 
@@ -338,7 +335,9 @@
 							<!-- <label for="pass">Password</label> -->
 							<!-- <span class="helper-text" data-error="wrong user name or password" data-success="Loged in">Helper text</span> -->
 						</div>
-						<p id="wronfPass" style="color: red; display: none">wrong user name or password</p>
+						<p id="wronfPass" style="color: red; display: none">
+							wrong user name or password
+						</p>
 
 						<!-- <label style="margin-left: 5px;">
                         <input type="checkbox" />
@@ -380,6 +379,43 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			//MAP INIT AND MARKERS
+			let key = 'AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg';
+
+			function initMap() {
+				var position = { lat: 28.5384, lng: -81.3789 };
+				let options = {
+					zoom: 12,
+					center: position,
+					disableDefaultUI: true,
+				};
+				var map = new google.maps.Map(document.getElementById('map'), options);
+				var marker = new google.maps.Marker({
+					position: position,
+					map: map,
+					// title: 'New Marker test',
+					// icon:{
+					// 	path: 'https://www.iconpacks.net/icons/2/free-location-map-icon-2956-thumb.png',
+					// 	scale: 1,
+					// },
+				});
+
+				var infoWindow = new google.maps.InfoWindow({
+					content: '<h3>Test Marker</h3>',
+				});
+				marker.addListener('click', function () {
+					infoWindow.open(map, marker);
+				});
+			}
+		</script>
+
+		<script
+			async
+			defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap"
+		></script>
 
 		<script>
 			function Pre() {
