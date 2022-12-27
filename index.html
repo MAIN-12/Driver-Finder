@@ -23,7 +23,6 @@
 		<script src="js/Index_EventListeners.js" defer></script>
 		<script src="js/ResultsTable.js" defer></script>
 		<script src="js/LogIn.js" defer></script>
-
 	</head>
 	<body>
 		<div id="Pre-loader" style="display: block"></div>
@@ -38,7 +37,7 @@
 						<label for="fname">Route Name</label>
 					</div>
 					<div class="input-field col s5">
-						<select name="state" id="state" required>
+						<select name="state" id="state">
 							<option for="state" value="" disabled selected>State</option>
 							<option for="state" value="Florida">Florida</option>
 							<option for="state" value="Indiana">Indiana</option>
@@ -383,32 +382,92 @@
 		<script>
 			//MAP INIT AND MARKERS
 			let key = 'AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg';
+			var geocoder;
+			var map;
 
 			function initMap() {
 				var position = { lat: 28.5384, lng: -81.3789 };
-				let options = {
+				let mapOptions = {
 					zoom: 12,
 					center: position,
 					disableDefaultUI: true,
 				};
-				var map = new google.maps.Map(document.getElementById('map'), options);
-				var marker = new google.maps.Marker({
-					position: position,
-					map: map,
-					// title: 'New Marker test',
-					// icon:{
-					// 	path: 'https://www.iconpacks.net/icons/2/free-location-map-icon-2956-thumb.png',
-					// 	scale: 1,
-					// },
-				});
+				geocoder = new google.maps.Geocoder();
+				map = new google.maps.Map(document.getElementById('map'), mapOptions);
+				// var marker = new google.maps.Marker({
+				// 	position: position,
+				// 	map: map,
+				// 	// title: 'New Marker test',
+				// 	// icon:{
+				// 	// 	path: 'https://www.iconpacks.net/icons/2/free-location-map-icon-2956-thumb.png',
+				// 	// 	scale: 1,
+				// 	// },
+				// });
 
-				var infoWindow = new google.maps.InfoWindow({
-					content: '<h3>Test Marker</h3>',
-				});
-				marker.addListener('click', function () {
-					infoWindow.open(map, marker);
+				// var infoWindow = new google.maps.InfoWindow({
+				// 	content: '<h3>Test Marker</h3>',
+				// });
+				// marker.addListener('click', function () {
+				// 	infoWindow.open(map, marker);
+				// });
+			}
+
+			function codeAddress(element) {
+				var address = document.getElementById(element).value;
+				geocoder.geocode({ address: address }, function (results, status) {
+					if (status == 'OK') {
+						console.log("THIS WORKS===========<<<<<<<<<<")
+						console.log(results[0].geometry.location.lat());
+						console.log(results[0].geometry.location.lng());
+						console.log(results[0].address_components[5].long_name);
+						console.log(results[0]);
+						map.setCenter(results[0].geometry.location);
+						var marker = new google.maps.Marker({
+							map: map,
+							position: results[0].geometry.location,
+						});
+					} else {
+						alert(
+							'Geocode was not successful for the following reason: ' + status
+						);
+					}
 				});
 			}
+
+			myForm.addEventListener('submit', (e) => {
+				e.preventDefault();
+				console.log('==========FORM HAS BEAN SUBMITED==========');
+				if (isloggedin()) {
+					let routeName = document.getElementById('fname').value;
+					let state = document.getElementById('state').value;
+					let address = [];
+					address[0] = document.getElementById('address1').value;
+					address[1] = document.getElementById('address2').value;
+					address[2] = document.getElementById('address3').value;
+					address[3] = document.getElementById('schoolAddress').value;
+					console.log(address);
+
+					try {
+						codeAddress('address1');
+						codeAddress('schoolAddress');
+					} catch (err) {}
+
+					document.getElementById('loadder').style.display = 'block';
+
+					let bid = 'M122201';
+					let active = true;
+					let Monitor = false;
+
+					let url =
+						'https://script.google.com/macros/s/AKfycbwXtBXQJNEJF8veBWDU1Q3nu5C06rG9TyNqGP9JR1ZiPqUgRRRw3eY2lIKULHUXyJr2/exec';
+					// url += `?state=${state}`;
+					// url += `&active=${active}`;
+					// url += `&bid=${bid}`;
+					// url += `&monitor=${Monitor}`;
+					makeAPICall(url);
+					// printResults((Drivers = testData()));
+				}
+			});
 		</script>
 
 		<script
