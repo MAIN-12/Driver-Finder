@@ -58,4 +58,20 @@ myForm.addEventListener('reset', (e) => {
 	}
 });
 
+myForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+	submitFlag = true;
+	console.log('==========FORM HAS BEAN SUBMITED==========');
+	if (isloggedin()) {submitFun();}
+});
+
+loginForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+	console.log('==========LOG IN HAS BEAN SUBMITED==========');
+	if (!isloggedin()) {
+		// alert('WRONG USER ID OR PASSWORD');
+		document.getElementById('wronfPass').style.display="flex"
+	}
+});
+
 

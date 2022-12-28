@@ -20,12 +20,27 @@
 			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
 			defer
 		></script>
+		<script
+			async
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap"
+			defer
+		></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+		<script src="js/LogIn.js" defer></script>
 		<script src="js/Index_EventListeners.js" defer></script>
 		<script src="js/ResultsTable.js" defer></script>
-		<script src="js/LogIn.js" defer></script>
 	</head>
 	<body>
 		<div id="Pre-loader" style="display: block"></div>
+		<script async>
+			window.addEventListener(
+				'load',
+				setTimeout(() => {
+					document.getElementById('Pre-loader').style.display = 'none';
+				}, 1000)
+			);
+		</script>
+
 		<section name="main_page" class="wrapper">
 			<div id="sbar" name="sbar" class="sidebar" style="display: block">
 				<div class="center-align">
@@ -300,7 +315,6 @@
 			>
 		</div>
 
-		<!-- LOG IN -->
 		<div id="login" class="modal">
 			<h5 class="modal-close">&#10005;</h5>
 			<div class="modal-content">
@@ -362,7 +376,6 @@
 			</div>
 		</div>
 
-		<!-- LOADING -->
 		<div id="loadder" class="LogInBack" style="display: none">
 			<div class="preloader-wrapper big active center-block loadder">
 				<div class="modal-content spinner-layer spinner-blue-only">
@@ -381,9 +394,8 @@
 
 		<script>
 			//MAP INIT AND MARKERS
-			let key = 'AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg';
-			var geocoder;
-			var map;
+			// let key = 'AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg';
+			var map, geocoder, directionsService, directionsDisplay;
 
 			function initMap() {
 				var position = { lat: 28.5384, lng: -81.3789 };
@@ -392,97 +404,136 @@
 					center: position,
 					disableDefaultUI: true,
 				};
-				geocoder = new google.maps.Geocoder();
+
 				map = new google.maps.Map(document.getElementById('map'), mapOptions);
-				// var marker = new google.maps.Marker({
-				// 	position: position,
-				// 	map: map,
-				// 	// title: 'New Marker test',
-				// 	// icon:{
-				// 	// 	path: 'https://www.iconpacks.net/icons/2/free-location-map-icon-2956-thumb.png',
-				// 	// 	scale: 1,
-				// 	// },
-				// });
-
-				// var infoWindow = new google.maps.InfoWindow({
-				// 	content: '<h3>Test Marker</h3>',
-				// });
-				// marker.addListener('click', function () {
-				// 	infoWindow.open(map, marker);
-				// });
-			}
-
-			function codeAddress(element) {
-				var address = document.getElementById(element).value;
-				geocoder.geocode({ address: address }, function (results, status) {
-					if (status == 'OK') {
-						console.log("THIS WORKS===========<<<<<<<<<<")
-						console.log(results[0].geometry.location.lat());
-						console.log(results[0].geometry.location.lng());
-						console.log(results[0].address_components[5].long_name);
-						console.log(results[0]);
-						map.setCenter(results[0].geometry.location);
-						var marker = new google.maps.Marker({
-							map: map,
-							position: results[0].geometry.location,
-						});
-					} else {
-						alert(
-							'Geocode was not successful for the following reason: ' + status
-						);
-					}
+				geocoder = new google.maps.Geocoder();
+				directionsService = new google.maps.DirectionsService();
+				directionsDisplay = new google.maps.DirectionsRenderer({
+					map: map,
 				});
 			}
 
-			myForm.addEventListener('submit', (e) => {
-				e.preventDefault();
-				console.log('==========FORM HAS BEAN SUBMITED==========');
-				if (isloggedin()) {
-					let routeName = document.getElementById('fname').value;
-					let state = document.getElementById('state').value;
-					let address = [];
-					address[0] = document.getElementById('address1').value;
-					address[1] = document.getElementById('address2').value;
-					address[2] = document.getElementById('address3').value;
-					address[3] = document.getElementById('schoolAddress').value;
-					console.log(address);
-
+			async function codeAddress(ID) {
+				var address = document.getElementById(ID).value;
+				var R = {
+					id: ID,
+					lable: '',
+					formatted_address: '',
+					location: '',
+					state: '',
+					city: '',
+				};
+				if (address) {
 					try {
-						codeAddress('address1');
-						codeAddress('schoolAddress');
-					} catch (err) {}
-
-					document.getElementById('loadder').style.display = 'block';
-
-					let bid = 'M122201';
-					let active = true;
-					let Monitor = false;
-
-					let url =
-						'https://script.google.com/macros/s/AKfycbwXtBXQJNEJF8veBWDU1Q3nu5C06rG9TyNqGP9JR1ZiPqUgRRRw3eY2lIKULHUXyJr2/exec';
-					// url += `?state=${state}`;
-					// url += `&active=${active}`;
-					// url += `&bid=${bid}`;
-					// url += `&monitor=${Monitor}`;
-					makeAPICall(url);
-					// printResults((Drivers = testData()));
+						await geocoder.geocode(
+							{ address: address },
+							function (results, status) {
+								if (status == 'OK') {
+									R.location = results[0].geometry.location;
+									R.formatted_address = results[0].formatted_address;
+									let addArray = results[0].address_components;
+									for (let i = 0; i < addArray.length; i++) {
+										if (addArray[i].types[0] == 'administrative_area_level_1') {
+											R.state = addArray[i].long_name;
+											return R.state;
+										}
+									}
+								} else {
+									console.log(
+										'Geocode was not successful for the following reason: ' +
+											status
+									);
+								}
+							}
+						);
+					} catch (err) {
+						console.log(
+							'Error ocurre trayng to geocode the: ' +
+								ID +
+								': ' +
+								address +
+								'>>\nError\n' +
+								err
+						);
+					}
 				}
-			});
-		</script>
-
-		<script
-			async
-			defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap"
-		></script>
-
-		<script>
-			function Pre() {
-				setTimeout(function () {
-					document.getElementById('Pre-loader').style.display = 'none';
-				}, 3000);
+				return R;
 			}
-			window.addEventListener('load', Pre);
+			function calculateAndDisplayRoute(
+				directionsService,
+				directionsDisplay,
+				pointA,
+				pointB
+			) {
+				directionsService.route(
+					{
+						origin: pointA,
+						destination: pointB,
+						avoidTolls: true,
+						avoidHighways: false,
+						travelMode: google.maps.TravelMode.DRIVING,
+					},
+					function (response, status) {
+						if (status == google.maps.DirectionsStatus.OK) {
+							directionsDisplay.setDirections(response);
+						} else {
+							window.alert('Directions request failed due to ' + status);
+						}
+					}
+				);
+			}
+
+			async function ADDRESS() {
+				let A = ['address1', 'address2', 'address3', 'schoolAddress'];
+
+				var L1 = await codeAddress('address1');
+				var L2 = await codeAddress('address2');
+				var L3 = await codeAddress('address3');
+				var L4 = await codeAddress('schoolAddress');
+				// let R=L1,L2
+
+				setTimeout(function () {
+					console.log('result PA | PB: ' + L1.location + ' | ' + L2.location);
+
+					calculateAndDisplayRoute(
+						directionsService,
+						directionsDisplay,
+						L1.location,
+						L2.location
+					);
+				}, 1500);
+			}
+
+			let submitFlag = false;
+			function submitFun() {
+				document.getElementById('loadder').style.display = 'block';
+				let routeName = document.getElementById('fname').value;
+				let state = document.getElementById('state').value;
+
+				ADDRESS();
+
+				// var pointA = new google.maps.LatLng(51.7519, -1.2578),
+				// 	pointB = new google.maps.LatLng(50.8429, -0.1313);
+				// Routing(pointA, pointB);
+
+				let key = 1234;
+				let bid = 'M122201';
+				let active = true;
+				let Monitor = false;
+
+				let url =
+					'https://script.google.com/macros/s/AKfycbwXtBXQJNEJF8veBWDU1Q3nu5C06rG9TyNqGP9JR1ZiPqUgRRRw3eY2lIKULHUXyJr2/exec';
+				url += `?key=${key}`;
+				url += `&bid=${bid}`;
+				// url += `&active=${active}`;
+				url += `&state=${state}`;
+				// url += `&monitor=true`;
+				// url += `&latlong1=`;
+				// url += `&monitor=true`;
+				makeAPICall(url);
+				// printResults((Drivers = testData()));
+				submitFlag = false;
+			}
 		</script>
 	</body>
 </html>
