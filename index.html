@@ -5,7 +5,6 @@
 		<base target="_top" />
 		<meta charset="utf-8" />
 		<meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
-
 		<title>Driver Finder Form</title>
 		<link
 			rel="stylesheet"
@@ -16,18 +15,17 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
 		/>
 		<link rel="stylesheet" href="CSS/style.css" />
-
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
 			defer
 		></script>
-
+		<script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
 		<script async src="js/googlemaps.js"></script>
 		<script
 			async
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap"
+			defer
 		></script>
-		<script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
 		<script src="js/LogIn.js" defer></script>
 		<script src="js/Index_EventListeners.js" defer></script>
 		<script src="js/ResultsTable.js" defer></script>
@@ -414,137 +412,6 @@
 			</div>
 		</div>
 
-		<script>
-			//MAP INIT AND MARKERS
-			// let key = 'AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg';
-
-
-			async function ADDRESS() {
-				let A = ['address1', 'address2', 'address3', 'schoolAddress'];
-
-				var L1 = await codeAddress('address1');
-				var L2 = await codeAddress('address2');
-				var L3 = await codeAddress('address3');
-				var L4 = await codeAddress('schoolAddress');
-				// let R=L1,L2
-
-				setTimeout(function () {
-					console.log('result PA | PB: ' + L1.location + ' | ' + L2.location);
-
-					calculateAndDisplayRoute(
-						directionsService,
-						directionsDisplay,
-						L1.location,
-						L4.location
-					);
-				}, 1500);
-				return L1.state;
-			}
-
-			let submitFlag = false;
-			async function submitFun() {
-				document.getElementById('loadder').style.display = 'block';
-
-				let key = 1234;
-				let bid = 'M122201';
-				let routeName = document.getElementById('fname').value;
-				let monitor = document.getElementById('MonitorCheck').checked;
-
-				let includeInactive = document.getElementById('inactiveCheck').checked;
-
-				let state = document.getElementById('state').value;
-
-				let pickUpAM = document.getElementById('pickUpAM').value;
-				let dropOffAM = document.getElementById('dropOffAM').value;
-				let pickUpPM = document.getElementById('pickUpPM').value;
-				let dropOffPM = document.getElementById('dropOffPM').value;
-
-				let sPickUp = document.getElementById('sPickUp').value;
-				let sDropOff = document.getElementById('sDropOff').value;
-				let sDays = '';
-
-				var RouteArray = [];
-				let Address = [
-					{
-						id: 'address1',
-						lable: 'A',
-						input: document.getElementById('address1').value,
-						formatted: '', //Address 1
-						location: '',
-					},
-					{
-						id: 'address2',
-						lable: 'B',
-						input: document.getElementById('address2').value,
-						formatted: '', //Address 2
-						location: '',
-					},
-					{
-						id: 'address3',
-						lable: 'C',
-						input: document.getElementById('address2').value,
-						formatted: '', //Address 3
-						location: '',
-					},
-					{
-						id: 'schoolAddress',
-						lable: 'SC',
-						input: document.getElementById('schoolAddress').value,
-						formatted: '', //Address 4 (School)
-						location: '',
-					},
-				];
-
-				RouteArray.push(
-					new route(
-						routeName, //Route Name
-						'Active', //Status
-						'', //_MDD
-						'AM', //AmPm  <==================
-						'', //Days  <==================
-						monitor, //Monitor
-						'', //Passangers
-						pickUpAM, //_PickUp <==================
-						dropOffAM, //_DropOff <==================
-						state, //State
-						'', //City
-						Address.filter((Data) => Data.formatted !== '')
-					)
-				);
-				RouteArray.push(
-					new route(
-						routeName, //Route Name
-						'Active', //Status
-						'', //_MDD
-						'PM', //AmPm  <==================
-						'', //Days  <==================
-						monitor, //Monitor
-						'', //Passangers
-						pickUpPM, //_PickUp <==================
-						dropOffPM, //_DropOff <==================
-						state, //State
-						'', //City
-						Address.filter((Data) => Data.formatted !== '')
-					)
-				);
-
-				console.log('New Route', RouteArray);
-
-				state = await ADDRESS();
-
-				let url =
-					'https://script.google.com/macros/s/AKfycbwXtBXQJNEJF8veBWDU1Q3nu5C06rG9TyNqGP9JR1ZiPqUgRRRw3eY2lIKULHUXyJr2/exec';
-				url += `?key=${key}`;
-				url += `&bid=${bid}`;
-				url += includeInactive ? `` : '&active=true';
-				url += `&state=${state}`;
-				url += monitor ? `&monitor=true` : '';
-				// url += `&latlong1=`;
-				// url += `&monitor=true`;
-				makeAPICall(url);
-				// printResults((Drivers = testData()));
-				submitFlag = false;
-			}
-		</script>
+		<script src="js/app.js"></script>
 	</body>
 </html>
