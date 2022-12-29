@@ -14,8 +14,6 @@ function include(file) {
 }
 
 async function ADDRESS() {
-
-
 	setTimeout(function () {
 		// console.log('result PA | PB: ' + L1.location + ' | ' + L2.location);
 
@@ -93,7 +91,7 @@ async function routeSetUp() {
 			Address
 		)
 	);
-
+	console.log('New Route', RouteArray);
 	return RouteArray;
 }
 
@@ -114,29 +112,74 @@ function getConfigFile() {
 	};
 	return config;
 }
+async function getDrivers(obj) {
+	let url =
+		'https://script.google.com/macros/s/AKfycbwEQq0PQQAWTALMItsHuJtqjogEgHueywErAtEzlX6fInsFrBNrgscKo94EoD4tUMVW/exec';
+	url += `?key=${obj.key}`;
+	url += `&bid=${obj.bid}`;
+	url += obj.status ? `` : '&active=true';
+	url += `&state=${obj.state}`;
+	url += obj.monitor ? `&monitor=true` : '';
+	const result = await fetch(url);
+	return result.json();
+	// result.json().then((data) => {
+	// 	console.log("Available Drivers", data);
+	// 	return data;
+	// });
+}
+
+function deg2rad(deg) {
+	return deg * (Math.PI / 180);
+}
+function getDistanceFromLatLonInmiles(latlng1, latlng2) {
+	let lat1 = latlng1.lat;
+	let lon1 = latlng1.lng;
+	let lat2 = latlng2.lat();
+	let lon2 = latlng2.lng();
+
+	var R = 3963; // Radius of the earth in miles
+	var dLat = (lat2 - lat1) * (Math.PI / 180);
+	var dLon = (lon2 - lon1) * (Math.PI / 180);
+	var a =
+		Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+		Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	var d = R * c; // Distance in km
+	return d;
+}
+
+function setLatLngDistant(object, target) {
+	for (const obj of object) {
+		let d = getDistanceFromLatLonInmiles(obj.address.location, target);
+		obj.d = d;
+	}
+	return object;
+}
 
 let submitFlag = false;
 async function submitFun() {
 	document.getElementById('loadder').style.display = 'block';
 
+	let settings = getConfigFile();
 	let newRoute = await routeSetUp();
-    
-    let settings=getConfigFile();
 
-	console.log('New Route', newRoute);
+	let data = await getDrivers({
+		key: settings.key,
+		bid: settings.bid,
+		monitor: newRoute[0].monitor,
+		status: settings.status,
+		state: newRoute[0].state,
+	});
+	let drivers = data.drivers;
+	drivers = setLatLngDistant(drivers, newRoute[0].address[0].location);
+	drivers = drivers.sort((a, b) => a.d - b.d);
+	console.log('new lat long test', drivers);
 
-	// state = await ADDRESS();
+	// drivers = filterLatLng(drivers, newRoute[0]);
+	printResults(drivers);
 
-	let url =
-		'https://script.google.com/macros/s/AKfycbwXtBXQJNEJF8veBWDU1Q3nu5C06rG9TyNqGP9JR1ZiPqUgRRRw3eY2lIKULHUXyJr2/exec';
-	url += `?key=${settings.key}`;
-	url += `&bid=${settings.bid}`;
-	url += settings.status ? `` : '&active=true';
-	url += `&state=${newRoute[0].state}`;
-	url += newRoute[0].monitor ? `&monitor=true` : '';
-	// url += `&latlong1=`;
-	// url += `&monitor=true`;
-	makeAPICall(url);
-	// printResults((Drivers = testData()));
+	// Drivers.then((data) => {printResults(data.drivers);	});
+
+	document.getElementById('loadder').style.display = 'none';
 	submitFlag = false;
 }

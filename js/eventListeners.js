@@ -22,8 +22,8 @@ myForm.addEventListener('submit', (e) => {
 myForm.addEventListener('reset', (e) => {
 	student2.style.display = 'none';
 	student3.style.display = 'none';
-	SpecialTrip.style.display = 'none';
-	addSpecialTrip.style.display = 'block';
+	// SpecialTrip.style.display = 'none';
+	// addSpecialTrip.style.display = 'block';
 	try {
 		var element = document.getElementById('rt');
 		element.parentNode.removeChild(element);
