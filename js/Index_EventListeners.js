@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	var instances = M.Modal.init(elems);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
+  });
+
 var student2 = document.getElementById('student2');
 var student3 = document.getElementById('student3');
 var SpecialTrip = document.getElementById('SpecialTrip');
@@ -36,13 +41,22 @@ removeStudent3.addEventListener('click', () => {
 	student3.style.display = 'none';
 });
 
-addSpecialTrip.addEventListener('click', () => {
-	SpecialTrip.style.display = 'block';
-	addSpecialTrip.style.display = 'none';
-});
-removeSpecialTrip.addEventListener('click', () => {
-	SpecialTrip.style.display = 'none';
-	addSpecialTrip.style.display = 'block';
+// addSpecialTrip.addEventListener('click', () => {
+// 	SpecialTrip.style.display = 'block';
+// 	addSpecialTrip.style.display = 'none';
+// });
+// removeSpecialTrip.addEventListener('click', () => {
+// 	SpecialTrip.style.display = 'none';
+// 	addSpecialTrip.style.display = 'block';
+// });
+
+
+
+myForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+	submitFlag = true;
+	console.log('==========FORM HAS BEAN SUBMITED==========');
+	if (isloggedin()) {submitFun();}
 });
 
 myForm.addEventListener('reset', (e) => {
@@ -56,13 +70,6 @@ myForm.addEventListener('reset', (e) => {
 	} catch (err) {
 		console.log('no table diaplayed');
 	}
-});
-
-myForm.addEventListener('submit', (e) => {
-	e.preventDefault();
-	submitFlag = true;
-	console.log('==========FORM HAS BEAN SUBMITED==========');
-	if (isloggedin()) {submitFun();}
 });
 
 loginForm.addEventListener('submit', (e) => {

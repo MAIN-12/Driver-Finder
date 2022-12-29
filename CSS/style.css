@@ -20,6 +20,8 @@ h2 {
 	color: rgb(5, 68, 104);
 	border-radius: 20px;
 	padding: 8px 0;
+	border:1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 h3 {
 	color: rgb(5, 68, 104);
@@ -35,7 +37,7 @@ h4 {
 }
 
 .wrapper .sidebar {
-	background: rgb(5, 68, 104);
+	/* background: rgb(5, 68, 104); */
 	position: fixed;
 	z-index: 10;
 	top: 0;
@@ -46,7 +48,7 @@ h4 {
 	height: 100%;
 	padding: 10px 20px;
 	transition: all 0.5s ease;
-	overflow: auto;
+	/* overflow: auto; */
 }
 
 .wrapper.content {
@@ -65,6 +67,8 @@ h4 {
 	border-radius: 20px;
 	padding: 20px 20px;
 	overflow-y: auto;
+	border:1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 
 .results_table {
@@ -80,6 +84,8 @@ h4 {
 	padding: 20px 20px;
 	border-radius: 20px;
 	overflow: auto;
+	border:1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 
 #map {	
@@ -193,6 +199,12 @@ input[type='submit'] {
 .clean{
 	border: 0; 
 	margin-bottom: 0
+}
+.collapsible {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    margin: 0.5rem 0 1rem 0;
 }
 
 /* td {
