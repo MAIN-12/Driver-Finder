@@ -1,46 +1,24 @@
 <!-- @format -->
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<base target="_top" />
-		<meta charset="utf-8" />
-		<meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
-		<title>Driver Finder Form</title>
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		/>
+	<head><base target="_top" /><meta charset="utf-8" />
+		<meta name="DriverFinder" content="width=device-width, initial-scale=1.0" /><title>Driver Finder Form</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
 		<link rel="stylesheet" href="CSS/style.css" />
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
-			defer
-		></script>
+		<script	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
-		<script async src="js/googlemaps.js"></script>
-		<script
-			async
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap"
-			defer
-		></script>
-		<script src="js/LogIn.js" defer></script>
-		<script src="js/Index_EventListeners.js" defer></script>
-		<script src="js/ResultsTable.js" defer></script>
+		<script async src="js/googleMaps.js"></script>
+		<script	async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap" defer></script>
+		<script src="js/appLogIn.js" defer></script>
+		<script src="js/eventListeners.js" defer></script>
 		<script src="js/NewRoute.js" defer></script>
+		<script src="js/ResultsTable.js" defer></script>
+		<script src="js/app.js" defer></script>
 	</head>
 	<body>
 		<div id="Pre-loader" style="display: block"></div>
-		<script async>
-			window.addEventListener('load', () => {
-				setTimeout(() => {
-					document.getElementById('Pre-loader').style.display = 'none';
-				}, 1000);
-			});
-		</script>
-
+		<script async>window.addEventListener('load', () => {setTimeout(() => {document.getElementById('Pre-loader').style.display = 'none';}, 1000);});</script>
 		<section name="main_page" class="wrapper">
 			<div id="sbar" name="sbar" class="sidebar" style="display: block">
 				<div class="center-align">
@@ -327,74 +305,76 @@
 			<div id="result"></div>
 		</section>
 
-		<div class="btn-login">
-			<a
-				href="#login"
-				class="btn-floating btn-large waves-effect waves-light modal-trigger"
-				><i class="material-icons">person</i></a
-			>
-		</div>
-
-		<div id="login" class="modal">
-			<h5 class="modal-close">&#10005;</h5>
-			<div class="modal-content">
-				<h3 class="center">Please sign in</h3>
-
-				<form
-					name="loginForm"
-					id="loginForm"
-					class="form"
-					style="padding-left: 30px; padding-right: 30px"
+		<section id="LOG">
+			<div class="btn-login">
+				<a
+					href="#login"
+					class="btn-floating btn-large waves-effect waves-light modal-trigger"
+					><i class="material-icons">person</i></a
 				>
-					<div class="center-align">
-						<div class="input-field box">
-							<i class="material-icons prefix">person</i>
-							<input
-								type="text"
-								id="userID"
-								style="border: 0; margin-bottom: 0"
-								placeholder="Username"
-							/>
-							<!-- <label for="userID">Username</label> -->
-						</div>
-						<div class="input-field box">
-							<i class="material-icons prefix">lock</i>
-							<input
-								type="password"
-								id="pass"
-								style="border: 0; margin-bottom: 0"
-								placeholder="Password"
-							/>
-							<!-- <label for="pass">Password</label> -->
-							<!-- <span class="helper-text" data-error="wrong user name or password" data-success="Loged in">Helper text</span> -->
-						</div>
-						<p id="wronfPass" style="color: red; display: none">
-							wrong user name or password
-						</p>
-
-						<!-- <label style="margin-left: 5px;">
-                        <input type="checkbox" />
-                        <span>Remenber me</span>
-                    </label>
-					<br /><br> -->
-
-						<button
-							name="login-submit"
-							id="login-submit"
-							class="btn blue"
-							type="submit"
-							style="border-radius: 20px; width: 100%"
-						>
-							Log in<i class="material-icons right"></i>
-						</button>
-						<br /><br />
-						<a href="https://www.google.com/">Forgot password?</a>
-						<br />
-						Don't have an account? <a href="https://www.google.com/">Sign up</a>
-					</div>
-				</form>
 			</div>
-		</div>
+	
+			<div id="login" class="modal">
+				<h5 class="modal-close">&#10005;</h5>
+				<div class="modal-content">
+					<h3 class="center">Please sign in</h3>
+	
+					<form
+						name="loginForm"
+						id="loginForm"
+						class="form"
+						style="padding-left: 30px; padding-right: 30px"
+					>
+						<div class="center-align">
+							<div class="input-field box">
+								<i class="material-icons prefix">person</i>
+								<input
+									type="text"
+									id="userID"
+									style="border: 0; margin-bottom: 0"
+									placeholder="Username"
+								/>
+								<!-- <label for="userID">Username</label> -->
+							</div>
+							<div class="input-field box">
+								<i class="material-icons prefix">lock</i>
+								<input
+									type="password"
+									id="pass"
+									style="border: 0; margin-bottom: 0"
+									placeholder="Password"
+								/>
+								<!-- <label for="pass">Password</label> -->
+								<!-- <span class="helper-text" data-error="wrong user name or password" data-success="Loged in">Helper text</span> -->
+							</div>
+							<p id="wronfPass" style="color: red; display: none">
+								wrong user name or password
+							</p>
+	
+							<!-- <label style="margin-left: 5px;">
+							<input type="checkbox" />
+							<span>Remenber me</span>
+						</label>
+						<br /><br> -->
+	
+							<button
+								name="login-submit"
+								id="login-submit"
+								class="btn blue"
+								type="submit"
+								style="border-radius: 20px; width: 100%"
+							>
+								Log in<i class="material-icons right"></i>
+							</button>
+							<br /><br />
+							<a href="https://www.google.com/">Forgot password?</a>
+							<br />
+							Don't have an account? <a href="https://www.google.com/">Sign up</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
 
 		<div id="loadder" class="LogInBack" style="display: none">
 			<div class="preloader-wrapper big active center-block loadder">
@@ -411,7 +391,5 @@
 				</div>
 			</div>
 		</div>
-
-		<script src="js/app.js"></script>
 	</body>
 </html>
