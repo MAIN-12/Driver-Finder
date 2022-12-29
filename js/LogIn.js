@@ -19,9 +19,11 @@ loginForm.addEventListener('submit', (e) => {
 		document.getElementById('wronfPass').style.display="flex"
 	}else{
 		if(isloggedin()){
-			if(submitFlag){submitFun();}
+			submitFlag=isloggedin()?submitFun():true;
 		}
 	}
+});
+
 	// const request = new XMLHttpRequest();
 	// request.open(
 	// 	'POST',
@@ -31,7 +33,6 @@ loginForm.addEventListener('submit', (e) => {
 	// console.log(request.responseText);
 	// };
 	// request.send(new FormData(myForm));
-});
 
 // document.getElementById('btn-login').addEventListener('click', () => {
 //     var x = document.getElementById('login').style;

@@ -29,6 +29,7 @@
 		<script src="js/LogIn.js" defer></script>
 		<script src="js/Index_EventListeners.js" defer></script>
 		<script src="js/ResultsTable.js" defer></script>
+		<script src="js/NewRoute.js" defer></script>
 	</head>
 	<body>
 		<div id="Pre-loader" style="display: block"></div>
@@ -77,6 +78,12 @@
 									<label>
 										<input id="MonitorCheck" type="checkbox" />
 										<span>Monitor</span>
+									</label>
+								</p>
+								<p>
+									<label>
+										<input id="inactiveCheck" type="checkbox" />
+										<span>Include inactive drivers</span>
 									</label>
 								</p>
 							</div>
@@ -192,6 +199,7 @@
 											<td style="padding: 5px">Trip AM</td>
 											<td style="padding: 0">
 												<input
+													id="pickUpAM"
 													type="text"
 													class="timepicker center-align test"
 													placeholder="--:-- AM"
@@ -200,6 +208,7 @@
 											</td>
 											<td style="padding: 0">
 												<input
+													id="dropOffAM"
 													type="text"
 													class="timepicker center-align test"
 													placeholder="--:-- AM"
@@ -211,6 +220,7 @@
 											<td style="padding: 5px">Trip PM</td>
 											<td style="padding: 0">
 												<input
+													id="pickUpPM"
 													type="text"
 													class="timepicker center-align"
 													placeholder="--:-- PM"
@@ -219,6 +229,7 @@
 											</td>
 											<td style="padding: 0">
 												<input
+													id="dropOffPM"
 													type="text"
 													class="timepicker center-align"
 													placeholder="--:-- PM"
@@ -261,6 +272,7 @@
 											<td style="padding: 5px">Trip 3</td>
 											<td style="padding: 0">
 												<input
+													id="sPickUp"
 													type="text"
 													class="timepicker center-align"
 													placeholder="--:-- PM"
@@ -269,6 +281,7 @@
 											</td>
 											<td style="padding: 0">
 												<input
+													id="sDropOff"
 													type="text"
 													class="timepicker center-align"
 													placeholder="--:-- PM"
@@ -523,24 +536,102 @@
 			let submitFlag = false;
 			async function submitFun() {
 				document.getElementById('loadder').style.display = 'block';
-				let routeName = document.getElementById('fname').value;
-				// let state = document.getElementById('state').value;
-
-				let state = await ADDRESS();
 
 				let key = 1234;
 				let bid = 'M122201';
-				let active = true;
+				let routeName = document.getElementById('fname').value;
+				let monitor = document.getElementById('MonitorCheck').checked;
 
-				let Monitor = document.getElementById('MonitorCheck').checked? true: false;
+				let includeInactive = document.getElementById('inactiveCheck').checked;
+
+				let state = document.getElementById('state').value;
+
+				let pickUpAM = document.getElementById('pickUpAM').value;
+				let dropOffAM = document.getElementById('dropOffAM').value;
+				let pickUpPM = document.getElementById('pickUpPM').value;
+				let dropOffPM = document.getElementById('dropOffPM').value;
+
+				let sPickUp = document.getElementById('sPickUp').value;
+				let sDropOff = document.getElementById('sDropOff').value;
+				let sDays = '';
+
+				var RouteArray = [];
+				let Address = [
+					{
+						id: 'address1',
+						lable: 'A',
+						input: document.getElementById('address1').value,
+						formatted: '', //Address 1
+						location: '',
+					},
+					{
+						id: 'address2',
+						lable: 'B',
+						input: document.getElementById('address2').value,
+						formatted: '', //Address 2
+						location: '',
+					},
+					{
+						id: 'address3',
+						lable: 'C',
+						input: document.getElementById('address2').value,
+						formatted: '', //Address 3
+						location: '',
+					},
+					{
+						id: 'schoolAddress',
+						lable: 'SC',
+						input: document.getElementById('schoolAddress').value,
+						formatted: '', //Address 4 (School)
+						location: '',
+					},
+				];
+
+				RouteArray.push(
+					new route(
+						routeName, //Route Name
+						'Active', //Status
+						'', //_MDD
+						'AM', //AmPm  <==================
+						'', //Days  <==================
+						monitor, //Monitor
+						'', //Passangers
+						pickUpAM, //_PickUp <==================
+						dropOffAM, //_DropOff <==================
+						state, //State
+						'', //City
+						Address.filter((Data) => Data.formatted !== '')
+					)
+				);
+				RouteArray.push(
+					new route(
+						routeName, //Route Name
+						'Active', //Status
+						'', //_MDD
+						'PM', //AmPm  <==================
+						'', //Days  <==================
+						monitor, //Monitor
+						'', //Passangers
+						pickUpPM, //_PickUp <==================
+						dropOffPM, //_DropOff <==================
+						state, //State
+						'', //City
+						Address.filter((Data) => Data.formatted !== '')
+					)
+				);
+
+
+				console.log('New Route',RouteArray)
+
+				state = await ADDRESS();
 
 				let url =
 					'https://script.google.com/macros/s/AKfycbwXtBXQJNEJF8veBWDU1Q3nu5C06rG9TyNqGP9JR1ZiPqUgRRRw3eY2lIKULHUXyJr2/exec';
 				url += `?key=${key}`;
 				url += `&bid=${bid}`;
-				// url += `&active=${active}`;
+				url += includeInactive ? `` : '&active=true';
 				url += `&state=${state}`;
-				url += document.getElementById('MonitorCheck').checked? `&monitor=true`: '';
+				url += monitor ? `&monitor=true` : '';
 				// url += `&latlong1=`;
 				// url += `&monitor=true`;
 				makeAPICall(url);

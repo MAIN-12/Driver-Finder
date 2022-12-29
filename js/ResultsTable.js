@@ -39,7 +39,7 @@ function resultsTable(data) {
 }
 
 function printResults(data) {
-    console.log('Printing result of:\n', data);
+    console.log('Printing result of:', data);
     document.getElementById('result').innerHTML = resultsTable(data);
 }
 
