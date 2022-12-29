@@ -14,7 +14,218 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
 		/>
-		<link rel="stylesheet" href="css/style.css" />
+		<!-- <link rel="stylesheet" href="css/style.css" /> -->
+		<style>
+			html,
+			body {
+				margin: 0;
+				height: fit-content;
+				background-color: white;
+				font-family: 'Poppins', sans-serif;
+				font-size: small;
+			}
+
+			h1 {
+				background-color: white;
+				border-radius: 20px;
+			}
+
+			h2 {
+				background-color: white;
+				font-size: 45px;
+				color: rgb(5, 68, 104);
+				border-radius: 20px;
+				padding: 8px 0;
+				border: 1px solid #ddd;
+				box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%),
+					0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+			}
+			h3 {
+				color: rgb(5, 68, 104);
+				font-size: large;
+			}
+			h4 {
+				font-size: small;
+			}
+
+			.btn-line {
+				color: rgb(5, 68, 104);
+				font-size: large;
+			}
+
+			.wrapper .sidebar {
+				/* background: rgb(5, 68, 104); */
+				position: fixed;
+				z-index: 10;
+				top: 0;
+				left: 0;
+				flex-basis: 225px;
+				min-width: 225px;
+				width: 350px;
+				height: 100%;
+				padding: 10px 20px;
+				transition: all 0.5s ease;
+				/* overflow: auto; */
+			}
+
+			.wrapper.content {
+				background: white;
+				position: relative;
+				top: 0;
+				left: 350px;
+				right: 100px;
+				height: 100%;
+				padding: 0;
+				transition: all 0.5s ease;
+			}
+
+			.formbox {
+				background: white;
+				border-radius: 20px;
+				padding: 20px 20px;
+				overflow-y: auto;
+				border: 1px solid #ddd;
+				box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%),
+					0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+			}
+
+			.results_table {
+				background: white;
+				position: fixed;
+				bottom: 0;
+				right: 0;
+				height: 300px;
+				width: calc(80vw - 300px);
+				margin-right: 350px;
+				min-width: 300px;
+				margin: 20px;
+				padding: 20px 20px;
+				border-radius: 20px;
+				overflow: auto;
+				border: 1px solid #ddd;
+				box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%),
+					0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+			}
+
+			#map {
+				width: 100%;
+				height: 1000px;
+				/* left: 300; */
+			}
+
+			.maptestoffset {
+				z-index: -10;
+				position: fixed;
+				left: 0;
+			}
+
+			.btn-login {
+				position: fixed;
+				z-index: 900;
+				top: 20px;
+				right: 20px;
+			}
+
+			.LogInBack {
+				background: rgba(0, 0, 0, 0.8);
+				position: fixed;
+				z-index: 990;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				padding: 20px 20px;
+				transition: all 0.5s ease;
+			}
+
+			.LogIn {
+				background: white;
+				padding: 50px 50px;
+				position: fixed;
+				margin: auto;
+				top: 15%;
+				left: 50%;
+				border-radius: 20px;
+				width: 600px;
+				height: 400px;
+			}
+
+			a.btn {
+				margin-top: 30%;
+			}
+
+			.modal {
+				z-index: 900;
+				border-radius: 20px;
+				max-height: 100%;
+				max-width: 500px;
+				overflow: hidden;
+			}
+
+			input[type='submit'] {
+				width: 100%;
+				margin-top: 50px;
+			}
+			.modal-close {
+				position: absolute;
+				z-index: 900;
+				top: 10px;
+				right: 10px;
+				padding: 20;
+				margin: 10px 10px;
+				border-radius: 20px;
+			}
+
+			.loadder {
+				position: fixed;
+				z-index: 100;
+				top: 50%;
+				left: 50%;
+				margin-top: -50px;
+				margin-left: -50px;
+				width: 100px;
+				height: 100px;
+				overflow: hidden;
+			}
+
+			.margin20 {
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+
+			#Pre-loader {
+				background: #ffffff
+					url(https://i.pinimg.com/originals/8c/7b/75/8c7b7516541848e2a94222bc2e2fac98.gif)
+					no-repeat center;
+				background-size: 20%;
+				height: 100vh;
+				width: 100%;
+				position: fixed;
+				z-index: 100;
+			}
+
+			.box {
+				border: 1px solid;
+				border-radius: 20px;
+				margin: 0 0 15px;
+				padding-right: 20px;
+				width: 100%;
+				height: 40px;
+			}
+			.R20 {
+				border-radius: 20px;
+			}
+			.clean {
+				border: 0;
+				margin-bottom: 0;
+			}
+			.collapsible {
+				border-top: none;
+				border-right: none;
+				border-left: none;
+				margin: 0.5rem 0 1rem 0;
+			}
+		</style>
 
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
@@ -620,8 +831,7 @@
 					)
 				);
 
-
-				console.log('New Route',RouteArray)
+				console.log('New Route', RouteArray);
 
 				state = await ADDRESS();
 
