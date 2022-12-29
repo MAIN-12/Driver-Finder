@@ -5,7 +5,6 @@ function include(file) {
 	script.src = file;
 	script.type = 'text/javascript';
 	script.defer = true;
-
 	document.getElementsByTagName('head').item(0).appendChild(script);
 }
 
@@ -16,17 +15,11 @@ async function ADDRESS() {
 	var L2 = await codeAddress('address2');
 	var L3 = await codeAddress('address3');
 	var L4 = await codeAddress('schoolAddress');
-	// let R=L1,L2
 
 	setTimeout(function () {
-		console.log('result PA | PB: ' + L1.location + ' | ' + L2.location);
+		// console.log('result PA | PB: ' + L1.location + ' | ' + L2.location);
 
-		calculateAndDisplayRoute(
-			directionsService,
-			directionsDisplay,
-			L1.location,
-			L4.location
-		);
+		calculateAndDisplayRoute(directionsService, directionsDisplay, L1.location, L4.location);
 	}, 1500);
 	return L1.state;
 }
@@ -47,7 +40,6 @@ async function submitFun() {
 	let bid = 'M122201';
 	let routeName = document.getElementById('fname').value;
 	let monitor = document.getElementById('MonitorCheck').checked;
-
 	let includeInactive = document.getElementById('inactiveCheck').checked;
 
 	let state = document.getElementById('state').value;
@@ -61,52 +53,35 @@ async function submitFun() {
 	let sDropOff = document.getElementById('sDropOff').value;
 	let sDays = '';
 
-	var RouteArray = [];
 	let Address = [
-		{
-			id: 'address1',
-			lable: 'A',
-			input: document.getElementById('address1').value,
-			formatted: '', //Address 1
-			location: '',
-		},
-		{
-			id: 'address2',
-			lable: 'B',
-			input: document.getElementById('address2').value,
-			formatted: '', //Address 2
-			location: '',
-		},
-		{
-			id: 'address3',
-			lable: 'C',
-			input: document.getElementById('address2').value,
-			formatted: '', //Address 3
-			location: '',
-		},
-		{
-			id: 'schoolAddress',
-			lable: 'SC',
-			input: document.getElementById('schoolAddress').value,
-			formatted: '', //Address 4 (School)
-			location: '',
-		},
+		new address('address1', 'A'),
+		new address('address2', 'B'),
+		new address('address3', 'C'),
+		new address('schoolAddress', 'Sc'),
 	];
 
+	Address = Address.filter((Data) => Data.input !== '')
+	for (const add of Address) {
+        var L1 = await codeAddress(add.input);
+        add.location=L1.location;
+        add.formatted=L1.formatted_address;
+	}
+
+	var RouteArray = [];
 	RouteArray.push(
 		new route(
 			routeName, //Route Name
 			'Active', //Status
 			'', //_MDD
 			'AM', //AmPm  <==================
-			'', //Days  <==================
+			'[M, T, W, Th, F]', //Days  <==================
 			monitor, //Monitor
 			'', //Passangers
 			pickUpAM, //_PickUp <==================
 			dropOffAM, //_DropOff <==================
 			state, //State
 			'', //City
-			Address.filter((Data) => Data.formatted !== '')
+			Address
 		)
 	);
 	RouteArray.push(
@@ -115,14 +90,14 @@ async function submitFun() {
 			'Active', //Status
 			'', //_MDD
 			'PM', //AmPm  <==================
-			'', //Days  <==================
+			'[M, T, W, Th, F]', //Days  <==================
 			monitor, //Monitor
 			'', //Passangers
 			pickUpPM, //_PickUp <==================
 			dropOffPM, //_DropOff <==================
 			state, //State
 			'', //City
-			Address.filter((Data) => Data.formatted !== '')
+			Address
 		)
 	);
 

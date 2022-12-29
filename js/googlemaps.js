@@ -1,10 +1,8 @@
 /** @format */
 
-async function codeAddress(ID) {
-	var address = document.getElementById(ID).value;
+async function codeAddress(address) {
+	// var address = document.getElementById(ID).value;
 	var R = {
-		id: ID,
-		lable: '',
 		formatted_address: '',
 		location: '',
 		state: '',
