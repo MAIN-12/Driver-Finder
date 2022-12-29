@@ -60,3 +60,22 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, 
 		}
 	);
 }
+
+function RouteCalculateDisplay(pointA, pointB) {
+	directionsService.route(
+		{
+			origin: pointA,
+			destination: pointB,
+			avoidTolls: true,
+			avoidHighways: false,
+			travelMode: google.maps.TravelMode.DRIVING,
+		},
+		function (response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);
+			} else {
+				window.alert('Directions request failed due to ' + status);
+			}
+		}
+	);
+}

@@ -177,6 +177,7 @@ async function submitFun() {
 
 	// drivers = filterLatLng(drivers, newRoute[0]);
 	printResults(drivers);
+	RouteCalculateDisplay(newRoute[0].address[0].location,newRoute[0].address[1].location)
 
 	// Drivers.then((data) => {printResults(data.drivers);	});
 
