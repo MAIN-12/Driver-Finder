@@ -1,10 +1,9 @@
 /** @format */
-/** 
+/**
  * @name Driver_Finder_app
- * @by MAIN12 LLC 
+ * @by MAIN12 LLC
  * @date 05-29-1994
  **/
-
 
 function include(file) {
 	var script = document.createElement('script');
@@ -15,12 +14,7 @@ function include(file) {
 }
 
 async function ADDRESS() {
-	let A = ['address1', 'address2', 'address3', 'schoolAddress'];
 
-	var L1 = await codeAddress('address1');
-	var L2 = await codeAddress('address2');
-	var L3 = await codeAddress('address3');
-	var L4 = await codeAddress('schoolAddress');
 
 	setTimeout(function () {
 		// console.log('result PA | PB: ' + L1.location + ' | ' + L2.location);
@@ -38,9 +32,8 @@ async function makeAPICall(url) {
 	});
 }
 
-
-async function routeSetUp(){
-    let Address = [
+async function routeSetUp() {
+	let Address = [
 		new address('address1', 'A'),
 		new address('address2', 'B'),
 		new address('address3', 'C'),
@@ -52,14 +45,13 @@ async function routeSetUp(){
 		var A = await codeAddress(add.input);
 		add.location = A.location;
 		add.formatted = A.formatted_address;
-        add.state = A.state;
-        add.city = A.city;
+		add.state = A.state;
+		add.city = A.city;
 	}
 
-
-    let routeName = document.getElementById('fname').value;
+	let routeName = document.getElementById('fname').value;
 	let monitor = document.getElementById('MonitorCheck').checked;
-    let pickUpAM = document.getElementById('pickUpAM').value;
+	let pickUpAM = document.getElementById('pickUpAM').value;
 	let dropOffAM = document.getElementById('dropOffAM').value;
 	let pickUpPM = document.getElementById('pickUpPM').value;
 	let dropOffPM = document.getElementById('dropOffPM').value;
@@ -68,7 +60,7 @@ async function routeSetUp(){
 	let sDropOff = document.getElementById('sDropOff').value;
 	let sDays = '';
 
-    var RouteArray = [];
+	var RouteArray = [];
 	RouteArray.push(
 		new route(
 			routeName, //Route Name
@@ -102,20 +94,34 @@ async function routeSetUp(){
 		)
 	);
 
-    return RouteArray;
+	return RouteArray;
+}
+
+function getConfigFile() {
+	let config = {
+		key: 1234,
+		bid: 'M122201',
+		user: {
+			Name: 'Juan',
+			Surname: 'Botero',
+		},
+		busines: {
+			name: 'MAIN12 LLC',
+			id: 'M122201',
+		},
+
+		status: document.getElementById('inactiveCheck').checked,
+	};
+	return config;
 }
 
 let submitFlag = false;
 async function submitFun() {
 	document.getElementById('loadder').style.display = 'block';
 
-	let key = 1234;
-	let bid = 'M122201';
-
-	let includeInactive = document.getElementById('inactiveCheck').checked;
-	// let state = document.getElementById('state').value;
-
-    let newRoute= await routeSetUp();
+	let newRoute = await routeSetUp();
+    
+    let settings=getConfigFile();
 
 	console.log('New Route', newRoute);
 
@@ -123,9 +129,9 @@ async function submitFun() {
 
 	let url =
 		'https://script.google.com/macros/s/AKfycbwXtBXQJNEJF8veBWDU1Q3nu5C06rG9TyNqGP9JR1ZiPqUgRRRw3eY2lIKULHUXyJr2/exec';
-	url += `?key=${key}`;
-	url += `&bid=${bid}`;
-	url += includeInactive ? `` : '&active=true';
+	url += `?key=${settings.key}`;
+	url += `&bid=${settings.bid}`;
+	url += settings.status ? `` : '&active=true';
 	url += `&state=${newRoute[0].state}`;
 	url += newRoute[0].monitor ? `&monitor=true` : '';
 	// url += `&latlong1=`;
