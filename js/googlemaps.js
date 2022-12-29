@@ -1,21 +1,3 @@
-var map, geocoder, directionsService, directionsDisplay;
-
-function initMap() {
-    var position = { lat: 28.5384, lng: -81.3789 };
-    let mapOptions = {
-        zoom: 12,
-        center: position,
-        disableDefaultUI: true,
-    };
-
-    map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    geocoder = new google.maps.Geocoder();
-    directionsService = new google.maps.DirectionsService();
-    directionsDisplay = new google.maps.DirectionsRenderer({
-        map: map,
-    });
-}
-
 async function codeAddress(ID) {
     var address = document.getElementById(ID).value;
     var R = {

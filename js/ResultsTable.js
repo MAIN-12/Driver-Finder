@@ -42,11 +42,3 @@ function printResults(data) {
     console.log('Printing result of:', data);
     document.getElementById('result').innerHTML = resultsTable(data);
 }
-
-async function makeAPICall(url) {
-    const result = await fetch(url);
-    result.json().then((data) => {
-        printResults(data.drivers);
-        document.getElementById('loadder').style.display = 'none';
-    });
-}
