@@ -37,7 +37,7 @@ async function codeAddress(address) {
 				}
 			});
 		} catch (err) {
-			console.error('Error ocurre trayng to geocode the: ' + ID + ': ' + address + '>>\nError\n' + err);
+			console.error('Error ocurre trayng to geocode the: ' + ': ' + address + '>>\nError\n' + err);
 		}
 	}
 	return R;
