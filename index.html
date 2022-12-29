@@ -21,10 +21,11 @@
 			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
 			defer
 		></script>
+
+		<script async src="js/googlemaps.js"></script>
 		<script
 			async
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap"
-			defer
 		></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
 		<script src="js/LogIn.js" defer></script>
@@ -416,101 +417,7 @@
 		<script>
 			//MAP INIT AND MARKERS
 			// let key = 'AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg';
-			var map, geocoder, directionsService, directionsDisplay;
 
-			function initMap() {
-				var position = { lat: 28.5384, lng: -81.3789 };
-				let mapOptions = {
-					zoom: 12,
-					center: position,
-					disableDefaultUI: true,
-				};
-
-				map = new google.maps.Map(document.getElementById('map'), mapOptions);
-				geocoder = new google.maps.Geocoder();
-				directionsService = new google.maps.DirectionsService();
-				directionsDisplay = new google.maps.DirectionsRenderer({
-					map: map,
-				});
-			}
-
-			async function codeAddress(ID) {
-				var address = document.getElementById(ID).value;
-				var R = {
-					id: ID,
-					lable: '',
-					formatted_address: '',
-					location: '',
-					state: '',
-					city: '',
-				};
-				if (address) {
-					try {
-						await geocoder.geocode(
-							{ address: address },
-							function (results, status) {
-								if (status == 'OK') {
-									R.location = results[0].geometry.location;
-									R.formatted_address = results[0].formatted_address;
-									let addArray = results[0].address_components;
-
-									// R.state = addArray.find(
-									// 	(element) => element == 'administrative_area_level_1'
-									// ).long_name;
-									// R.city = addArray.find(
-									// 	(element) => element == 'locality'
-									// ).long_name;
-									// console.log('STATE: ' + R.state);
-
-									for (let i = 0; i < addArray.length; i++) {
-										if (addArray[i].types[0] == 'administrative_area_level_1') {
-											R.state = addArray[i].long_name;
-											return R.state;
-										}
-										if (addArray[i].types[0] == 'locality ') {
-											R.city = addArray[i].long_name;
-											return R.state;
-										}
-									}
-								}
-							}
-						);
-					} catch (err) {
-						console.error(
-							'Error ocurre trayng to geocode the: ' +
-								ID +
-								': ' +
-								address +
-								'>>\nError\n' +
-								err
-						);
-					}
-				}
-				return R;
-			}
-			function calculateAndDisplayRoute(
-				directionsService,
-				directionsDisplay,
-				pointA,
-				pointB
-			) {
-				directionsService.route(
-					{
-						origin: pointA,
-						destination: pointB,
-						avoidTolls: true,
-						avoidHighways: false,
-						travelMode: google.maps.TravelMode.DRIVING,
-					},
-					function (response, status) {
-						if (status == google.maps.DirectionsStatus.OK) {
-							directionsDisplay.setDirections(response);
-						} else {
-							window.alert('Directions request failed due to ' + status);
-						}
-					}
-				);
-			}
 
 			async function ADDRESS() {
 				let A = ['address1', 'address2', 'address3', 'schoolAddress'];
