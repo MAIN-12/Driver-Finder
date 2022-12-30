@@ -61,7 +61,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, 
 	);
 }
 
-function RouteCalculateDisplay(pointA, pointB) {
+function RouteCalculateDisplay(obj) {
+	pointA = obj[0].address[0].location;
+	pointB = obj[0].address[0].location;
 	directionsService.route(
 		{
 			origin: pointA,

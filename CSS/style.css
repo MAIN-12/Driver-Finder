@@ -11,6 +11,7 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
+	background: transparent;
 	width: 6px;
   }
   
@@ -22,13 +23,15 @@ body {
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-	background: darkgrey; 
+	background: transparent;
+	/* background: darkgrey;  */
 	border-radius: 10px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
 	background: rgb(5, 68, 104); 
+	border-radius: 10px;
   }
 
 h1 {
@@ -94,7 +97,7 @@ h4 {
 }
 
 .results_table {
-	background: white;
+	background: rgb(255 255 255 / 80%);
 	position: fixed;
 	bottom: 0;
 	right: 0;
@@ -112,7 +115,8 @@ h4 {
 
 #map {	
 	width: 100%;
-	height: 1000px;
+	height: 100vh;
+	overflow: none;
 	/* left: 300; */
 }
 
