@@ -14,23 +14,19 @@ async function codeAddress(address) {
 				if (status == 'OK') {
 					R.location = results[0].geometry.location;
 					R.formatted_address = results[0].formatted_address;
-					let addArray = results[0].address_components;
-
-					// R.state = addArray.find(
-					// 	(element) => element == 'administrative_area_level_1'
+					let address_array = results[0].address_components;
+					// R.state = address_array.find(
+					// 	(element) => element.types[0] == 'administrative_area_level_1'
 					// ).long_name;
-					// R.city = addArray.find(
-					// 	(element) => element == 'locality'
-					// ).long_name;
-					// console.log('STATE: ' + R.state);
+					// R.city = address_array.find((element) => element.types[0] == 'locality').long_name;
 
-					for (let i = 0; i < addArray.length; i++) {
-						if (addArray[i].types[0] == 'administrative_area_level_1') {
-							R.state = addArray[i].long_name;
+					for (let i = 0; i < address_array.length; i++) {
+						if (address_array[i].types[0] == 'administrative_area_level_1') {
+							R.state = address_array[i].long_name;
 							return R.state;
 						}
-						if (addArray[i].types[0] == 'locality ') {
-							R.city = addArray[i].long_name;
+						if (address_array[i].types[0] == 'locality ') {
+							R.city = address_array[i].long_name;
 							return R.state;
 						}
 					}
@@ -60,24 +56,27 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, 
 		}
 	);
 }
-
 function RouteCalculateDisplay(obj) {
-	pointA = obj[0].address[0].location;
-	pointB = obj[0].address[0].location;
-	directionsService.route(
-		{
-			origin: pointA,
-			destination: pointB,
-			avoidTolls: true,
-			avoidHighways: false,
-			travelMode: google.maps.TravelMode.DRIVING,
-		},
-		function (response, status) {
-			if (status == google.maps.DirectionsStatus.OK) {
-				directionsDisplay.setDirections(response);
-			} else {
-				window.alert('Directions request failed due to ' + status);
+	let DD = [directionsDisplay0, directionsDisplay1, directionsDisplay2];
+
+	for (let i = 0; i < obj[0].address.length - 1; i++) {
+		let pointA = obj[0].address[i].location;
+		let pointB = obj[0].address[i + 1].location;
+		directionsService.route(
+			{
+				origin: pointA,
+				destination: pointB,
+				avoidTolls: true,
+				avoidHighways: false,
+				travelMode: google.maps.TravelMode.DRIVING,
+			},
+			function (response, status) {
+				if (status == google.maps.DirectionsStatus.OK) {
+					DD[i].setDirections(response);
+				} else {
+					window.alert('Directions request failed due to ' + status);
+				}
 			}
-		}
-	);
+		);
+	}
 }

@@ -7,13 +7,20 @@
 		<meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
 		<title>Driver Finder Form</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
 		<link rel="stylesheet" href="CSS/style.css" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+			defer
+		></script>
 		<script src="js/Maps.js" defer></script>
 		<script src="js/appLogIn.js" defer></script>
 		<script src="js/NewRoute.js" defer></script>
 		<script src="js/ResultsTable.js" defer></script>
+		<script src="js/appRouting.js" defer></script>
 		<script src="js/app.js" defer></script>
 		<script src="js/eventListeners.js" defer></script>
 		<!-- <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script> -->
@@ -29,10 +36,12 @@
 		</script>
 		<section name="main_page" class="wrapper">
 			<div id="sbar" name="sbar" class="sidebar" style="display: block">
+				
 				<div class="center-align">
-					<h2>Driver Finder</h2>
+					<h2><i class="material-icons left">menu</i>Driver Finder</h2>
 				</div>
-				<form name="myForm" class="form formbox" style="padding-left: 0; padding-right: 0">
+				
+				<form name="myForm" class="form formbox" style="padding-left: 0; padding-right: 0">					
 					<ul class="collapsible">
 						<li>
 							<div class="collapsible-header"><i class="material-icons">map</i>Route Details</div>
@@ -75,7 +84,11 @@
 										<label for="address1">Student 1 Address</label>
 									</div>
 									<div class="col s2">
-										<a id="addStudent" type="button" class="btn-floating btn-small waves-effect waves-light blue">
+										<a
+											id="addStudent"
+											type="button"
+											class="btn-floating btn-small waves-effect waves-light blue"
+										>
 											<i class="material-icons">add</i>
 										</a>
 									</div>
@@ -87,7 +100,11 @@
 										<label for="address2">Student 2 Address</label>
 									</div>
 									<div class="col s2">
-										<a id="removeStudent2" type="button" class="btn-floating btn-small waves-effect waves-light grey">
+										<a
+											id="removeStudent2"
+											type="button"
+											class="btn-floating btn-small waves-effect waves-light grey"
+										>
 											<i class="material-icons">delete</i>
 										</a>
 									</div>
@@ -99,7 +116,11 @@
 										<label for="address3">Student 3 Address</label>
 									</div>
 									<div class="col s2">
-										<a id="removeStudent3" type="button" class="btn-floating btn-small waves-effect waves-light grey">
+										<a
+											id="removeStudent3"
+											type="button"
+											class="btn-floating btn-small waves-effect waves-light grey"
+										>
 											<i class="material-icons">delete</i>
 										</a>
 									</div>
@@ -107,7 +128,13 @@
 								</div>
 								<div id="school" class="row" style="display: block">
 									<div class="input-field col s10" style="margin: 0">
-										<input name="schoolAddress" id="schoolAddress" type="text" class="validate" required />
+										<input
+											name="schoolAddress"
+											id="schoolAddress"
+											type="text"
+											class="validate"
+											required
+										/>
 										<label for="schoolAddress">School Address</label>
 									</div>
 								</div>
@@ -126,19 +153,43 @@
 										<tr>
 											<td style="padding: 5px">Trip AM</td>
 											<td style="padding: 0">
-												<input id="pickUpAM" type="text" class="timepicker center-align test" placeholder="--:-- AM" style="border: none; margin: 0" />
+												<input
+													id="pickUpAM"
+													type="text"
+													class="timepicker center-align"
+													placeholder="--:-- AM"
+													style="border: none; margin: 0"
+												/>
 											</td>
 											<td style="padding: 0">
-												<input id="dropOffAM" type="text" class="timepicker center-align test" placeholder="--:-- AM" style="border: none; margin: 0" />
+												<input
+													id="dropOffAM"
+													type="text"
+													class="timepicker center-align"
+													placeholder="--:-- AM"
+													style="border: none; margin: 0"
+												/>
 											</td>
 										</tr>
 										<tr>
 											<td style="padding: 5px">Trip PM</td>
 											<td style="padding: 0">
-												<input id="pickUpPM" type="text" class="timepicker center-align" placeholder="--:-- PM" style="border: none; margin: 0" />
+												<input
+													id="pickUpPM"
+													type="text"
+													class="timepicker center-align"
+													placeholder="--:-- PM"
+													style="border: none; margin: 0"
+												/>
 											</td>
 											<td style="padding: 0">
-												<input id="dropOffPM" type="text" class="timepicker center-align" placeholder="--:-- PM" style="border: none; margin: 0" />
+												<input
+													id="dropOffPM"
+													type="text"
+													class="timepicker center-align"
+													placeholder="--:-- PM"
+													style="border: none; margin: 0"
+												/>
 											</td>
 										</tr>
 									</tbody>
@@ -147,7 +198,9 @@
 						</li>
 
 						<li>
-							<div class="collapsible-header"><i class="material-icons">add_box</i>Add special trip</div>
+							<div class="collapsible-header">
+								<i class="material-icons">add_box</i>Add special trip
+							</div>
 							<div class="collapsible-body">
 								<div class="input-field col s12">
 									<select multiple>
@@ -173,10 +226,22 @@
 										<tr>
 											<td style="padding: 5px">Trip 3</td>
 											<td style="padding: 0">
-												<input id="sPickUp" type="text" class="timepicker center-align" placeholder="--:-- PM" style="border: none; margin: 0" />
+												<input
+													id="sPickUp"
+													type="text"
+													class="timepicker center-align"
+													placeholder="--:-- PM"
+													style="border: none; margin: 0"
+												/>
 											</td>
 											<td style="padding: 0">
-												<input id="sDropOff" type="text" class="timepicker center-align" placeholder="--:-- PM" style="border: none; margin: 0" />
+												<input
+													id="sDropOff"
+													type="text"
+													class="timepicker center-align"
+													placeholder="--:-- PM"
+													style="border: none; margin: 0"
+												/>
 											</td>
 										</tr>
 									</tbody>
@@ -187,9 +252,15 @@
 
 					<br />
 					<div class="center-align">
-						<button type="reset" class="waves-effect waves-light btn blue R20"><i class="material-icons">replay</i></button>
-						<button type="submit" class="btn waves-effect waves-light blue R20" name="action">Search <i class="material-icons right">search</i></button>
-						<button type="button" class="waves-effect waves-light btn blue R20" id="settings"><i class="material-icons">settings</i></button>
+						<button type="reset" class="waves-effect waves-light btn blue R20">
+							<i class="material-icons">replay</i>
+						</button>
+						<button type="submit" class="btn waves-effect waves-light blue R20" name="action">
+							Search <i class="material-icons right">search</i>
+						</button>
+						<button type="button" class="waves-effect waves-light btn blue R20" id="settings">
+							<i class="material-icons">settings</i>
+						</button>
 					</div>
 				</form>
 			</div>
@@ -198,7 +269,9 @@
 		</section>
 		<section name="LOG">
 			<div class="btn-login">
-				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger"><i class="material-icons">person</i></a>
+				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger"
+					><i class="material-icons">person</i></a
+				>
 			</div>
 
 			<div id="login" class="modal">
@@ -206,21 +279,44 @@
 				<div class="modal-content">
 					<h3 class="center">Please sign in</h3>
 
-					<form name="loginForm" id="loginForm" class="form" style="padding-left: 30px; padding-right: 30px">
+					<form
+						name="loginForm"
+						id="loginForm"
+						class="form"
+						style="padding-left: 30px; padding-right: 30px"
+					>
 						<div class="center-align">
 							<div class="input-field box">
 								<i class="material-icons prefix">person</i>
-								<input type="text" id="userID" style="border: 0; margin-bottom: 0" placeholder="Username" />
+								<input
+									type="text"
+									id="userID"
+									style="border: 0; margin-bottom: 0"
+									placeholder="Username"
+								/>
 								<!-- <label for="userID">Username</label> -->
 							</div>
 							<div class="input-field box">
 								<i class="material-icons prefix">lock</i>
-								<input type="password" id="pass" style="border: 0; margin-bottom: 0" placeholder="Password" />
+								<input
+									type="password"
+									id="pass"
+									style="border: 0; margin-bottom: 0"
+									placeholder="Password"
+								/>
 								<!-- <label for="pass">Password</label> -->
 								<!-- <span class="helper-text" data-error="wrong user name or password" data-success="Loged in">Helper text</span> -->
 							</div>
 							<p id="wronfPass" style="color: red; display: none">wrong user name or password</p>
-							<button name="login-submit" id="login-submit" class="btn blue" type="submit" style="border-radius: 20px; width: 100%">Log in<i class="material-icons right"></i></button><br /><br />
+							<button
+								name="login-submit"
+								id="login-submit"
+								class="btn blue"
+								type="submit"
+								style="border-radius: 20px; width: 100%"
+							>
+								Log in<i class="material-icons right"></i></button
+							><br /><br />
 							<a href="https://www.google.com/">Forgot password?</a><br />
 							<b>Don't have an account? </b><a href="https://www.google.com/">Sign up</a>
 						</div>
@@ -244,7 +340,12 @@
 			</div>
 		</div>
 		<script>
-			var map, geocoder, directionsService, directionsDisplay;
+			var map,
+				geocoder,
+				directionsService,
+				directionsDisplay0,
+				directionsDisplay1,
+				directionsDisplay2;
 
 			function initMap() {
 				var position = { lat: 28.5384, lng: -81.3789 };
@@ -257,11 +358,17 @@
 				map = new google.maps.Map(document.getElementById('map'), mapOptions);
 				geocoder = new google.maps.Geocoder();
 				directionsService = new google.maps.DirectionsService();
-				directionsDisplay = new google.maps.DirectionsRenderer({
-					map: map,
-				});
+				directionsDisplay0 = new google.maps.DirectionsRenderer({ 
+					lable:"AAA",
+					map: map });
+				directionsDisplay1 = new google.maps.DirectionsRenderer({ map: map });
+				directionsDisplay2 = new google.maps.DirectionsRenderer({ map: map });
 			}
 		</script>
-		<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap" defer></script>
+		<script
+			async
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap"
+			defer
+		></script>
 	</body>
 </html>

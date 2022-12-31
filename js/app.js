@@ -99,6 +99,7 @@ function getConfigFile() {
 	let config = {
 		key: 1234,
 		bid: 'M122201',
+		topX: 10,
 		user: {
 			Name: 'Juan',
 			Surname: 'Botero',
@@ -148,12 +149,12 @@ function getDistanceFromLatLonInmiles(latlng1, latlng2) {
 	return d;
 }
 
-function setLatLngDistant(object, target) {
+function filterLatLng(object, target) {
 	for (const obj of object) {
 		let d = getDistanceFromLatLonInmiles(obj.address.location, target);
 		obj.d = d;
 	}
-	return object;
+	return object.sort((a, b) => a.d - b.d);
 }
 
 let submitFlag = false;
@@ -171,16 +172,21 @@ async function submitFun() {
 		state: newRoute[0].state,
 	});
 	let drivers = data.drivers;
-	drivers = setLatLngDistant(drivers, newRoute[0].address[0].location);
-	drivers = drivers.sort((a, b) => a.d - b.d);
-	console.log('new lat long test', drivers);
+	drivers = filterLatLng(drivers, newRoute[0].address[0].location);
 
-	// drivers = filterLatLng(drivers, newRoute[0]);
+	if (newRoute[0].pickUp && newRoute[0].dropOff) {
+		// let resultAM = routeCalculator(newRoute[0].Address);
+		let resultAM=[10,10];
+		routing(drivers, newRoute[0], resultAM, 'RecordAM', 0);
+	}
+	if (newRoute[1].pickUp && newRoute[1].dropOff) {
+		let resultPM = routeCalculator(newRoute[1].Address);
+		routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
+	}
+	// if(newRoute[2].pickUp && newRoute[2].dropOff){routing(drivers, newRoute[2], resultPM, 'RecordPM', 2);}
+
 	printResults(drivers);
-	// RouteCalculateDisplay(newRoute[0].address[0].location,newRoute[0].address[1].location);
 	RouteCalculateDisplay(newRoute);
-
-	// Drivers.then((data) => {printResults(data.drivers);	});
 
 	document.getElementById('loadder').style.display = 'none';
 	submitFlag = false;
