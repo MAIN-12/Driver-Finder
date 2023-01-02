@@ -97,10 +97,11 @@ async function routeSetUp() {
 
 function getConfigFile() {
 	let config = {
-		key: 1234,
+		key: 'M1234',
 		bid: 'M122201',
 		topX: 10,
 		user: {
+			id: 'admin@main12.com',
 			Name: 'Juan',
 			Surname: 'Botero',
 		},
@@ -115,7 +116,7 @@ function getConfigFile() {
 }
 async function getDrivers(obj) {
 	let url =
-		'https://script.google.com/macros/s/AKfycbwEQq0PQQAWTALMItsHuJtqjogEgHueywErAtEzlX6fInsFrBNrgscKo94EoD4tUMVW/exec';
+		'https://script.google.com/macros/s/AKfycbw1ZOt2OvfQ53gBLujU06o5qRpECrxzlbLZGRE41h9l5Lv75mRfEHIsQf0O6XmSG1vV/exec';
 	url += `?key=${obj.key}`;
 	url += `&bid=${obj.bid}`;
 	url += obj.status ? `` : '&active=true';
@@ -174,15 +175,16 @@ async function submitFun() {
 	let drivers = data.drivers;
 	drivers = filterLatLng(drivers, newRoute[0].address[0].location);
 
-	if (newRoute[0].pickUp && newRoute[0].dropOff) {
+	if (newRoute[0].pickUp && newRoute[0].dropOff) {  
 		// let resultAM = routeCalculator(newRoute[0].Address);
-		let resultAM=[10,10];
-		routing(drivers, newRoute[0], resultAM, 'RecordAM', 0);
+		let resultAM = [10, 15];
+		drivers = routing(drivers, newRoute[0], resultAM, 'RecordAM', 0);
+		console.log("Route calculation AM:",)
 	}
-	if (newRoute[1].pickUp && newRoute[1].dropOff) {
-		let resultPM = routeCalculator(newRoute[1].Address);
-		routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
-	}
+	// if (newRoute[1].pickUp && newRoute[1].dropOff) {
+	// 	let resultPM = routeCalculator(newRoute[1].Address);
+	// 	routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
+	// }
 	// if(newRoute[2].pickUp && newRoute[2].dropOff){routing(drivers, newRoute[2], resultPM, 'RecordPM', 2);}
 
 	printResults(drivers);

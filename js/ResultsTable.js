@@ -8,9 +8,9 @@ function resultsTable(data) {
             <th>Index</th>
             <th>Name</th>
             <th>MDD</th>
-            <th>Active Routes</th>
-            <th>Total Miles</th>
-            <th>Total Time</th>
+            <th>Routes</th>
+            <th>Miles</th>
+            <th>Time</th>
             <th>More</th>
             </thead>`;
 	html += ' <tbody > ';
@@ -57,7 +57,7 @@ function resultsTable(data) {
 			// },
 			animation: google.maps.Animation.DROP,
 		});
-		let infowindow = new google.maps.InfoWindow({content: `<h3>${data[i].name}</h3><p>${data[i].mdd}</p><p>${data[i].address.formatted}</p>`});
+		let infowindow = new google.maps.InfoWindow({content: `<h4>${data[i].name}</h4><p>MDD: ${data[i].mdd}</p>`});
 		google.maps.event.addListener(marker, 'click', function () {infowindow.open(map, marker);});
 	}
 	html += `</tbody></table></div>`;

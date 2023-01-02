@@ -61,22 +61,21 @@ const DriverFinder = (Addres1, Addres2, Addres3, Addres4) => {
 
 function routing(drivers, route, r, id, S) {
 	for (driver of drivers) {
-		console.log('DRIVER: ', driver.Name, ': \n', driver);
-		console.log('Routes of: ', driver.Name, '\n', driver.Routes);
+		console.log('Routes of: ', driver.name, '\n', driver.routes);
 
-		let thisRoutes = driver.Routes[S];
+		let thisRoutes = driver.routes[S];
 		let index = thisRoutes.indexOf(route);
 		let l = thisRoutes.length;
 
 		console.log('INDEX: ', index);
 		console.log('L: ', l);
 
-		var Addres1 = index === 0 ? driver.Address : thisRoutes[index - 1].Address[3]; // Make the address adapt to the last address and check if the addres its not empty.
-		var Addres2 = route.Address[0];
-		var Addres3 = route.Address[route.Address.length - 1];
-		var Addres4 = index === l - 1 ? driver.Address : thisRoutes[index + 1].Address[0];
+		var Addres1 = index === 0 ? driver.address : thisRoutes[index - 1].address[3]; // Make the address adapt to the last address and check if the addres its not empty.
+		var Addres2 = route.address[0];
+		var Addres3 = route.address[route.address.length - 1];
+		var Addres4 = index === l - 1 ? driver.address : thisRoutes[index + 1].address[0];
 
-		var result = DriverFinder(Addres1, Addres2, Addres3, Addres4);
+		// var result = DriverFinder(Addres1, Addres2, Addres3, Addres4);
 
 		Logger.log(result);
 
@@ -91,9 +90,9 @@ function routing(drivers, route, r, id, S) {
 	return drivers;
 }
 
-function routing(obj, route, top) {
-	drivers = obj;
-	drivers = routing(drivers, route, r, id, S);
-	drivers = routing(drivers, route, r, id, S);
-	return drivers;
-}
+// function routing(obj, route, top) {
+// 	drivers = obj;
+// 	drivers = routing(drivers, route, r, id, S);
+// 	drivers = routing(drivers, route, r, id, S);
+// 	return drivers;
+// }

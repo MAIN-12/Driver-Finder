@@ -64,7 +64,9 @@ h3 {
 	margin: 0;
 }
 h4 {
-	font-size: small;
+	color: rgb(5, 68, 104);
+	font-size: medium;
+	margin-bottom: 0;
 }
 
 .btn-line {
