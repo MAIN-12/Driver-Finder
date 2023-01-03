@@ -63,7 +63,9 @@ function routing(drivers, route, r, id, S) {
 	for (driver of drivers) {
 		console.log('Routes of: ', driver.name, '\n', driver.routes);
 
-		let thisRoutes = driver.routes[S];
+		let thisRoutes = driver.routes;
+        thisRoutes.push(route);
+        thisRoutes.sort();
 		let index = thisRoutes.indexOf(route);
 		let l = thisRoutes.length;
 

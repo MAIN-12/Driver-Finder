@@ -8,7 +8,7 @@ function isloggedin() {
 		logIn.close();
 		return true;
 	} else {
-		console.log('Logged out');
+		console.log('Opening Login form' );
 		logIn.open();
 		return false;
 	}
