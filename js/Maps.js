@@ -1,5 +1,25 @@
 /** @format */
 
+
+function deg2rad(deg) {	return deg * (Math.PI / 180);}
+function getDistanceFromLatLonInmiles(latlng1, latlng2) {
+	let lat1 = latlng1.lat;
+	let lon1 = latlng1.lng;
+	let lat2 = latlng2.lat();
+	let lon2 = latlng2.lng();
+
+	var R = 3963; // Radius of the earth in miles
+	var dLat = (lat2 - lat1) * (Math.PI / 180);
+	var dLon = (lon2 - lon1) * (Math.PI / 180);
+	var a =
+		Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+		Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	var d = R * c; // Distance in km
+	return d;
+}
+
+
 async function codeAddress(address) {
 	// var address = document.getElementById(ID).value;
 	var R = {

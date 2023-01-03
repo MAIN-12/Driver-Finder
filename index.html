@@ -36,12 +36,11 @@
 		</script>
 		<section name="main_page" class="wrapper">
 			<div id="sbar" name="sbar" class="sidebar" style="display: block">
-				
 				<div class="center-align">
 					<h2><i class="material-icons left">menu</i>Driver Finder</h2>
 				</div>
-				
-				<form name="myForm" class="form formbox" style="padding-left: 0; padding-right: 0">					
+
+				<form name="myForm" class="form formbox" style="padding-left: 0; padding-right: 0">
 					<ul class="collapsible">
 						<li>
 							<div class="collapsible-header"><i class="material-icons">map</i>Route Details</div>
@@ -346,6 +345,7 @@
 				directionsDisplay0,
 				directionsDisplay1,
 				directionsDisplay2;
+			let submitFlag;
 
 			function initMap() {
 				var position = { lat: 28.5384, lng: -81.3789 };
@@ -358,11 +358,13 @@
 				map = new google.maps.Map(document.getElementById('map'), mapOptions);
 				geocoder = new google.maps.Geocoder();
 				directionsService = new google.maps.DirectionsService();
-				directionsDisplay0 = new google.maps.DirectionsRenderer({ 
-					lable:"AAA",
-					map: map });
+				directionsDisplay0 = new google.maps.DirectionsRenderer({
+					lable: 'AAA',
+					map: map,
+				});
 				directionsDisplay1 = new google.maps.DirectionsRenderer({ map: map });
 				directionsDisplay2 = new google.maps.DirectionsRenderer({ map: map });
+				submitFlag=false;
 			}
 		</script>
 		<script

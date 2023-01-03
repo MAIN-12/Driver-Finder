@@ -114,40 +114,23 @@ function getConfigFile() {
 	};
 	return config;
 }
+
 async function getDrivers(obj) {
 	let url =
-		'https://script.google.com/macros/s/AKfycbw1ZOt2OvfQ53gBLujU06o5qRpECrxzlbLZGRE41h9l5Lv75mRfEHIsQf0O6XmSG1vV/exec';
+		'https://script.google.com/macros/s/AKfycbyDqPBGYqp0AP7mvUHZjyLoofqOYc-lHNe47acsSEODPle3rFZnHz_A7EK7BftrkgLs/exec';
 	url += `?key=${obj.key}`;
 	url += `&bid=${obj.bid}`;
 	url += obj.status ? `` : '&active=true';
 	url += `&state=${obj.state}`;
 	url += obj.monitor ? `&monitor=true` : '';
 	const result = await fetch(url);
-	return result.json();
+	const R = result.json();
+	console.log('get Data:', R);
+	return R;
 	// result.json().then((data) => {
 	// 	console.log("Available Drivers", data);
 	// 	return data;
 	// });
-}
-
-function deg2rad(deg) {
-	return deg * (Math.PI / 180);
-}
-function getDistanceFromLatLonInmiles(latlng1, latlng2) {
-	let lat1 = latlng1.lat;
-	let lon1 = latlng1.lng;
-	let lat2 = latlng2.lat();
-	let lon2 = latlng2.lng();
-
-	var R = 3963; // Radius of the earth in miles
-	var dLat = (lat2 - lat1) * (Math.PI / 180);
-	var dLon = (lon2 - lon1) * (Math.PI / 180);
-	var a =
-		Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-		Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-	var d = R * c; // Distance in km
-	return d;
 }
 
 function filterLatLng(object, target) {
@@ -158,13 +141,19 @@ function filterLatLng(object, target) {
 	return object.sort((a, b) => a.d - b.d);
 }
 
-let submitFlag = false;
+let submitFlag;
 async function submitFun() {
 	document.getElementById('loadder').style.display = 'block';
 
-	let settings = getConfigFile();
-	let newRoute = await routeSetUp();
+	let settings = {
+		key: User.key,
+		bid: User.bid,
+		topX: 10,
+		user: '',
+		status: document.getElementById('inactiveCheck').checked,
+	};
 
+	let newRoute = await routeSetUp();
 	let data = await getDrivers({
 		key: settings.key,
 		bid: settings.bid,
@@ -172,24 +161,32 @@ async function submitFun() {
 		status: settings.status,
 		state: newRoute[0].state,
 	});
-	let drivers = data.drivers;
-	drivers = filterLatLng(drivers, newRoute[0].address[0].location);
+	try {
+		if (data.drivers) {
+			let drivers = data.drivers;
+			drivers = filterLatLng(drivers, newRoute[0].address[0].location);
 
-	if (newRoute[0].pickUp && newRoute[0].dropOff) {  
-		// let resultAM = routeCalculator(newRoute[0].Address);
-		let resultAM = [10, 15];
-		drivers = routing(drivers, newRoute[0], resultAM, 'RecordAM', 0);
-		console.log("Route calculation AM:",)
+			if (newRoute[0].pickUp && newRoute[0].dropOff) {
+				// let resultAM = routeCalculator(newRoute[0].Address);
+				let resultAM = [10, 15];
+				drivers = routing(drivers, newRoute[0], resultAM, 'RecordAM', 0);
+				console.log('Route calculation AM:');
+			}
+			// if (newRoute[1].pickUp && newRoute[1].dropOff) {
+			// 	let resultPM = routeCalculator(newRoute[1].Address);
+			// 	routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
+			// }
+			// if(newRoute[2].pickUp && newRoute[2].dropOff){routing(drivers, newRoute[2], resultPM, 'RecordPM', 2);}
+
+			printResults(drivers);
+			RouteCalculateDisplay(newRoute);
+		}else{
+			alert("NO DRIVERS AVAILABLE")
+		}
+	} catch (err) {
+		console.error(err);
+	} finally {
+		document.getElementById('loadder').style.display = 'none';
+		submitFlag = false;
 	}
-	// if (newRoute[1].pickUp && newRoute[1].dropOff) {
-	// 	let resultPM = routeCalculator(newRoute[1].Address);
-	// 	routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
-	// }
-	// if(newRoute[2].pickUp && newRoute[2].dropOff){routing(drivers, newRoute[2], resultPM, 'RecordPM', 2);}
-
-	printResults(drivers);
-	RouteCalculateDisplay(newRoute);
-
-	document.getElementById('loadder').style.display = 'none';
-	submitFlag = false;
 }
