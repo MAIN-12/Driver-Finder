@@ -117,7 +117,7 @@ function getConfigFile() {
 
 async function getDrivers(obj) {
 	let url =
-		'https://script.google.com/macros/s/AKfycbyDqPBGYqp0AP7mvUHZjyLoofqOYc-lHNe47acsSEODPle3rFZnHz_A7EK7BftrkgLs/exec';
+		'https://script.google.com/macros/s/AKfycbzeL6j3eOr-4iLTJPdoBh8P6oSw4Ytr38ot17-xam8sDu7r2LLvK12xhGq6tY77-1zG/exec';
 	url += `?key=${obj.key}`;
 	url += `&bid=${obj.bid}`;
 	url += obj.status ? `` : '&active=true';
@@ -172,10 +172,11 @@ async function submitFun() {
 				drivers = routing(drivers, newRoute[0], resultAM, 'RecordAM', 0);
 				console.log('Route calculation AM:');
 			}
-			// if (newRoute[1].pickUp && newRoute[1].dropOff) {
-			// 	let resultPM = routeCalculator(newRoute[1].Address);
-			// 	routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
-			// }
+			if (newRoute[1].pickUp && newRoute[1].dropOff) {
+				let resultAM = [10, 15];
+				let resultPM = routeCalculator(newRoute[1].Address);
+				routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
+			}
 			// if(newRoute[2].pickUp && newRoute[2].dropOff){routing(drivers, newRoute[2], resultPM, 'RecordPM', 2);}
 
 			printResults(drivers);

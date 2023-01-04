@@ -13,7 +13,9 @@ function routeCalculator(addresses) {
 			.setMode('driving')
 			.getDirections();
 
-		if (!data) {throw new Error('No route found!');}
+		if (!data) {
+			throw new Error('No route found!');
+		}
 
 		const { legs: [{ distance: { value: distance1 } } = {}] = [] } = data;
 		const { legs: [{ duration: { value: time1 } } = {}] = [] } = data;
@@ -51,7 +53,7 @@ const DriverFinder = (Addres1, Addres2, Addres3, Addres4) => {
 			results = [distance1 * 0.000621371, distance2 * 0.000621371, time1 / 60, time2 / 60];
 		}
 	} catch {
-		Console.log('Error in Routing');
+		console.log('Error in Routing');
 		// throw new Error('No route found!');
 		results = [9999999, 9999999, 9999999, 9999999];
 	}
@@ -59,35 +61,48 @@ const DriverFinder = (Addres1, Addres2, Addres3, Addres4) => {
 	return results;
 };
 
+function sortRoutes(a, b) { return result = (testHours = a.pickUp.getHours() - b.pickUp.getHours()) ? testHours : a.pickUp.getMinutes() - b.pickUp.getMinutes(); }
+
 function routing(drivers, route, r, id, S) {
 	for (driver of drivers) {
-		console.log('Routes of: ', driver.name, '\n', driver.routes);
-
 		let thisRoutes = driver.routes;
-        thisRoutes.push(route);
-        thisRoutes.sort();
+		thisRoutes.push(route);
+		// thisRoutes.sort();
 		let index = thisRoutes.indexOf(route);
 		let l = thisRoutes.length;
+		console.log(
+			'Routes of: ',
+			driver.name,
+			'\n',
+			driver.routes,
+			'\n Routes.length',
+			l,
+			' | index: ',
+			index
+		);
 
-		console.log('INDEX: ', index);
-		console.log('L: ', l);
+		var address = [];
 
-		var Addres1 = index === 0 ? driver.address : thisRoutes[index - 1].address[3]; // Make the address adapt to the last address and check if the addres its not empty.
-		var Addres2 = route.address[0];
-		var Addres3 = route.address[route.address.length - 1];
-		var Addres4 = index === l - 1 ? driver.address : thisRoutes[index + 1].address[0];
+		address[0] =
+			index === 0 ? driver.address.formatted : thisRoutes[index - 1].address[this.length - 1].formatted; // Make the address adapt to the last address and check if the addres its not empty.
+		address[1] = route.address[0].formatted;
+		address[2] = route.address[route.address.length - 1].formatted;
+		address[3] =
+			index === l - 1 ? driver.address.formatted : thisRoutes[index + 1].address[0].formatted;
 
-		// var result = DriverFinder(Addres1, Addres2, Addres3, Addres4);
+		console.log('ADDRESS', address);
 
-		Logger.log(result);
+		var result = DriverFinder(address[0], address[1], address[2], address[3]);
+
+		console.log(result);
 
 		var record = {};
-		record['ID'] = id;
-		record['Miles'] = [result[0], result[1]];
-		record['Time'] = [result[2], result[3]];
+		record['id'] = id;
+		record['miles'] = [result[0], result[1]];
+		record['time'] = [result[2], result[3]]; 
 		record['TotalMiles'] = result[0] + result[1] + r[0];
 		record['TotalTime'] = result[2] + result[3] + r[1];
-		driver.Record.push(record);
+		driver.record.push(record);
 	}
 	return drivers;
 }

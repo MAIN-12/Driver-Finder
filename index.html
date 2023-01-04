@@ -290,7 +290,7 @@
 								<input
 									type="text"
 									id="userID"
-									style="border: 0; margin-bottom: 0"
+									style="border: 0; padding-top: 1px; padding-bottom: 1px"
 									placeholder="Username"
 								/>
 								<!-- <label for="userID">Username</label> -->
@@ -300,7 +300,7 @@
 								<input
 									type="password"
 									id="pass"
-									style="border: 0; margin-bottom: 0"
+									style="border: 0; padding-top: 1px; padding-bottom: 1px"
 									placeholder="Password"
 								/>
 								<!-- <label for="pass">Password</label> -->
@@ -348,10 +348,15 @@
 
 			function initMap() {
 				var position = { lat: 28.5384, lng: -81.3789 };
+
+				// let _styles=nigthMode();
+				
 				let mapOptions = {
 					zoom: 12,
 					center: position,
 					disableDefaultUI: true,
+					// styles: dayMode(),
+					// styles: _styles,
 				};
 
 				map = new google.maps.Map(document.getElementById('map'), mapOptions);
