@@ -77,18 +77,17 @@ h4 {
 
 
 .sidebar {
-	background: rgb(5, 68, 104);
+	/* background: rgb(5, 68, 104); */
 	position: fixed;
 	z-index: 10;
 	top: 0;
 	left: 0;
 	flex-basis: 225px;
-	min-width: 225px;
 	width: 350px;
 	height: 100%;
 	padding: 10px 20px;
 	transition: all 0.5s ease;
-	/* overflow: auto; */
+	overflow: auto;
 }
 
 .wrapper.content {
@@ -135,6 +134,8 @@ h4 {
 #map {
 	width: 100%;
 	height: 100%;
+
+	/* left: 300; */
 }
 .mapFix{
 	z-index: -10;

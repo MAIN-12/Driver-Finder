@@ -4,7 +4,7 @@
 	<head>
 		<base target="_top" />
 		<meta charset="utf-8" />
-		<meta name="DriverFinder" content="width=device-width, initial-scale=10.0" />
+		<meta name="DriverFinder" content="width=device-width, initial-scale=1.0" />
 		<title>Driver Finder Form</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<link
@@ -26,16 +26,19 @@
 		<!-- <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script> -->
 	</head>
 	<body>
-		<div id="Pre-loader" style="display: block"></div>
-		<script async>
-			window.addEventListener('load', () => {
-				setTimeout(() => {
-					document.getElementById('Pre-loader').style.display = 'none';
-				}, 1000);
-			});
-		</script>
-		<section name="main_page" class="row" >
-			<div id="sbar" name="sbar" class="col s10 m5 l3" style="display: block">
+		<section name="PRELOADER">
+			<div id="Pre-loader" style="display: block"></div>
+			<script async>
+				window.addEventListener('load', () => {
+					setTimeout(() => {
+						document.getElementById('Pre-loader').style.display = 'none';
+					}, 1000);
+				});
+			</script>
+		</section>
+
+		<section name="MAIN-PAGUE">
+			<div id="sbar" name="sbar" class="sidebar" style="display: block">
 				<div class="center-align">
 					<h2><i class="material-icons left">menu</i>Driver Finder</h2>
 				</div>
@@ -144,9 +147,16 @@
 							<div class="collapsible-body">
 								<table>
 									<thead>
-										<th class="center-align"style="border: none; margin: 0; padding: 5px; min-width: 65px;"></th>
-										<th class="center-align"style="border: none; margin: 0; padding: 5px;">Pick Up</th>
-										<th class="center-align"style="border: none; margin: 0; padding: 5px;">Drop Off</th>
+										<th
+											class="center-align"
+											style="border: none; margin: 0; padding: 5px; min-width: 65px"
+										></th>
+										<th class="center-align" style="border: none; margin: 0; padding: 5px">
+											Pick Up
+										</th>
+										<th class="center-align" style="border: none; margin: 0; padding: 5px">
+											Drop Off
+										</th>
 									</thead>
 									<tbody>
 										<tr>
@@ -201,13 +211,18 @@
 								<i class="material-icons">add_box</i>Add special trip
 							</div>
 							<div class="collapsible-body">
-
-
 								<table>
 									<thead>
-										<th class="center-align"style="border: none; margin: 0; padding: 5px; min-width: 65px;"></th>
-										<th class="center-align" style="border: none; margin: 0; padding: 5px;">Pick Up</th>
-										<th class="center-align"style="border: none; margin: 0; padding: 5px;">Drop Off</th>
+										<th
+											class="center-align"
+											style="border: none; margin: 0; padding: 5px; min-width: 65px"
+										></th>
+										<th class="center-align" style="border: none; margin: 0; padding: 5px">
+											Pick Up
+										</th>
+										<th class="center-align" style="border: none; margin: 0; padding: 5px">
+											Drop Off
+										</th>
 									</thead>
 									<tbody>
 										<tr>
@@ -217,7 +232,7 @@
 													id="sPickUp"
 													type="text"
 													class="timepicker center-align"
-													placeholder='--:-- PM'
+													placeholder="--:-- PM"
 													style="border: none; margin: 0"
 												/>
 											</td>
@@ -264,15 +279,12 @@
 					</div>
 				</form>
 			</div>
-			
-<div class="col s9">
-	<div id="map" class="mapFix"></div>
-</div>
 
+			<div id="map" class="mapFix"></div>
 
 			<div id="result"></div>
 		</section>
-		<section name="LOG">
+		<section name="LOG-IN">
 			<div class="btn-login">
 				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger"
 					><i class="material-icons">person</i></a
@@ -329,21 +341,23 @@
 				</div>
 			</div>
 		</section>
-		<div id="loadder" class="LogInBack" style="display: none">
-			<div class="preloader-wrapper big active center-block loadder">
-				<div class="modal-content spinner-layer spinner-blue-only">
-					<div class="circle-clipper left">
-						<div class="circle"></div>
-					</div>
-					<div class="gap-patch">
-						<div class="circle"></div>
-					</div>
-					<div class="circle-clipper right">
-						<div class="circle"></div>
-					</div>
+<section name="EXTRAS">
+	<div id="loadder" class="LogInBack" style="display: none">
+		<div class="preloader-wrapper big active center-block loadder">
+			<div class="modal-content spinner-layer spinner-blue-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
 				</div>
 			</div>
 		</div>
+	</div>
+</section>
 		<script>
 			var map,
 				geocoder,
@@ -356,7 +370,7 @@
 				var position = { lat: 28.5384, lng: -81.3789 };
 
 				// let _styles=nigthMode();
-				
+
 				let mapOptions = {
 					zoom: 12,
 					center: position,
