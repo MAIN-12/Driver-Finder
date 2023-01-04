@@ -174,7 +174,7 @@ async function submitFun() {
 			}
 			if (newRoute[1].pickUp && newRoute[1].dropOff) {
 				let resultAM = [10, 15];
-				let resultPM = routeCalculator(newRoute[1].Address);
+				// let resultPM = routeCalculator(newRoute[1].Address);
 				routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
 			}
 			// if(newRoute[2].pickUp && newRoute[2].dropOff){routing(drivers, newRoute[2], resultPM, 'RecordPM', 2);}
