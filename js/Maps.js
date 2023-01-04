@@ -1,9 +1,9 @@
 /** @format */
 
-function deg2rad(deg) {
-	return deg * (Math.PI / 180);
-}
 function getDistanceFromLatLonInmiles(latlng1, latlng2) {
+	function deg2rad(deg) {
+		return deg * (Math.PI / 180);
+	}
 	let lat1 = latlng1.lat;
 	let lon1 = latlng1.lng;
 	let lat2 = latlng2.lat();

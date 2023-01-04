@@ -166,23 +166,29 @@ async function submitFun() {
 			let drivers = data.drivers;
 			drivers = filterLatLng(drivers, newRoute[0].address[0].location);
 
+			let result = [];
+			result[0] = [0, 0];
+			result[1] = [0, 0];
+			result[2] = [0, 0];
+			// let resultAM = routeCalculator(newRoute[0].Address);
 			if (newRoute[0].pickUp && newRoute[0].dropOff) {
-				// let resultAM = routeCalculator(newRoute[0].Address);
-				let resultAM = [10, 15];
-				drivers = routing(drivers, newRoute[0], resultAM, 'RecordAM', 0);
+				drivers = routing(drivers, newRoute[0], result[0], 'Record_AM', 0);
 				console.log('Route calculation AM:');
 			}
 			if (newRoute[1].pickUp && newRoute[1].dropOff) {
-				let resultAM = [10, 15];
-				// let resultPM = routeCalculator(newRoute[1].Address);
-				routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
+				routing(drivers, newRoute[1], result[1], 'Record_PM', 1);
+				console.log('Route calculation PM:');
 			}
-			// if(newRoute[2].pickUp && newRoute[2].dropOff){routing(drivers, newRoute[2], resultPM, 'RecordPM', 2);}
+			
+			if (newRoute[2].pickUp && newRoute[2].dropOff) {
+				routing(drivers, newRoute[2], result[2], 'Special_Record', 1);
+				console.log('Route calculation Spetial Trip:');
+			}
 
 			printResults(drivers);
 			RouteCalculateDisplay(newRoute);
-		}else{
-			alert("NO DRIVERS AVAILABLE")
+		} else {
+			alert('NO DRIVERS AVAILABLE');
 		}
 	} catch (err) {
 		console.error(err);

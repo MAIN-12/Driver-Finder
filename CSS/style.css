@@ -248,6 +248,9 @@ input[type='submit'] {
     border-left: none;
     margin: 0.5rem 0 1rem 0;
 }
+span{
+	padding: 0px;
+}
 
 /* td {
 	padding: 5px;
