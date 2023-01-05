@@ -195,14 +195,8 @@ async function submitFun() {
 				console.log('Route calculation AM:');
 			}
 			if (newRoute[1].pickUp && newRoute[1].dropOff) {
-<<<<<<< HEAD
 				routing(drivers, newRoute[1], result[1], 'Record_PM', 1);
 				console.log('Route calculation PM:');
-=======
-				let resultAM = [10, 15];
-				let resultPM = routeCalculator(newRoute[1].Address);
-				routing(drivers, newRoute[1], resultPM, 'RecordPM', 1);
->>>>>>> parent of 1f55315 (Result Table Update)
 			}
 			
 			// if (newRoute[2].pickUp && newRoute[2].dropOff) {
