@@ -5,64 +5,108 @@
 
 html,
 body {
+	margin: 0;
 	height: fit-content;
-	/* background-color: white; */
-	font-size: small;
+	background-color: white;
 	font-family: 'Poppins', sans-serif;
+	font-size: small;
 }
 
 /* width */
 ::-webkit-scrollbar {
 	background: transparent;
 	width: 6px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
 	/* box-shadow: inset 0 0 5px grey;  */
 	border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
 	background: transparent;
 	/* background: darkgrey;  */
 	border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-	background: rgb(5, 68, 104);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: rgb(5, 68, 104); 
 	border-radius: 10px;
+  }
+
+h1 {
+	background-color: white;
+	border-radius: 20px;
 }
 
-h4 {
+h2 {
+	background-color: white;
+	font-size: x-large;
 	color: rgb(5, 68, 104);
+	border-radius: 20px;
 	padding-left: 10px;
 	padding-right: 50px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	/* margin-bottom: 5px; */
+	border:1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+}
+h3 {
+	color: rgb(5, 68, 104);
+	font-size: large;
+	padding-left: 10px;
 	padding-top: 3px;
 	padding-bottom: 3px;
+	margin: 0;
+}
+h4 {
+	color: rgb(5, 68, 104);
+	font-size: medium;
+	margin-bottom: 0;
 }
 
-.sidebar {
-	/* background: rgb(5, 68, 104); */
+.btn-line {
+	color: rgb(5, 68, 104);
+	font-size: large;
+}
 
-	max-width: 350px;
+.wrapper .sidebar {
+	/* background: rgb(5, 68, 104); */
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	flex-basis: 225px;
+	min-width: 225px;
+	width: 350px;
+	height: 100%;
 	padding: 10px 20px;
 	transition: all 0.5s ease;
-	overflow: auto;
+	/* overflow: auto; */
+}
+
+.wrapper.content {
+	background: white;
+	position: relative;
+	top: 0;
+	left: 350px;
+	right: 100px;
+	height: 100%;
+	padding: 0;
+	transition: all 0.5s ease;
 }
 
 .formbox {
 	background: white;
 	border-radius: 20px;
-	padding-left: 0;
-	padding-right: 0;
-	padding-bottom: 20px;
+	padding: 20px 20px;
 	overflow-y: auto;
-	border: 1px solid #ddd;
-	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
-		0 1px 5px 0 rgb(0 0 0 / 20%);
+	border:1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 
 .results_table {
@@ -78,22 +122,13 @@ h4 {
 	padding: 20px 20px;
 	border-radius: 20px;
 	overflow: auto;
-	border: 1px solid #ddd;
-	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
-		0 1px 5px 0 rgb(0 0 0 / 20%);
+	border:1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 
-#map {
+#map {	
 	width: 100%;
-	height: 100%;
-
-	/* left: 300; */
-}
-.mapFix {
-	z-index: -10;
-	position: absolute;
-	top: 0;
-	right: 0;
+	height: 100vh;
 	overflow: none;
 	/* left: 300; */
 }
@@ -180,8 +215,8 @@ input[type='submit'] {
 
 #Pre-loader {
 	background: #ffffff
-		url(https://i.pinimg.com/originals/8c/7b/75/8c7b7516541848e2a94222bc2e2fac98.gif) no-repeat
-		center;
+		url(https://i.pinimg.com/originals/8c/7b/75/8c7b7516541848e2a94222bc2e2fac98.gif)
+		no-repeat center;
 	background-size: 20%;
 	height: 100vh;
 	width: 100%;
@@ -196,42 +231,25 @@ input[type='submit'] {
 	width: 100%;
 	height: 44px;
 }
-.box:hover {
-	opacity: 0.75;
+.box:hover{
+	opacity:0.75;
 }
 
-.R20 {
+.R20{
 	border-radius: 20px;
 }
-.clean {
-	border: 0;
-	margin-bottom: 0;
+.clean{
+	border: 0; 
+	margin-bottom: 0
 }
 .collapsible {
-	border-top: none;
-	border-right: none;
-	border-left: none;
-	margin: 0.5rem 0 1rem 0;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    margin: 0.5rem 0 1rem 0;
 }
-span {
+span{
 	padding: 0px;
-}
-
-
-@media only screen and (max-width: 800px) {
-	.body {
-		font-size: larger;
-	}
-	.sidebar {
-		width: calc(100% - 16px);
-	}
-}
-
-
-@media only screen and (max-width: 500px) {
-	.body {
-		font-size: xx-large;
-	}
 }
 
 /* td {
