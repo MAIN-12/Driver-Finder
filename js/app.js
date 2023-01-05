@@ -91,6 +91,25 @@ async function routeSetUp() {
 			Address
 		)
 	);
+
+	if(sPickUp){
+		RouteArray.push(
+			new route(
+				routeName, //Route Name
+				'Active', //Status
+				'', //_MDD
+				'PM', //AmPm  <==================
+				sDays, //Days  <==================
+				monitor, //Monitor
+				'', //Passangers
+				sPickUp, //_PickUp <==================
+				sDropOff, //_DropOff <==================
+				Address[0].state, //State
+				'', //City
+				Address
+			)
+		);
+	}
 	console.log('New Route', RouteArray);
 	return RouteArray;
 }
@@ -180,10 +199,10 @@ async function submitFun() {
 				console.log('Route calculation PM:');
 			}
 			
-			if (newRoute[2].pickUp && newRoute[2].dropOff) {
-				routing(drivers, newRoute[2], result[2], 'Special_Record', 1);
-				console.log('Route calculation Spetial Trip:');
-			}
+			// if (newRoute[2].pickUp && newRoute[2].dropOff) {
+			// 	routing(drivers, newRoute[2], result[2], 'Special_Record', 1);
+			// 	console.log('Route calculation Spetial Trip:');
+			// }
 
 			printResults(drivers);
 			RouteCalculateDisplay(newRoute);
