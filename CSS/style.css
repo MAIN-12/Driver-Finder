@@ -69,7 +69,12 @@ h4 {
 	margin-bottom: 0;
 }
 
-.sidebar {
+.btn-line {
+	color: rgb(5, 68, 104);
+	font-size: large;
+}
+
+.wrapper .sidebar {
 	/* background: rgb(5, 68, 104); */
 	position: fixed;
 	z-index: 10;
@@ -79,6 +84,7 @@ h4 {
 	min-width: 225px;
 	width: 350px;
 	height: 100%;
+	padding: 10px 20px;
 	transition: all 0.5s ease;
 	/* overflow: auto; */
 }
@@ -97,7 +103,10 @@ h4 {
 .formbox {
 	background: white;
 	border-radius: 20px;
-	padding: 20px 20px;
+	padding-top: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-bottom: 20px;
 	overflow-y: auto;
 	border:1px solid #ddd;
 	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
