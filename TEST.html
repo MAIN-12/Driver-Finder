@@ -9,7 +9,7 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
 		/>
-		<link rel="stylesheet" href="CSS/style.css" />
+		<!-- <link rel="stylesheet" href="CSS/style.css" /> -->
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
 			defer
@@ -24,373 +24,225 @@
 		<!-- <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script> -->
 	</head>
 	<body>
-		<section name="PRELOADER">
-			<div id="Pre-loader" style="display: flex"></div>
-			<script async>
-				window.addEventListener('load', () => {
-					setTimeout(() => {
-						document.getElementById('Pre-loader').style.display = 'none';
-					}, 1000);
-				});
-			</script>
-		</section>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">map</i>Route Details</div>
+                <div class="collapsible-body">
+                    <div class="input-field">
+                        <input name="fname" id="fname" type="text" class="validate" />
+                        <label for="fname">Route Name</label>
+                    </div>
+                    <div class="input-field">
+                        <select name="state" id="state">
+                            <option for="state" value="" disabled selected>State</option>
+                            <option for="state" value="Florida">Florida</option>
+                            <option for="state" value="Indiana">Indiana</option>
+                            <option for="state" value="Pensilvania">Pensilvania</option>
+                            <option for="state" value="Tennessee">Tennessee</option>
+                        </select>
+                        <label for="state"></label>
+                    </div>
+                    <br />
+                    <p>
+                        <label>
+                            <input id="MonitorCheck" type="checkbox" />
+                            <span>Monitor</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input id="inactiveCheck" type="checkbox" />
+                            <span>Include inactive drivers</span>
+                        </label>
+                    </p>
+                </div>
+            </li>
+            <li class="active">
+                <div class="collapsible-header"><i class="material-icons">place</i>Address</div>
+                <div class="collapsible-body">
+                    <div id="student1" class="row" style="margin-bottom: 5px; display: block">
+                        <div class="input-field col s10" style="margin: 0 0 0 0">
+                            <input name="address1" id="address1" type="text" class="validate" required />
+                            <label for="address1">Student 1 Address</label>
+                        </div>
+                        <div class="col s2">
+                            <a
+                                id="addStudent"
+                                type="button"
+                                class="btn-floating btn-small waves-effect waves-light blue"
+                            >
+                                <i class="material-icons">add</i>
+                            </a>
+                        </div>
+                        <br />
+                    </div>
+                    <div id="student2" class="row" style="margin-bottom: 5px; display: none">
+                        <div class="input-field col s10" style="margin: 0">
+                            <input name="address2" id="address2" type="text" class="validate" />
+                            <label for="address2">Student 2 Address</label>
+                        </div>
+                        <div class="col s2">
+                            <a
+                                id="removeStudent2"
+                                type="button"
+                                class="btn-floating btn-small waves-effect waves-light grey"
+                            >
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </div>
+                        <br />
+                    </div>
+                    <div id="student3" class="row" style="margin-bottom: 5px; display: none">
+                        <div class="input-field col s10" style="margin: 0">
+                            <input name="address3" id="address3" type="text" class="validate" />
+                            <label for="address3">Student 3 Address</label>
+                        </div>
+                        <div class="col s2">
+                            <a
+                                id="removeStudent3"
+                                type="button"
+                                class="btn-floating btn-small waves-effect waves-light grey"
+                            >
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </div>
+                        <br />
+                    </div>
+                    <div id="school" class="row" style="display: block">
+                        <div class="input-field col s10" style="margin: 0">
+                            <input
+                                name="schoolAddress"
+                                id="schoolAddress"
+                                type="text"
+                                class="validate"
+                                required
+                            />
+                            <label for="schoolAddress">School Address</label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">access_time</i>Time</div>
+                <div class="collapsible-body">
+                    <table>
+                        <thead>
+                            <th
+                                class="center-align"
+                                style="border: none; margin: 0; padding: 5px; min-width: 65px"
+                            ></th>
+                            <th class="center-align" style="border: none; margin: 0; padding: 5px">
+                                Pick Up
+                            </th>
+                            <th class="center-align" style="border: none; margin: 0; padding: 5px">
+                                Drop Off
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 5px">Trip AM</td>
+                                <td style="padding: 0">
+                                    <input
+                                        id="pickUpAM"
+                                        type="text"
+                                        class="timepicker center-align"
+                                        placeholder="--:-- AM"
+                                        style="border: none; margin: 0"
+                                    />
+                                </td>
+                                <td style="padding: 0">
+                                    <input
+                                        id="dropOffAM"
+                                        type="text"
+                                        class="timepicker center-align"
+                                        placeholder="--:-- AM"
+                                        style="border: none; margin: 0"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 5px">Trip PM</td>
+                                <td style="padding: 0">
+                                    <input
+                                        id="pickUpPM"
+                                        type="text"
+                                        class="timepicker center-align"
+                                        placeholder="--:-- PM"
+                                        style="border: none; margin: 0"
+                                    />
+                                </td>
+                                <td style="padding: 0">
+                                    <input
+                                        id="dropOffPM"
+                                        type="text"
+                                        class="timepicker center-align"
+                                        placeholder="--:-- PM"
+                                        style="border: none; margin: 0"
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
 
-		<section name="MAIN-PAGUE" style="display:flexbox">
-				<div class="center-align">
-					<h2><i class="material-icons left">menu</i>Driver Finder</h2>
-				</div>
-
-				<form name="myForm">
-					<ul class="collapsible">
-						<li>
-							<div class="collapsible-header"><i class="material-icons">map</i>Route Details</div>
-							<div class="collapsible-body">
-								<div class="input-field col s7">
-									<input name="fname" id="fname" type="text" class="validate" />
-									<label for="fname">Route Name</label>
-								</div>
-								<div class="input-field col s12">
-									<select name="state" id="state">
-										<option for="state" value="" disabled selected>State</option>
-										<option for="state" value="Florida">Florida</option>
-										<option for="state" value="Indiana">Indiana</option>
-										<option for="state" value="Pensilvania">Pensilvania</option>
-										<option for="state" value="Tennessee">Tennessee</option>
-									</select>
-									<label for="state"></label>
-								</div>
-								<br />
-								<p>
-									<label>
-										<input id="MonitorCheck" type="checkbox" />
-										<span>Monitor</span>
-									</label>
-								</p>
-								<p>
-									<label>
-										<input id="inactiveCheck" type="checkbox" />
-										<span>Include inactive drivers</span>
-									</label>
-								</p>
-							</div>
-						</li>
-						<li class="active">
-							<div class="collapsible-header"><i class="material-icons">place</i>Address</div>
-							<div class="collapsible-body">
-								<div id="student1"  style="margin-bottom: 5px;">
-									<div class="input-field col s10" style="margin: 0 0 0 0">
-										<input name="address1" id="address1" type="text" class="validate" required />
-										<label for="address1">Student 1 Address</label>
-									</div>
-									<div class="col s2">
-										<a
-											id="addStudent"
-											type="button"
-											class="btn-floating btn-small waves-effect waves-light blue"
-										>
-											<i class="material-icons">add</i>
-										</a>
-									</div>
-									<br />
-								</div>
-								<div id="student2" style="margin-bottom: 5px; display: none">
-									<div class="input-field col s10" style="margin: 0">
-										<input name="address2" id="address2" type="text" class="validate" />
-										<label for="address2">Student 2 Address</label>
-									</div>
-									<div class="col s2">
-										<a
-											id="removeStudent2"
-											type="button"
-											class="btn-floating btn-small waves-effect waves-light grey"
-										>
-											<i class="material-icons">delete</i>
-										</a>
-									</div>
-									<br />
-								</div>
-								<div id="student3" style="margin-bottom: 5px; display: none">
-									<div class="input-field col s10" style="margin: 0">
-										<input name="address3" id="address3" type="text" class="validate" />
-										<label for="address3">Student 3 Address</label>
-									</div>
-									<div class="col s2">
-										<a
-											id="removeStudent3"
-											type="button"
-											class="btn-floating btn-small waves-effect waves-light grey"
-										>
-											<i class="material-icons">delete</i>
-										</a>
-									</div>
-									<br />
-								</div>
-								<div id="school">
-									<div class="input-field col s10" style="margin: 0">
-										<input
-											name="schoolAddress"
-											id="schoolAddress"
-											type="text"
-											class="validate"
-											required
-										/>
-										<label for="schoolAddress">School Address</label>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="collapsible-header"><i class="material-icons">access_time</i>Time</div>
-							<div class="collapsible-body">
-								<table>
-									<thead>
-										<th
-											class="center-align"
-											style="border: none; margin: 0; padding: 5px; min-width: 65px"
-										></th>
-										<th class="center-align" style="border: none; margin: 0; padding: 5px">
-											Pick Up
-										</th>
-										<th class="center-align" style="border: none; margin: 0; padding: 5px">
-											Drop Off
-										</th>
-									</thead>
-									<tbody>
-										<tr>
-											<td style="padding: 5px">Trip AM</td>
-											<td style="padding: 0">
-												<input
-													id="pickUpAM"
-													type="text"
-													class="timepicker center-align"
-													placeholder="--:-- AM"
-													style="border: none; margin: 0"
-												/>
-											</td>
-											<td style="padding: 0">
-												<input
-													id="dropOffAM"
-													type="text"
-													class="timepicker center-align"
-													placeholder="--:-- AM"
-													style="border: none; margin: 0"
-												/>
-											</td>
-										</tr>
-										<tr>
-											<td style="padding: 5px">Trip PM</td>
-											<td style="padding: 0">
-												<input
-													id="pickUpPM"
-													type="text"
-													class="timepicker center-align"
-													placeholder="--:-- PM"
-													style="border: none; margin: 0"
-												/>
-											</td>
-											<td style="padding: 0">
-												<input
-													id="dropOffPM"
-													type="text"
-													class="timepicker center-align"
-													placeholder="--:-- PM"
-													style="border: none; margin: 0"
-												/>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</li>
-
-						<li>
-							<div class="collapsible-header">
-								<i class="material-icons">add_box</i>Add special trip
-							</div>
-							<div class="collapsible-body">
-								<table>
-									<thead>
-										<th
-											class="center-align"
-											style="border: none; margin: 0; padding: 5px; min-width: 65px"
-										></th>
-										<th class="center-align" style="border: none; margin: 0; padding: 5px">
-											Pick Up
-										</th>
-										<th class="center-align" style="border: none; margin: 0; padding: 5px">
-											Drop Off
-										</th>
-									</thead>
-									<tbody>
-										<tr>
-											<td style="padding: 5px">Trip 3</td>
-											<td style="padding: 0">
-												<input
-													id="sPickUp"
-													type="text"
-													class="timepicker center-align"
-													placeholder="--:-- PM"
-													style="border: none; margin: 0"
-												/>
-											</td>
-											<td style="padding: 0">
-												<input
-													id="sDropOff"
-													type="text"
-													class="timepicker center-align"
-													placeholder="--:-- PM"
-													style="border: none; margin: 0"
-												/>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="input-field col s12">
-									<select multiple>
-										<option value="" disabled selected>Select days</option>
-										<option value="0">Sunday</option>
-										<option value="1">Monday</option>
-										<option value="2">Tuesday</option>
-										<option value="3">Wednesday</option>
-										<option value="4">Thursday</option>
-										<option value="5">Friday</option>
-										<option value="6">Saturday</option>
-									</select>
-									<!-- <label>Special schedule</label> -->
-								</div>
-							</div>
-						</li>
-					</ul>
-
-					<br />
-					<div class="center-align">
-						<button type="reset" class="waves-effect waves-light btn blue R20">
-							<i class="material-icons">replay</i>
-						</button>
-						<button type="submit" class="btn waves-effect waves-light blue R20" name="action">
-							Search <i class="material-icons right">search</i>
-						</button>
-						<button type="button" class="waves-effect waves-light btn blue R20" id="settings">
-							<i class="material-icons">settings</i>
-						</button>
-					</div>
-				</form>
-			</div> 
-
-			<div id="map" class="mapFix"></div>
-
-			<div id="result"></div>
-		</section>
-		<section name="LOG-IN">
-			<div class="btn-login">
-				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger"
-					><i class="material-icons">person</i></a
-				>
-			</div>
-
-			<div id="login" class="modal">
-				<h5 class="modal-close">&#10005;</h5>
-				<div class="modal-content">
-					<h3 class="center">Please sign in</h3>
-
-					<form
-						name="loginForm"
-						id="loginForm"
-						class="form"
-						style="padding-left: 30px; padding-right: 30px"
-					>
-						<div class="center-align">
-							<div class="input-field box">
-								<i class="material-icons prefix">person</i>
-								<input
-									type="text"
-									id="userID"
-									style="border: 0; padding-top: 1px; padding-bottom: 1px"
-									placeholder="Username"
-								/>
-								<!-- <label for="userID">Username</label> -->
-							</div>
-							<div class="input-field box">
-								<i class="material-icons prefix">lock</i>
-								<input
-									type="password"
-									id="pass"
-									style="border: 0; padding-top: 1px; padding-bottom: 1px"
-									placeholder="Password"
-								/>
-								<!-- <label for="pass">Password</label> -->
-								<!-- <span class="helper-text" data-error="wrong user name or password" data-success="Loged in">Helper text</span> -->
-							</div>
-							<p id="wronfPass" style="color: red; display: none">wrong user name or password</p>
-							<button
-								name="login-submit"
-								id="login-submit"
-								class="btn blue"
-								type="submit"
-								style="border-radius: 20px; width: 100%"
-							>
-								Log in<i class="material-icons right"></i></button
-							><br /><br />
-							<a href="https://www.google.com/">Forgot password?</a><br />
-							<b>Don't have an account? </b><a href="https://www.google.com/">Sign up</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</section>
-<section name="EXTRAS">
-	<div id="loadder" class="LogInBack" style="display: none">
-		<div class="preloader-wrapper big active center-block loadder">
-			<div class="modal-content spinner-layer spinner-blue-only">
-				<div class="circle-clipper left">
-					<div class="circle"></div>
-				</div>
-				<div class="gap-patch">
-					<div class="circle"></div>
-				</div>
-				<div class="circle-clipper right">
-					<div class="circle"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-		<script>
-			var map,
-				geocoder,
-				directionsService,
-				directionsDisplay0,
-				directionsDisplay1,
-				directionsDisplay2;
-
-			function initMap() {
-				var position = { lat: 28.5384, lng: -81.3789 };
-
-				// let _styles=nigthMode();
-
-				let mapOptions = {
-					zoom: 12,
-					center: position,
-					disableDefaultUI: true,
-					// styles: dayMode(),
-					// styles: _styles,
-				};
-
-				map = new google.maps.Map(document.getElementById('map'), mapOptions);
-				geocoder = new google.maps.Geocoder();
-				directionsService = new google.maps.DirectionsService();
-				directionsDisplay0 = new google.maps.DirectionsRenderer({
-					lable: 'AAA',
-					map: map,
-				});
-				directionsDisplay1 = new google.maps.DirectionsRenderer({ map: map });
-				directionsDisplay2 = new google.maps.DirectionsRenderer({ map: map });
-			}
-		</script>
-		<script
-			async
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAlmb_f3QrkP505PiLxQRfVjpQdBZumRg&callback=initMap"
-			defer
-		></script>
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">add_box</i>Add special trip
+                </div>
+                <div class="collapsible-body">
+                    <table>
+                        <thead>
+                            <th
+                                class="center-align"
+                                style="border: none; margin: 0; padding: 5px; min-width: 65px"
+                            ></th>
+                            <th class="center-align" style="border: none; margin: 0; padding: 5px">
+                                Pick Up
+                            </th>
+                            <th class="center-align" style="border: none; margin: 0; padding: 5px">
+                                Drop Off
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 5px">Trip 3</td>
+                                <td style="padding: 0">
+                                    <input
+                                        id="sPickUp"
+                                        type="text"
+                                        class="timepicker center-align"
+                                        placeholder="--:-- PM"
+                                        style="border: none; margin: 0"
+                                    />
+                                </td>
+                                <td style="padding: 0">
+                                    <input
+                                        id="sDropOff"
+                                        type="text"
+                                        class="timepicker center-align"
+                                        placeholder="--:-- PM"
+                                        style="border: none; margin: 0"
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="input-field col s12">
+                        <select multiple>
+                            <option value="" disabled selected>Select days</option>
+                            <option value="0">Sunday</option>
+                            <option value="1">Monday</option>
+                            <option value="2">Tuesday</option>
+                            <option value="3">Wednesday</option>
+                            <option value="4">Thursday</option>
+                            <option value="5">Friday</option>
+                            <option value="6">Saturday</option>
+                        </select>
+                        <!-- <label>Special schedule</label> -->
+                    </div>
+                </div>
+            </li>
+        </ul>
 	</body>
 </html>

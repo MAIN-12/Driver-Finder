@@ -11,6 +11,7 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
 		/>
+		<!-- <link rel="stylesheet" href="CSS/materialize/materialize.min.css" /> -->
 		<link rel="stylesheet" href="CSS/style.css" />
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
@@ -37,13 +38,14 @@
 			</script>
 		</section>
 
-		<section name="MAIN-PAGUE">
+		<section name="MAIN-PAGUE" class="row">
 			<div id="sbar" name="sbar" class="sidebar" style="display: block">
-				<div class="center-align">
-					<h2><i class="material-icons left">menu</i>Driver Finder</h2>
-				</div>
 
 				<form name="myForm" class="form formbox">
+					<div class="center-align">
+						<h4><i class="material-icons left">menu</i>Driver Finder</h4>
+					</div>
+
 					<ul class="collapsible">
 						<li>
 							<div class="collapsible-header"><i class="material-icons">map</i>Route Details</div>
@@ -341,23 +343,23 @@
 				</div>
 			</div>
 		</section>
-<section name="EXTRAS">
-	<div id="loadder" class="LogInBack" style="display: none">
-		<div class="preloader-wrapper big active center-block loadder">
-			<div class="modal-content spinner-layer spinner-blue-only">
-				<div class="circle-clipper left">
-					<div class="circle"></div>
-				</div>
-				<div class="gap-patch">
-					<div class="circle"></div>
-				</div>
-				<div class="circle-clipper right">
-					<div class="circle"></div>
+		<section name="EXTRAS">
+			<div id="loadder" class="LogInBack" style="display: none">
+				<div class="preloader-wrapper big active center-block loadder">
+					<div class="modal-content spinner-layer spinner-blue-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+						</div>
+						<div class="gap-patch">
+							<div class="circle"></div>
+						</div>
+						<div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</section>
+		</section>
 		<script>
 			var map,
 				geocoder,
