@@ -91,6 +91,25 @@ async function routeSetUp() {
 			Address
 		)
 	);
+
+	if(sPickUp){
+		RouteArray.push(
+			new route(
+				routeName, //Route Name
+				'Active', //Status
+				'', //_MDD
+				'PM', //AmPm  <==================
+				sDays, //Days  <==================
+				monitor, //Monitor
+				'', //Passangers
+				sPickUp, //_PickUp <==================
+				sDropOff, //_DropOff <==================
+				Address[0].state, //State
+				'', //City
+				Address
+			)
+		);
+	}
 	console.log('New Route', RouteArray);
 	return RouteArray;
 }
