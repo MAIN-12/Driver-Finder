@@ -20,7 +20,7 @@ function resultsTable(data) {
 
 		let miles = data[i].record[0]
 			? data[i].record[0].TotalTime.toFixed(2)+ ' miles'
-			: '';//'aprox ' + data[i].d.toFixed(2) + ' miles';
+			: 'aprox ' + data[i].d.toFixed(2) + ' miles';
 		let time = data[i].record[0] ? data[i].record[0].TotalTime.toFixed(2) + ' min' : '';
 
 		html += ' <tr > ';
@@ -33,8 +33,8 @@ function resultsTable(data) {
 		html += `<td> ${data[i].name} </td>`;
 		html += `<td> ${data[i].mdd} </td>`;
 		html += `<td> ${data[i].routesLog} </td>`;
-		html += `<td> ${data[i].d.toFixed(2)} miles </td>`;
-		html += `<td> ${data[i].record[0].TotalTime.toFixed(2)} min </td>`;
+		html += `<td> ${miles} miles </td>`;
+		html += `<td> ${time} min </td>`;
 		html += `<td>
                     <a class="btn-floating btn-small waves-effect waves-light blue">
                         <i class="material-icons">add</i>
