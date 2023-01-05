@@ -69,12 +69,7 @@ h4 {
 	margin-bottom: 0;
 }
 
-.btn-line {
-	color: rgb(5, 68, 104);
-	font-size: large;
-}
-
-.wrapper .sidebar {
+.sidebar {
 	/* background: rgb(5, 68, 104); */
 	position: fixed;
 	z-index: 10;
@@ -84,7 +79,6 @@ h4 {
 	min-width: 225px;
 	width: 350px;
 	height: 100%;
-	padding: 10px 20px;
 	transition: all 0.5s ease;
 	/* overflow: auto; */
 }
