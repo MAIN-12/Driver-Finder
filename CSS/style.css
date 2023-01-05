@@ -36,6 +36,13 @@ body {
 	border-radius: 10px;
 }
 
+h3 {
+	color: rgb(5, 68, 104);
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
 h4 {
 	color: rgb(5, 68, 104);
 	padding-left: 10px;
@@ -46,7 +53,6 @@ h4 {
 
 .sidebar {
 	/* background: rgb(5, 68, 104); */
-
 	max-width: 350px;
 	padding: 10px 20px;
 	transition: all 0.5s ease;
@@ -177,17 +183,6 @@ input[type='submit'] {
 	margin-right: 20px;
 }
 
-#Pre-loader {
-	background: #ffffff
-		url(https://i.pinimg.com/originals/8c/7b/75/8c7b7516541848e2a94222bc2e2fac98.gif) no-repeat
-		center;
-	background-size: 20%;
-	height: 100vh;
-	width: 100%;
-	position: fixed;
-	z-index: 100;
-}
-
 .box {
 	border: 1px solid;
 	border-radius: 22px;
@@ -216,22 +211,33 @@ span {
 	padding: 0px;
 }
 
+#Pre-loader {
+	background: #ffffff
+		url(https://i.pinimg.com/originals/8c/7b/75/8c7b7516541848e2a94222bc2e2fac98.gif) no-repeat
+		center;
+	background-size: 20%;
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	display: block;
+	z-index: 1000;
+}
 
-@media only screen and (max-width: 800px) {
-	.body {
-		font-size: larger;
+/* @media only screen and (max-width: 1000px) {
+	.html {
+		font-size: xx-large;
 	}
 	.sidebar {
+		max-width: 1000px;
 		width: calc(100% - 16px);
 	}
 }
 
-
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 425px) {
 	.body {
 		font-size: xx-large;
 	}
-}
+} */
 
 /* td {
 	padding: 5px;

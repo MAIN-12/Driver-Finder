@@ -28,7 +28,7 @@
 	</head>
 	<body>
 		<section name="PRELOADER">
-			<div id="Pre-loader" style="display: block"></div>
+			<div id="Pre-loader"></div>
 			<script async>
 				window.addEventListener('load', () => {
 					setTimeout(() => {
@@ -37,20 +37,19 @@
 				});
 			</script>
 		</section>
-
-		<section name="MAIN-PAGUE" class="row">
-			<div id="sbar" name="sbar" class="sidebar" style="display: block">
-
+		<section>
+			<div id="side" class="sidenav-fixed sidebar">
 				<form name="myForm" class="form formbox">
 					<div class="center-align">
-						<h4><i class="material-icons left">menu</i>Driver Finder</h4>
+						<!-- <h4><i class="material-icons left">menu</i>Driver Finder</h4> -->
+						<h3>Driver Finder</h3>
 					</div>
 
 					<ul class="collapsible">
 						<li>
 							<div class="collapsible-header"><i class="material-icons">map</i>Route Details</div>
-							<div class="collapsible-body row">
-								<div class="input-field col s7">
+							<div class="collapsible-body">
+								<div class="input-field col s12">
 									<input name="fname" id="fname" type="text" class="validate" />
 									<label for="fname">Route Name</label>
 								</div>
@@ -281,11 +280,15 @@
 					</div>
 				</form>
 			</div>
-
-			<div id="map" class="mapFix"></div>
-
-			<div id="result"></div>
+			<a href="#" data-target="slide-out" class="sidenav-trigger"
+				><i class="material-icons">menu</i></a
+			>
 		</section>
+<section>
+	<div id="map" class="mapFix"></div>
+	<div id="result"></div>
+</section>
+
 		<section name="LOG-IN">
 			<div class="btn-login">
 				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger"
