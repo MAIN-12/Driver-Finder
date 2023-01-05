@@ -18,7 +18,9 @@ function resultsTable(data) {
 		// const element = array[index];
 		// let row=data[i];
 
-		let miles = data[i].record[0] ? data[i].record[0].TotalTime.toFixed(2) + ' miles' :  data[i].d.toFixed(2) + ' miles'; //'aprox ' + data[i].d.toFixed(2) + ' miles';
+		let miles = data[i].record[0]
+			? data[i].record[0].TotalTime.toFixed(2)+ ' miles'
+			: '';//'aprox ' + data[i].d.toFixed(2) + ' miles';
 		let time = data[i].record[0] ? data[i].record[0].TotalTime.toFixed(2) + ' min' : '';
 
 		html += ' <tr > ';

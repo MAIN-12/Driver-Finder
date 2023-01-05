@@ -5,10 +5,11 @@
 
 html,
 body {
-	height: fit-content;
+	margin: 0;
+	/* height: fit-content; */
 	/* background-color: white; */
-	font-size: small;
 	font-family: 'Poppins', sans-serif;
+	font-size: small;
 }
 
 /* width */
@@ -36,27 +37,74 @@ body {
 	border-radius: 10px;
 }
 
-h4 {
+h1 {
+	background-color: white;
+	border-radius: 20px;
+}
+
+h2 {
+	background-color: white;
+	font-size: x-large;
 	color: rgb(5, 68, 104);
+	border-radius: 20px;
 	padding-left: 10px;
 	padding-right: 50px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	/* margin-bottom: 5px; */
+	border: 1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
+		0 1px 5px 0 rgb(0 0 0 / 20%);
+}
+h3 {
+	color: rgb(5, 68, 104);
+	font-size: large;
+	padding-left: 10px;
 	padding-top: 3px;
 	padding-bottom: 3px;
+	margin: 0;
 }
+h4 {
+	color: rgb(5, 68, 104);
+	font-size: medium;
+	margin-bottom: 0;
+}
+
+.btn-line {
+	color: rgb(5, 68, 104);
+	font-size: large;
+}
+
 
 .sidebar {
 	/* background: rgb(5, 68, 104); */
-
-	max-width: 350px;
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	flex-basis: 225px;
+	width: 350px;
+	height: 100%;
 	padding: 10px 20px;
 	transition: all 0.5s ease;
 	overflow: auto;
 }
 
+.wrapper.content {
+	background: white;
+	position: relative;
+	top: 0;
+	left: 350px;
+	right: 100px;
+	/* height: 100%; */
+	padding: 0;
+	transition: all 0.5s ease;
+}
+
 .formbox {
 	background: white;
 	border-radius: 20px;
-	padding-left: 0;
+	padding-left: 0; 
 	padding-right: 0;
 	padding-bottom: 20px;
 	overflow-y: auto;
@@ -89,13 +137,14 @@ h4 {
 
 	/* left: 300; */
 }
-.mapFix {
+.mapFix{
 	z-index: -10;
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: 0; 
 	overflow: none;
 }
+
 
 .maptestoffset {
 	z-index: -10;
@@ -214,23 +263,6 @@ input[type='submit'] {
 }
 span {
 	padding: 0px;
-}
-
-
-@media only screen and (max-width: 800px) {
-	.body {
-		font-size: larger;
-	}
-	.sidebar {
-		width: calc(100% - 16px);
-	}
-}
-
-
-@media only screen and (max-width: 500px) {
-	.body {
-		font-size: xx-large;
-	}
 }
 
 /* td {

@@ -180,10 +180,10 @@ async function submitFun() {
 				console.log('Route calculation PM:');
 			}
 			
-			// if (newRoute[2].pickUp && newRoute[2].dropOff) {
-			// 	routing(drivers, newRoute[2], result[2], 'Special_Record', 1);
-			// 	console.log('Route calculation Spetial Trip:');
-			// }
+			if (newRoute[2].pickUp && newRoute[2].dropOff) {
+				routing(drivers, newRoute[2], result[2], 'Special_Record', 1);
+				console.log('Route calculation Spetial Trip:');
+			}
 
 			printResults(drivers);
 			RouteCalculateDisplay(newRoute);
