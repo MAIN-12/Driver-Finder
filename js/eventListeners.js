@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	var elems = document.querySelectorAll('.collapsible');
 	var instances = M.Collapsible.init(elems);
 });
+
+
+
 addStudent.addEventListener('click', () => {
 	if (student2.style.display === 'none') {
 		student2.style.display = 'block';

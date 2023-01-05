@@ -226,17 +226,6 @@ input[type='submit'] {
 	margin-right: 20px;
 }
 
-#Pre-loader {
-	background: #ffffff
-		url(https://i.pinimg.com/originals/8c/7b/75/8c7b7516541848e2a94222bc2e2fac98.gif) no-repeat
-		center;
-	background-size: 20%;
-	height: 100vh;
-	width: 100%;
-	position: fixed;
-	z-index: 100;
-}
-
 .box {
 	border: 1px solid;
 	border-radius: 22px;
