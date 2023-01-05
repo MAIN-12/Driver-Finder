@@ -33,7 +33,7 @@ function resultsTable(data) {
 		html += `<td> ${data[i].name} </td>`;
 		html += `<td> ${data[i].mdd} </td>`;
 		html += `<td> ${data[i].routesLog} </td>`;
-		html += `<td> ${miles} miles </td>`;
+		html += `<td> ${miles} </td>`;
 		html += `<td> ${time} min </td>`;
 		html += `<td>
                     <a class="btn-floating btn-small waves-effect waves-light blue">
