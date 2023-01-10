@@ -23,9 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	var elems = document.querySelectorAll('.collapsible');
 	var instances = M.Collapsible.init(elems);
 });
-
-
-
 addStudent.addEventListener('click', () => {
 	if (student2.style.display === 'none') {
 		student2.style.display = 'block';
@@ -39,7 +36,6 @@ removeStudent2.addEventListener('click', () => {
 removeStudent3.addEventListener('click', () => {
 	student3.style.display = 'none';
 });
-
 myForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	submitFlag = true;

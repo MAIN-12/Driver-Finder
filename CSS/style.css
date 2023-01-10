@@ -16,26 +16,26 @@ body {
 ::-webkit-scrollbar {
 	background: transparent;
 	width: 6px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
 	/* box-shadow: inset 0 0 5px grey;  */
 	border-radius: 10px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
 	background: transparent;
 	/* background: darkgrey;  */
 	border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-	background: rgb(5, 68, 104); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(5, 68, 104);
 	border-radius: 10px;
-  }
+}
 
 h1 {
 	background-color: white;
@@ -52,8 +52,9 @@ h2 {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	/* margin-bottom: 5px; */
-	border:1px solid #ddd;
-	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+	border: 1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
+		0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 h3 {
 	color: rgb(5, 68, 104);
@@ -108,9 +109,12 @@ h4 {
 	padding-right: 0;
 	padding-bottom: 20px;
 	overflow-y: auto;
-	border:1px solid #ddd;
-	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+	border: 1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
+		0 1px 5px 0 rgb(0 0 0 / 20%);
 }
+
+
 
 .results_table {
 	background: rgb(255 255 255 / 80%);
@@ -122,14 +126,39 @@ h4 {
 	margin-right: 350px;
 	min-width: 300px;
 	margin: 20px;
-	padding: 20px 20px;
+	padding: 20px;
 	border-radius: 20px;
-	overflow: auto;
-	border:1px solid #ddd;
-	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+	/* overflow: auto; */
+	border: 1px solid #ddd;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
+		0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 
-#map {	
+.fixTableHead {
+	overflow-y: auto;
+	height: 275px;
+  }
+.fixTableHead thead th {
+	position: sticky;
+	top: 0;
+  }
+  table {
+	border-collapse: collapse;        
+	width: 100%;
+  }
+  th,
+  td {
+	padding: 8px 15px;
+	/* border: 2px solid #529432; */
+  }
+  th {
+	z-index: 999;
+	background: white;
+  }
+
+
+
+#map {
 	width: 100%;
 	height: 100vh;
 	overflow: none;
@@ -194,9 +223,18 @@ input[type='submit'] {
 	z-index: 900;
 	top: 10px;
 	right: 10px;
-	padding: 20;
+	padding: 5px;
 	margin: 10px 10px;
 	border-radius: 20px;
+}
+
+.btn-close {
+	position: absolute;
+	z-index: 900;
+	top: 3px;
+	right: 3px;
+	padding: 5px;
+	margin: 0;
 }
 
 .loadder {
@@ -218,8 +256,8 @@ input[type='submit'] {
 
 #Pre-loader {
 	background: #ffffff
-		url(https://i.pinimg.com/originals/8c/7b/75/8c7b7516541848e2a94222bc2e2fac98.gif)
-		no-repeat center;
+		url(https://i.pinimg.com/originals/8c/7b/75/8c7b7516541848e2a94222bc2e2fac98.gif) no-repeat
+		center;
 	background-size: 20%;
 	height: 100vh;
 	width: 100%;
@@ -234,24 +272,24 @@ input[type='submit'] {
 	width: 100%;
 	height: 44px;
 }
-.box:hover{
-	opacity:0.75;
+.box:hover {
+	opacity: 0.75;
 }
 
-.R20{
+.R20 {
 	border-radius: 20px;
 }
-.clean{
-	border: 0; 
-	margin-bottom: 0
+.clean {
+	border: 0;
+	margin-bottom: 0;
 }
 .collapsible {
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    margin: 0.5rem 0 1rem 0;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	margin: 0.5rem 0 1rem 0;
 }
-span{
+span {
 	padding: 0px;
 }
 
