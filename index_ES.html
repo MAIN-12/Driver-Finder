@@ -46,7 +46,9 @@
 				<form name="myForm" class="form formbox">
 					<ul class="collapsible">
 						<li>
-							<div class="collapsible-header"><i class="material-icons">map</i>Detalles de la ruta</div>
+							<div class="collapsible-header">
+								<i class="material-icons">map</i>Detalles de la ruta
+							</div>
 							<div class="collapsible-body">
 								<div class="input-field col s12">
 									<input name="fname" id="fname" type="text" class="validate" />
@@ -143,7 +145,9 @@
 							</div>
 						</li>
 						<li>
-							<div class="collapsible-header"><i class="material-icons">access_time</i>Horarios</div>
+							<div class="collapsible-header">
+								<i class="material-icons">access_time</i>Horarios
+							</div>
 							<div class="collapsible-body">
 								<table>
 									<thead>
@@ -210,13 +214,18 @@
 								<i class="material-icons">add_box</i>Viaje especial
 							</div>
 							<div class="collapsible-body">
-
-
 								<table>
 									<thead>
-										<th class="center-align"style="border: none; margin: 0; padding: 5px; min-width: 65px;"></th>
-										<th class="center-align" style="border: none; margin: 0; padding: 5px;">Pick Up</th>
-										<th class="center-align"style="border: none; margin: 0; padding: 5px;">Drop Off</th>
+										<th
+											class="center-align"
+											style="border: none; margin: 0; padding: 5px; min-width: 65px"
+										></th>
+										<th class="center-align" style="border: none; margin: 0; padding: 5px">
+											Pick Up
+										</th>
+										<th class="center-align" style="border: none; margin: 0; padding: 5px">
+											Drop Off
+										</th>
 									</thead>
 									<tbody>
 										<tr>
@@ -226,7 +235,7 @@
 													id="sPickUp"
 													type="text"
 													class="timepicker center-align"
-													placeholder='--:-- PM'
+													placeholder="--:-- PM"
 													style="border: none; margin: 0"
 												/>
 											</td>
@@ -274,15 +283,15 @@
 				</form>
 			</div>
 		</section>
-		
-	<div id="map" class="mapFix"></div>
-	<div id="result"></div>
+
+		<div id="map" class="mapFix"></div>
+		<div id="result"></div>
 
 		<section name="LOG-IN">
 			<div class="btn-login">
-				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger"
-					><i class="material-icons">person</i></a
-				>
+				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger">
+					<i class="material-icons">person</i>
+				</a>
 			</div>
 
 			<div id="login" class="modal">
@@ -335,23 +344,23 @@
 				</div>
 			</div>
 		</section>
-<section name="EXTRAS">
-	<div id="loadder" class="LogInBack" style="display: none">
-		<div class="preloader-wrapper big active center-block loadder">
-			<div class="modal-content spinner-layer spinner-blue-only">
-				<div class="circle-clipper left">
-					<div class="circle"></div>
-				</div>
-				<div class="gap-patch">
-					<div class="circle"></div>
-				</div>
-				<div class="circle-clipper right">
-					<div class="circle"></div>
+		<section name="EXTRAS">
+			<div id="loadder" class="LogInBack" style="display: none">
+				<div class="preloader-wrapper big active center-block loadder">
+					<div class="modal-content spinner-layer spinner-blue-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+						</div>
+						<div class="gap-patch">
+							<div class="circle"></div>
+						</div>
+						<div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</section>
+		</section>
 		<script>
 			var map,
 				geocoder,
