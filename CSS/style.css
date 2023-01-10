@@ -124,7 +124,8 @@ h4 {
 	margin-right: 350px;
 	min-width: 300px;
 	margin: 20px;
-	padding: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	border-radius: 20px;
 	/* overflow: auto; */
 	border: 1px solid #ddd;
@@ -134,7 +135,8 @@ h4 {
 
 .fixTableHead {
 	overflow-y: auto;
-	height: 275px;
+	height: 255px;
+	margin-top: 10px;
 }
 .fixTableHead thead th {
 	position: sticky;
@@ -144,20 +146,30 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 }
-th,
+
 td {
 	padding: 8px 15px;
 	/* border: 2px solid #529432; */
 }
 th {
+	padding-top: 5px;
+	padding-bottom: 5px;
 	z-index: 500;
-	background: white;
+	background: rgb(255, 255, 255,90%);
+	margin-left: 20px;
 }
-
 .open_btn {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
+}
+.close_btn {
+	position: absolute;
+	z-index: 900;
+	top: 5px;
+	right: 5px;
+	padding: 0;
+	margin: 0px;
 }
 
 #map {
@@ -228,15 +240,6 @@ input[type='submit'] {
 	padding: 5px;
 	margin: 10px 10px;
 	border-radius: 20px;
-}
-
-.btn-close {
-	position: absolute;
-	z-index: 900;
-	top: 3px;
-	right: 3px;
-	padding: 5px;
-	margin: 0;
 }
 
 .loadder {

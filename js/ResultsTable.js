@@ -6,7 +6,7 @@ function resultsTable(data) {
 	<i class="material-icons">add</i></a></div>`;
 	html += '<div id = "rt" class = "results_table" >';
 	html +=
-		'<div class ="btn-close"><a id= "close_table" type="button" class="waves-effect waves-light"><i  class="material-icons">arrow_drop_down</i></a></div>';
+		'<div class ="close_btn"><a id= "close_table" type="button" class="waves-effect waves-light"><i  class="material-icons">arrow_drop_down</i></a></div>';
 	html += `<div class="fixTableHead "><table class="highlight centered">
             <thead>
             <th>Index</th>
