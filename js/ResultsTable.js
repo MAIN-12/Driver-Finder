@@ -2,8 +2,11 @@
 
 function resultsTable(data) {
 	let html = '';
+	html += `<div  id= "open_table" class="open_btn" style="display: none"><a type="button"class="btn-floating btn-small waves-effect waves-light blue">
+	<i class="material-icons">add</i></a></div>`;
 	html += '<div id = "rt" class = "results_table" >';
-	html +=	'<div class ="btn-close"><a id= "close_table" ><i  class="material-icons">arrow_drop_down</i></a></div>';
+	html +=
+		'<div class ="btn-close"><a id= "close_table" type="button" class="waves-effect waves-light"><i  class="material-icons">arrow_drop_down</i></a></div>';
 	html += `<div class="fixTableHead "><table class="highlight centered">
             <thead>
             <th>Index</th>
@@ -43,7 +46,6 @@ function resultsTable(data) {
                  </td>`;
 		html += '</tr>';
 
-
 		let marker = new google.maps.Marker({
 			title: data[i].name,
 			position: data[i].address.location,
@@ -79,4 +81,13 @@ function resultsTable(data) {
 function printResults(data) {
 	console.log('Printing result of:', data);
 	document.getElementById('result').innerHTML = resultsTable(data);
+	close_table.addEventListener('click', () => {
+		document.getElementById('rt').style.display = 'none';
+		document.getElementById('open_table').style.display = 'block';
+	});
+
+	open_table.addEventListener('click', () => {
+		document.getElementById('rt').style.display = 'block';
+		document.getElementById('open_table').style.display = 'none';
+	});
 }

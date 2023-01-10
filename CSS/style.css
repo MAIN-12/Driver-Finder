@@ -114,8 +114,6 @@ h4 {
 		0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 
-
-
 .results_table {
 	background: rgb(255 255 255 / 80%);
 	position: fixed;
@@ -137,26 +135,30 @@ h4 {
 .fixTableHead {
 	overflow-y: auto;
 	height: 275px;
-  }
+}
 .fixTableHead thead th {
 	position: sticky;
 	top: 0;
-  }
-  table {
-	border-collapse: collapse;        
+}
+table {
+	border-collapse: collapse;
 	width: 100%;
-  }
-  th,
-  td {
+}
+th,
+td {
 	padding: 8px 15px;
 	/* border: 2px solid #529432; */
-  }
-  th {
-	z-index: 999;
+}
+th {
+	z-index: 500;
 	background: white;
-  }
+}
 
-
+.open_btn {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
 
 #map {
 	width: 100%;
