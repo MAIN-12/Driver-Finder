@@ -2,14 +2,18 @@
 
 function resultsTable(data) {
 	let html = '';
-	html += `<div  id= "open_table" class="open_btn" style="display: none"><a type="button"class="btn-floating btn-small waves-effect waves-light blue">
+	html += `<div  id= "open_table" class="open_btn" style="display: none"><a type="button"class="btn-floating waves-effect waves-light blue pulse">
 	<i class="material-icons">add</i></a></div>`;
 	html += '<div id = "rt" class = "results_table" >';
-	html +=
-		'<div class ="close_btn"><a id= "close_table" type="button" class="waves-effect waves-light"><i  class="material-icons">arrow_drop_down</i></a></div>';
+	html += '<div class ="close_btn"><a id= "close_table" type="button" class="waves-effect waves-light"><i  class="material-icons">arrow_drop_down</i></a></div>';
 	html += `<div class="fixTableHead "><table class="highlight centered">
             <thead>
-            <th>Index</th>
+            <th>
+				<label class="left-align">
+					<input id="check_ALL"  type="checkbox" />
+					<span>Index</span>
+				</label>
+			</th>
             <th>Name</th>
             <th>MDD</th>
             <th>Routes</th>
@@ -22,14 +26,12 @@ function resultsTable(data) {
 		// const element = array[index];
 		// let row=data[i];
 
-		let miles = data[i].record[0]
-			? data[i].record[0].TotalTime.toFixed(2) + ' miles'
-			: 'aprox ' + data[i].d.toFixed(2) + ' miles';
+		let miles = data[i].record[0] ? data[i].record[0].TotalTime.toFixed(2) + ' miles' : 'aprox ' + data[i].d.toFixed(2) + ' miles';
 		let time = data[i].record[0] ? data[i].record[0].TotalTime.toFixed(2) + ' min' : '';
 
 		html += ' <tr > ';
 		html += `<td>
-                    <label>
+                    <label class="left-align">
                         <input id="check_${i}"  type="checkbox" />
                         <span>${i + 1}</span>
                     </label>
