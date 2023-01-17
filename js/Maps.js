@@ -69,11 +69,34 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, 
 			if (status == google.maps.DirectionsStatus.OK) {
 				directionsDisplay.setDirections(response);
 			} else {
-				window.alert('Directions request failed due to ' + status);
+				console.alert('Directions request failed due to ' + status);
 			}
 		}
 	);
 }
+
+function RouteCalculat(pointA,pointB){
+	directionsService.route(
+		{
+			origin: pointA,
+			destination: pointB,
+			avoidTolls: true,
+			avoidHighways: false,
+			travelMode: google.maps.TravelMode.DRIVING,
+		},
+		function (response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+
+				return response;
+				// directionsDisplay.setDirections(response);
+			} else {
+				console.alert('Directions request failed due to ' + status);
+			}
+		}
+	);
+}
+
+
 function RouteCalculateDisplay(obj) {
 	let DD = [directionsDisplay0, directionsDisplay1, directionsDisplay2];
 
@@ -92,7 +115,7 @@ function RouteCalculateDisplay(obj) {
 				if (status == google.maps.DirectionsStatus.OK) {
 					DD[i].setDirections(response);
 				} else {
-					window.alert('Directions request failed due to ' + status);
+					console.alert('Directions request failed due to ' + status);
 				}
 			}
 		);

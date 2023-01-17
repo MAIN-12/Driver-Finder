@@ -7,7 +7,7 @@
 		<link rel="shortcut icon" href="Assets/Photos/icons8-car-ice-cream-favicons/Web/icons8-car-ice-cream-96.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="apple-touch-icon" sizes="76x76" href="Assets/Photos/car_icon/icons8-car-24-blue01.png" />
-		
+
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 		<link rel="stylesheet" href="CSS/style.css" />
@@ -37,11 +37,13 @@
 		</section>
 
 		<section name="MAIN-PAGUE" class="wrapper">
-			<div id="sbar" name="sbar" class="sidebar" style="display: block">
+			<div id="sidebar" class="sidebar">
 				<div class="center-align">
-					<h2><i class="material-icons left">menu</i>Driver Finder</h2>
+					<h2>
+						<a href="#" id="btn_menu"><i class="material-icons left">menu</i></a
+						>Driver Finder
+					</h2>
 				</div>
-
 				<form name="myForm" class="form formbox">
 					<ul class="collapsible">
 						<li>
@@ -211,8 +213,8 @@
 		<div id="result"></div>
 
 		<section name="LOG-IN">
-			<div class="btn-login">
-				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger"><i class="material-icons">person</i></a>
+			<div id="btn-login">
+				<a href="#login" class="btn-floating btn-large waves-effect waves-light modal-trigger pulse"><i class="material-icons">person</i></a>
 			</div>
 
 			<div id="login" class="modal">
@@ -234,6 +236,7 @@
 								<!-- <span class="helper-text" data-error="wrong user name or password" data-success="Loged in">Helper text</span> -->
 							</div>
 							<p id="wronfPass" style="color: red; display: none">wrong user name or password</p>
+							<div id="login_load" class="progress" style="display: none;"><div class="indeterminate"></div></div>
 							<button name="login-submit" id="login-submit" class="btn blue" type="submit" style="border-radius: 20px; width: 100%">Log in<i class="material-icons right"></i></button><br /><br />
 							<a href="sign-up.html">Forgot password?</a><br />
 							<b>Don't have an account? </b><a href="sign-up.html">Sign up</a>

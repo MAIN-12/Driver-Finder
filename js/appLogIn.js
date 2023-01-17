@@ -6,6 +6,7 @@ function isloggedin() {
 	if (User) {
 		console.log('Logged In');
 		logIn.close();
+		document.getElementById('btn-login').style.display = 'none';
 		return true;
 	} else {
 		console.log('Opening Login form');
@@ -15,6 +16,8 @@ function isloggedin() {
 }
 
 async function getUser() {
+	document.getElementById('login_load').style.display = 'block';
+	document.getElementById('wronfPass').style.display = 'none';
 	let userID = document.getElementById('userID').value;
 	let password = document.getElementById('pass').value;
 
@@ -25,6 +28,7 @@ async function getUser() {
 	var Data = await fetch(logURL);
 	// Data = Data.json();
 	Data.json().then((data) => {
+		document.getElementById('login_load').style.display = 'none';
 		console.log('Data!!!!', data);
 		User = data.user;
 		if (!data.status) {

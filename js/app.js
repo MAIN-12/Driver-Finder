@@ -49,13 +49,12 @@ async function routeSetUp() {
 
 	let routeName = document.getElementById('fname').value;
 	let monitor = document.getElementById('MonitorCheck').checked;
-	let pickUpAM = document.getElementById('pickUpAM').value;
-	let dropOffAM = document.getElementById('dropOffAM').value;
-	let pickUpPM = document.getElementById('pickUpPM').value;
-	let dropOffPM = document.getElementById('dropOffPM').value;
-
-	let sPickUp = document.getElementById('sPickUp').value;
-	let sDropOff = document.getElementById('sDropOff').value;
+	let pickUpAM = timeInstances[0];
+	let dropOffAM = timeInstances[1];
+	let pickUpPM = timeInstances[2];
+	let dropOffPM = timeInstances[3];
+	let sPickUp = timeInstances[4];
+	let sDropOff = timeInstances[5];
 	let sDays = '';
 
 	var RouteArray = [];
@@ -136,7 +135,7 @@ function getConfigFile() {
 
 async function getDrivers(obj) {
 	let url =
-		'https://script.google.com/macros/s/AKfycbzeL6j3eOr-4iLTJPdoBh8P6oSw4Ytr38ot17-xam8sDu7r2LLvK12xhGq6tY77-1zG/exec';
+		'https://script.google.com/macros/s/AKfycbwECv8FPuhqBJCCnbWumHMxyHe5fWA9UOR-Em3dnllQpLpyFuqdJ1XhVVHJgk4fMOPX/exec';
 	url += `?key=${obj.key}`;
 	url += `&bid=${obj.bid}`;
 	url += obj.status ? `` : '&active=true';
@@ -190,13 +189,13 @@ async function submitFun() {
 			result[1] = [0, 0];
 			result[2] = [0, 0];
 			// let resultAM = routeCalculator(newRoute[0].Address);
-			if (newRoute[0].pickUp && newRoute[0].dropOff) {
-				drivers = routing(drivers, newRoute[0], result[0], 'Record_AM', 0);
+			if (newRoute[0].pickUp.hours && newRoute[0].dropOff.hours) {
 				console.log('Route calculation AM:');
+				drivers = routing(drivers, newRoute[0], result[0], 'Record_AM', 0);
 			}
-			if (newRoute[1].pickUp && newRoute[1].dropOff) {
-				routing(drivers, newRoute[1], result[1], 'Record_PM', 1);
+			if (newRoute[1].pickUp.hours && newRoute[1].dropOff.hours) {
 				console.log('Route calculation PM:');
+				routing(drivers, newRoute[1], result[1], 'Record_PM', 1);
 			}
 			
 			// if (newRoute[2].pickUp && newRoute[2].dropOff) {

@@ -3,6 +3,8 @@ var student2 = document.getElementById('student2');
 var student3 = document.getElementById('student3');
 var SpecialTrip = document.getElementById('SpecialTrip');
 var addSpecialTrip = document.getElementById('addSpecialTrip');
+var btn_menu=document.getElementById('btn_menu');
+var sidebar=document.getElementById('sidebar');
 
 var selectInstances;
 var modalInstances;
@@ -16,7 +18,20 @@ document.addEventListener('DOMContentLoaded', function () {
 	timeInstances = M.Timepicker.init(document.querySelectorAll('.timepicker'));
 	dateInstances = M.Datepicker.init(document.querySelectorAll('.datepicker'));
 	colapsableInstances = M.Collapsible.init(document.querySelectorAll('.collapsible'));
+
+    var instances = M.Sidenav.init(document.querySelectorAll('.sidenav'));
 });
+
+
+
+btn_menu.addEventListener('click', () => {
+	if (sidebar.style.display === 'none') {
+		sidebar.style.display = 'block';
+	}else if (sidebar.style.display === 'block') {
+		sidebar.style.display = 'none';
+	}
+});
+
 
 addStudent.addEventListener('click', () => {
 	if (student2.style.display === 'none') {
