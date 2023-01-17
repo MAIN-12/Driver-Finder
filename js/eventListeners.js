@@ -3,26 +3,21 @@ var student2 = document.getElementById('student2');
 var student3 = document.getElementById('student3');
 var SpecialTrip = document.getElementById('SpecialTrip');
 var addSpecialTrip = document.getElementById('addSpecialTrip');
+
+var selectInstances;
+var modalInstances;
+var timeInstances;
+var dateInstances;
+var colapsableInstances;
+
 document.addEventListener('DOMContentLoaded', function () {
-	var elems = document.querySelectorAll('select');
-	var instances = M.FormSelect.init(elems);
+	selectInstances = M.FormSelect.init(document.querySelectorAll('select'));
+	modalInstances = M.Modal.init(document.querySelectorAll('.modal'));
+	timeInstances = M.Timepicker.init(document.querySelectorAll('.timepicker'));
+	dateInstances = M.Datepicker.init(document.querySelectorAll('.datepicker'));
+	colapsableInstances = M.Collapsible.init(document.querySelectorAll('.collapsible'));
 });
-document.addEventListener('DOMContentLoaded', function () {
-	var elems = document.querySelectorAll('.timepicker');
-	var instances = M.Timepicker.init(elems);
-});
-document.addEventListener('DOMContentLoaded', function () {
-	var elems = document.querySelectorAll('.datepicker');
-	var instances = M.Datepicker.init(elems);
-});
-document.addEventListener('DOMContentLoaded', function () {
-	var elems = document.querySelectorAll('.modal');
-	var instances = M.Modal.init(elems);
-});
-document.addEventListener('DOMContentLoaded', function () {
-	var elems = document.querySelectorAll('.collapsible');
-	var instances = M.Collapsible.init(elems);
-});
+
 addStudent.addEventListener('click', () => {
 	if (student2.style.display === 'none') {
 		student2.style.display = 'block';

@@ -8,7 +8,7 @@ function isloggedin() {
 		logIn.close();
 		return true;
 	} else {
-		console.log('Opening Login form' );
+		console.log('Opening Login form');
 		logIn.open();
 		return false;
 	}
@@ -18,8 +18,8 @@ async function getUser() {
 	let userID = document.getElementById('userID').value;
 	let password = document.getElementById('pass').value;
 
-	let logURL =
-		'https://script.google.com/macros/s/AKfycbxGse56smGVOMenkvS9M9RMc_hTlTQqZi0DW80TVFn-iwNgZoB2QCv1Yt_4S5qcGRVQiw/exec';
+	// let logURL = 'https://script.google.com/macros/s/AKfycbxGse56smGVOMenkvS9M9RMc_hTlTQqZi0DW80TVFn-iwNgZoB2QCv1Yt_4S5qcGRVQiw/exec';
+	let logURL = 'https://script.google.com/macros/s/AKfycbyS6rIoccKAdEwejj_gXFq1xQ6DBQZoafofWTRevPOi7MvHKt9eNbRigMI4teVDV3ZlDA/exec';
 	logURL += `?id=${userID}`;
 	logURL += `&pass=${password}`;
 	var Data = await fetch(logURL);
@@ -48,7 +48,6 @@ loginForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	console.log('==========LOG IN HAS BEAN SUBMITED==========');
 	getUser();
-
 });
 
 // const request = new XMLHttpRequest();
