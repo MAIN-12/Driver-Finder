@@ -3,9 +3,8 @@ var student2 = document.getElementById('student2');
 var student3 = document.getElementById('student3');
 var SpecialTrip = document.getElementById('SpecialTrip');
 var addSpecialTrip = document.getElementById('addSpecialTrip');
-var btn_menu=document.getElementById('btn_menu');
-var sidebar=document.getElementById('sidebar');
-
+var btn_menu = document.getElementById('btn_menu');
+var sidebar = document.getElementById('sidebar');
 var selectInstances;
 var modalInstances;
 var timeInstances;
@@ -19,20 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	dateInstances = M.Datepicker.init(document.querySelectorAll('.datepicker'));
 	colapsableInstances = M.Collapsible.init(document.querySelectorAll('.collapsible'));
 
-    var instances = M.Sidenav.init(document.querySelectorAll('.sidenav'));
+	var instances = M.Sidenav.init(document.querySelectorAll('.sidenav'));
 });
-
-
-
-btn_menu.addEventListener('click', () => {
-	if (sidebar.style.display === 'none') {
-		sidebar.style.display = 'block';
-	}else if (sidebar.style.display === 'block') {
-		sidebar.style.display = 'none';
-	}
-});
-
-
+btn_menu.addEventListener('click', () => (sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none'));
 addStudent.addEventListener('click', () => {
 	if (student2.style.display === 'none') {
 		student2.style.display = 'block';
@@ -40,12 +28,8 @@ addStudent.addEventListener('click', () => {
 		student3.style.display = 'block';
 	}
 });
-removeStudent2.addEventListener('click', () => {
-	student2.style.display = 'none';
-});
-removeStudent3.addEventListener('click', () => {
-	student3.style.display = 'none';
-});
+removeStudent2.addEventListener('click', () => (student2.style.display = 'none'));
+removeStudent3.addEventListener('click', () => (student3.style.display = 'none'));
 myForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	submitFlag = true;
@@ -55,7 +39,6 @@ myForm.addEventListener('submit', (e) => {
 		document.getElementById('loadder').style.display = 'block';
 	}
 });
-
 myForm.addEventListener('reset', (e) => {
 	student2.style.display = 'none';
 	student3.style.display = 'none';

@@ -135,7 +135,7 @@ function getConfigFile() {
 
 async function getDrivers(obj) {
 	let url =
-		'https://script.google.com/macros/s/AKfycbwECv8FPuhqBJCCnbWumHMxyHe5fWA9UOR-Em3dnllQpLpyFuqdJ1XhVVHJgk4fMOPX/exec';
+		'https://script.google.com/macros/s/AKfycbzleYVQ8PRUxLEK1ek2h_McodcqfDPwnFXzTNYYzAsxRFCO3YBM7JiPXNs16tPgWy9i/exec';
 	url += `?key=${obj.key}`;
 	url += `&bid=${obj.bid}`;
 	url += obj.status ? `` : '&active=true';
